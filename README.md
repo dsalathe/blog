@@ -1,6 +1,6 @@
 # Personal Blog - React
 
-![React Blog App](https://github.com/dsalathe/testing-react/raw/main/public/mountainAlps.webp)
+![React Blog App](https://github.com/dsalathe/blog/raw/main/public/mountainAlps.webp)
 
 ## Overview
 
@@ -37,8 +37,8 @@ This is a responsive personal blog application built with React and Vite, design
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/testing-react.git
-   cd testing-react
+   git clone https://github.com/yourusername/blog.git
+   cd blog
    ```
 
 2. Install dependencies:
@@ -99,7 +99,7 @@ The development server will start automatically, and all necessary extensions wi
 ## Project Structure
 
 ```
-testing-react/
+blog/
 ├── .devcontainer/    # Codespaces configuration
 ├── .github/          # GitHub Actions workflows
 ├── public/           # Static assets and images

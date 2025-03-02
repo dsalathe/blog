@@ -9,7 +9,7 @@ export default defineConfig({
       mode: ['html', 'toc'],
     })
   ],
-  base: '/testing-react/',
+  base: '/blog/',
   assetsInclude: ['**/*.md'],
   build: {
     outDir: 'dist',
