@@ -1,4 +1,4 @@
----
+const n=`---
 id: 2
 title: What is the answer to the universe, the life and everything? Entropy.
 description: Coming soon
@@ -10,4 +10,4 @@ keywords:
 
 # What is the answer to the universe, the life and everything? Entropy.
 
-Coming soon
+Coming soon`;export{n as default};

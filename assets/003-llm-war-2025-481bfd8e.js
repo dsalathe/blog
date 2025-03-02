@@ -1,4 +1,4 @@
----
+const e=`---
 id: 3
 title: The 5 Armies of LLMs - A Quick Recap of the AI Landscape
 description: A comprehensive breakdown of the current state of AI, comparing major LLM players to The Hobbit's five armies
@@ -68,4 +68,4 @@ In short:
 
 I also keep an eye on Perplexity and the groq (with a q) platform that aims to provide the fastest inference platform and provide open source models such as Mistral, DeepSeek or llama 3.
 
-The AI race is evolving fast—what's your go-to model these days? 🚀
+The AI race is evolving fast—what's your go-to model these days? 🚀`;export{e as default};

@@ -1,4 +1,4 @@
----
+const n=`---
 id: 4
 title: Will AI be smarter than humans?
 description: Coming soon
@@ -10,4 +10,4 @@ keywords:
 
 # Will AI be smarter than humans?
 
-Coming Soon
+Coming Soon`;export{n as default};
