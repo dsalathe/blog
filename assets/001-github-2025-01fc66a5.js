@@ -3,7 +3,7 @@ id: 1
 title: "GitHub's 2025 Power Tools: Codespaces and Copilot"
 description: "A backend engineer's take on GitHub Codespaces and Copilot's latest updates—building a React app with no prior React experience, powered by cloud dev and AI."
 publishedDate: 2025-02-21
-image: devflexingcartoon.webp
+image: devflexingcartoon.PNG
 keywords:
   - GitHub
   - Codespaces
