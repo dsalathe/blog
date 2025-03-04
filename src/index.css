@@ -607,7 +607,6 @@ p {
   margin-bottom: 2rem;
 }
 
-
 .blog-post table {
   width: 100%;
   border-collapse: collapse;
@@ -615,28 +614,74 @@ p {
   background: white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  table-layout: fixed; /* Add this to ensure equal column widths */
+  min-width: 100%; 
+  max-width: 100%;
+  overflow-x: auto; /* Add horizontal scrolling */
+  display: block; /* Make it a block element for scrolling */
+}
+
+/* Reset the display property for smaller screens */
+@media (max-width: 768px) {
+  .blog-post table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+  
+  /* Ensure minimum column widths on small screens */
+  .blog-post th,
+  .blog-post td {
+    min-width: 80px; /* Slightly smaller minimum on mobile */
+  }
+}
+
+/* Style table cells */
+.blog-post th,
+.blog-post td {
+  padding: 12px;
+  text-align: center;
+  min-width: 90px; /* Minimum column width */
+  word-break: normal; /* Allow normal word breaks */
 }
 
 .blog-post th {
   background: #f8fafc;
-  padding: 12px;
-  text-align: center;
   font-weight: 600;
   color: #1a202c;
+  position: sticky;
+  top: 0; /* Keeps headers visible while scrolling */
 }
 
 .blog-post td {
-  padding: 12px;
-  text-align: center;
   border-top: 1px solid #edf2f7;
-  word-wrap: break-word; /* Handle long content */
-  overflow-wrap: break-word; /* Modern browsers */
-  font-size: 90%;
+  white-space: normal; /* Allow text to wrap within cells */
+  vertical-align: middle;
 }
 
-.blog-post td:first-child,
-.blog-post th:first-child {
-  font-weight: 600;
+/* Make sure text wraps inside cells for better readability */
+.blog-post td p {
+  white-space: normal;
+  margin: 0;
+}
+
+.blog-post pre {
+  overflow-x: auto;
+  white-space: pre;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.blog-post code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 85%;
+}
+
+/* Make sure table containers are also scrollable horizontally */
+.blog-post .table-container {
+  overflow-x: auto;
+  margin: 20px 0;
 }
 
