@@ -8,6 +8,4 @@ keywords:
   - coming soon
 ---
 
-# What is the answer to the universe, the life and everything? Entropy.
-
 Coming soon

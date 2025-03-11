@@ -74,9 +74,25 @@ function BlogPage() {
             />
           </div>
         )}
+        
+        {/* Reading time indicator at the top */}
+        <div className="blog-post-header">
+          <h1>{blog.title}</h1>
+          <div className="blog-post-meta-top">
+            <p className="blog-post-date">Published: {formatDate(blog.publishedDate)}</p>
+            <p className="reading-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              {blog.readingTime}
+            </p>
+          </div>
+        </div>
+        
         <Markdown>{processMarkdown(blog.content)}</Markdown>
+        
         <div className="blog-post-meta">
-          <p className="blog-post-date">Published: {formatDate(blog.publishedDate)}</p>
           <ShareButton title={blog.title} />
         </div>
       </article>

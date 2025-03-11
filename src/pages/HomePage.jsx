@@ -97,9 +97,18 @@ function HomePage() {
               <div className="blog-card-content">
                 <h2>{blog.title}</h2>
                 <p className="blog-description">{blog.description}</p>
-                <p className="blog-date">
-                  {formatDate(blog.publishedDate)}
-                </p>
+                <div className="blog-meta">
+                  <p className="blog-date">
+                    {formatDate(blog.publishedDate)}
+                  </p>
+                  <p className="reading-time">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    {blog.readingTime}
+                  </p>
+                </div>
                 <div className="keywords-container">
                   {blog.keywords.map(keyword => (
                     <span key={keyword} className="keyword-tag">

@@ -1,4 +1,5 @@
 import matter from 'gray-matter';
+import { calculateReadingTime } from './readingTime';
 
 const blogFiles = import.meta.glob('../data/posts/*.md', { as: 'raw' });
 
@@ -17,7 +18,8 @@ export const loadBlogPost = async (id) => {
     
     return {
       ...data,
-      content: markdownContent
+      content: markdownContent,
+      readingTime: calculateReadingTime(markdownContent)
     };
   } catch (error) {
     console.error(`Error loading blog post ${id}:`, error);
@@ -34,7 +36,7 @@ export const loadBlogPosts = async () => {
     for (const path of files) {
       const content = await blogFiles[path]();
       console.log('Processing file:', path); // Debug line
-      const { data } = matter(content);
+      const { data, content: markdownContent } = matter(content);
       console.log('Parsed frontmatter:', data); // Debug line
       posts.push({
         id: data.id,
@@ -42,7 +44,8 @@ export const loadBlogPosts = async () => {
         description: data.description,
         publishedDate: data.publishedDate,
         keywords: data.keywords,
-        image: data.image // Add this line
+        image: data.image,
+        readingTime: calculateReadingTime(markdownContent)
       });
     }
     
