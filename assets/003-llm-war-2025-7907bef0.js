@@ -14,8 +14,6 @@ keywords:
   - Deepseek
 ---
 
-# The 5 Armies of LLMs: A Quick Recap of the AI Landscape
-
 It feels like a new LLM is dropping every week, so here's a short breakdown of the current state of AI, using The Hobbit's five armies as a fitting analogy:
 
 ## <i class="fa-solid fa-gem"></i> ChatGPT – The Dwarves
