@@ -282,6 +282,8 @@ p {
 
 .header-title {
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .header-title h1 {
@@ -291,8 +293,21 @@ p {
   transition: color 0.3s ease;
 }
 
-.header-title:hover h1 {
-  color: #4299e1;
+.author-subtitle {
+  margin: 2px 0 0 0;
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: normal;
+  transition: all 0.3s ease;
+}
+
+.author-hidden {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  position: absolute;
 }
 
 .header-center {

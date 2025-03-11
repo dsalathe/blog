@@ -19,7 +19,10 @@ function Header() {
       <div className="header-content">
         <div className="header-left">
           <Link to="/" className="header-title">
-            <h1>David Salathé</h1>
+            <h1>The Blog</h1>
+            <p className={`author-subtitle ${isScrolled ? 'author-hidden' : ''}`}>
+              David Salathé
+            </p>
           </Link>
         </div>
         
