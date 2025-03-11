@@ -63,7 +63,7 @@ function HomePage() {
   return (
     <div className="container">
       <div className="hero-section">
-        <h1>Welcome to My Blog</h1>
+        <h1>Welcome to The Blog</h1>
         <p className="subtitle">Exploring ideas, sharing knowledge</p>
       </div>
       
