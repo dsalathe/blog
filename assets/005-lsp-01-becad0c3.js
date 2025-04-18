@@ -13,8 +13,6 @@ keywords:
   - SDLB
 ---
 
-# Building a Scala 3 LSP Server -Part 1
-
 Welcome to the first part of our series where I'll take you through my journey of creating a Language Server Protocol (LSP) implementation for HOCON configuration files used in Smart Data Lake Builder. This exciting project combines several technologies: Scala 3 for implementation, LSP for providing IDE-like features, and HOCON as the configuration language for data lake operations.
 
 The LSP currently handles code completion with AI-augmented suggestions and hover information. It supports four different strategies to handle multi-file completion awareness, which is especially useful when working with multiple environments. It also leverages HOCON for its own custom configuration.
