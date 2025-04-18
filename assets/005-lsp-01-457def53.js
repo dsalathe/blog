@@ -1,0 +1,167 @@
+const e=`---
+id: 5
+title: "Building a Scala 3 LSP Server - Part 1"
+description: "Ever wondered how your favorite editor is able to help you write your project? Foundations of a Language Server Protocol for HOCON in Scala 3"
+publishedDate: 2025-04-18
+image: lsp01.png
+keywords:
+  - Scala 3
+  - LSP
+  - Autocompletion
+  - IDE
+  - HOCON
+  - SDLB
+---
+
+# Building a Scala 3 LSP Server -Part 1
+
+Welcome to the first part of our series where I'll take you through my journey of creating a Language Server Protocol (LSP) implementation for HOCON configuration files used in Smart Data Lake Builder. This exciting project combines several technologies: Scala 3 for implementation, LSP for providing IDE-like features, and HOCON as the configuration language for data lake operations.
+
+The LSP currently handles code completion with AI-augmented suggestions and hover information. It supports four different strategies to handle multi-file completion awareness, which is especially useful when working with multiple environments. It also leverages HOCON for its own custom configuration.
+
+📦 [**View the source code on GitHub**](https://github.com/smart-data-lake/sdl-lsp) – Explore the complete implementation
+
+## What is Smart Data Lake Builder?
+
+Smart Data Lake Builder (SDLB) is an open-source framework that simplifies the process of building and maintaining data lakes. It enables data engineers and analysts to define complex data transformations, connections, and workflows using a declarative approach with HOCON (Human-Optimized Config Object Notation) configuration files.
+
+SDLB provides several key benefits:
+
+![List of SDLB benefits,* **Declarative definitions**: Rather than writing procedural code, you define what you want to achieve through configuration. * **Built-in data quality**: Validation and quality checks are integrated throughout the pipeline. * **Metadata handling**: Automatic tracking of metadata and lineage information. * **Multi-environment support**: Configurations can easily be adapted for different environments.](\${baseUrl}blog-images/SDLB-features-list2.png)
+
+A typical SDLB configuration is written in HOCON and might look like this:
+\`\`\`HOCON
+global {
+  spark-options {
+    "spark.sql.shuffle.partitions" = 2
+  }
+}
+
+dataObjects {
+  ext-airports {
+    type = WebserviceFileDataObject
+    url = "https://example.com/api/airports"
+    followRedirects = true
+    readTimeoutMs=200000
+  }
+
+  stg-airports {
+    type = CsvFileDataObject
+    path = "~{id}"
+  }
+}
+
+actions {
+  download-airports {
+    type = FileTransferAction
+    inputId = ext-airports
+    outputId = stg-airports
+    metadata {
+      feed = download
+    }
+  }
+
+  select-airport-cols {
+    type = CopyAction
+    inputId = stg-airports
+    outputId = int-airports
+    transformers = [{
+      type = SQLDfTransformer
+      code = "select ident, name, latitude_deg, longitude_deg from stg_airports"
+    }]
+    metadata {
+      feed = compute
+    }
+  }
+}
+\`\`\`
+
+The complexity of these configurations grows quickly with larger data lakes, making robust editor support vital for developer productivity.
+
+## The LSP Protocol Explained
+
+The Language Server Protocol (LSP) was created by Microsoft to standardize the communication between code editors and language servers that provide intelligent features. Before LSP, each IDE had to implement language-specific features from scratch, leading to duplicated work and inconsistent experiences across editors.
+
+LSP establishes a JSON-RPC based protocol between:
+
+1. The **LSP Client**: Built into the IDE/editor
+2. The **LSP Server**: A standalone process that understands a specific language
+
+The protocol defines standardized messages for capabilities like:
+
+![List of LSP capabilities](\${baseUrl}blog-images/LSP-capabilities.png)
+
+* **Code completion**: Suggesting code as you type
+* **Hover information**: Showing documentation when hovering over symbols
+* **Go to definition**: Navigating to where a symbol is defined
+* **Find references**: Locating all usages of a symbol
+* **Diagnostics**: Reporting errors and warnings
+* **Code actions**: Offering automated fixes
+* **Workspace symbols**: Finding symbols across multiple files
+
+### LSP Communication Flow
+
+The typical flow of LSP communication includes:
+
+![LSP communication flow, 1. **Client initialization**: The editor launches the language server 2. **Capability negotiation**: Server tells the client what features it supports 3. **Document synchronization**: Client sends file content to the server 4. **Language features**: Client requests features (completion, hover, etc.) as needed 5. **Shutdown**: Proper termination of the language server](\${baseUrl}blog-images/LSP-communication-flow.png)
+
+
+
+LSP is language-agnostic and editor-agnostic, which is why we can implement the server in any language such as Scala that works with both VS Code and IntelliJ IDEA through different client implementations.
+
+## The Global Architecture
+
+The architecture consists of these main components:
+
+![Global architecture napkin](\${baseUrl}blog-images/LSP-architecture.png)
+
+1. **LSP Server Core**
+    - Handles protocol communication using LSP4J
+    - Manages document lifecycle (open, change, close)
+    - Dispatches requests to appropriate handlers
+2. **HOCON Parser Wrapper**
+    - Wraps the Lightbend HOCON parser
+    - Provides position-aware parsing
+    - Extracts path context based on cursor position
+3. **Schema Registry**
+    - Loads and validates JSON Schemas for SDLB components
+    - Provides schema location context given a HOCON path
+4. **Feature Handlers**
+    - Completion Provider: Suggests valid properties and values, enhanced with AI
+    - Hover Provider: Shows documentation for current element
+5. **Multi-file Context Manager**
+    - Tracks relationships between files
+    - Implements workspace grouping strategies for different environment scenarios
+    - Provides cross-file context for suggestions
+6. **AI Integration Layer**
+    - Interfaces with Gemini API
+    - Applies business rules to AI suggestions
+    - Optimizes for low-latency responses
+7. **Logging Management**
+    - Provides logs to the client for easier debugging
+    - Redacts sensitive information, such as the Gemini API Token
+    - Redirects output stream, as it should be used by LSP4J only for communicating with the client
+
+## Server Initialization Flow
+
+When the LSP server starts, it goes through several initialization steps:
+
+![LSP init flow,1. LSP4J bootstraps the server and establishes communication with the client 2. Output stream is redirected 3. The server registers its capabilities (completion, hover, etc.) 4. Schema definitions are loaded from resources 5. LSP configuration is loaded 6. Configuration files in the workspace are indexed](\${baseUrl}blog-images/LSP-init.png)
+
+## Request Handling Flow
+
+For each user interaction requiring LSP features, the server goes through all of these steps:
+
+![LSP request flow,1. Receives a request from the client 2. Parses the current state of the HOCON document 3. Determines the context based on cursor position 4. Consults the schema registry for valid options 5. Applies business rules and AI enhancement if needed 6. Returns the response to the client](\${baseUrl}blog-images/LSP-request-flow.png)
+
+## Why Scala 3?
+
+Scala was chosen as our implementation language for several reasons:
+
+![List of Scala strengths,- **Type safety**: Strong type system helps prevent bugs and makes refactoring easier - **Functional programming**: Immutable data structures and function composition simplify complex transformations - **Concurrency model**: Future-based concurrency handles multiple requests efficiently, as well as API calls in the background - **JVM compatibility**: Easy integration with Scala and Java libraries like LSP4J or Circe - **Pattern matching**: Simplifies handling of complex HOCON structures - **Scala 3 improvements**: New features like intersection and union types, enhanced implicit handling, and extension methods made the codebase more concise and maintainable, as well as easily testable without needing advanced mocking libraries](\${baseUrl}blog-images/scala-strengths.png)
+
+## Next Steps
+In this article, we were introduced to the foundational concepts behind this project.
+In the next part, we'll dive deeper into the HOCON parser wrapper and how we extract path context to provide accurate code assistance.
+
+Stay tuned for "Parsing with Purpose: Building a Resilient Context-Aware HOCON Processor for LSP", where I'll share the technical details of connecting cursor positions to meaningful path contexts and schema definitions.`;export{e as default};

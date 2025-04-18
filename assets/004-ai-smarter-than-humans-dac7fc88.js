@@ -8,4 +8,6 @@ keywords:
   - coming soon
 ---
 
+# Will AI be smarter than humans?
+
 Coming Soon`;export{n as default};
