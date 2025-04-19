@@ -162,4 +162,4 @@ Scala was chosen as our implementation language for several reasons:
 In this article, we were introduced to the foundational concepts behind this project.
 In the next part, we'll dive deeper into the HOCON parser wrapper and how we extract path context to provide accurate code assistance.
 
-Stay tuned for "Parsing with Purpose: Building a Resilient Context-Aware HOCON Processor for LSP", where I'll share the technical details of connecting cursor positions to meaningful path contexts and schema definitions.`;export{e as default};
+Stay tuned for "Core Functionality and Logging Management", where I'll share the technical details of connecting cursor positions to meaningful path contexts and schema definitions.`;export{e as default};
