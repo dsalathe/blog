@@ -27,7 +27,9 @@ export const loadBlogPost = async (id) => {
     return {
       ...data,
       content: markdownContent,
-      readingTime: calculateReadingTime(markdownContent)
+      readingTime: calculateReadingTime(markdownContent),
+      previous: data.previous || null,
+      next: data.next || null
     };
   } catch (error) {
     console.error(`Error loading blog post ${id}:`, error);

@@ -9,6 +9,7 @@ function BlogPage() {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFuturePost, setIsFuturePost] = useState(false);
+  const [nextBlogInfo, setNextBlogInfo] = useState(null);
 
   // handle scroll reset
   useEffect(() => {
@@ -43,6 +44,17 @@ function BlogPage() {
             setBlog(null);
           } else {
             setBlog(foundBlog);
+            
+            // If there's a next blog post ID, fetch its publication date
+            if (foundBlog.next) {
+              try {
+                const nextBlog = await getBlogById(parseInt(foundBlog.next));
+                setNextBlogInfo(nextBlog);
+              } catch (nextError) {
+                console.error('Error loading next blog:', nextError);
+                setNextBlogInfo(null);
+              }
+            }
           }
         } else {
           setBlog(null);
@@ -119,6 +131,34 @@ function BlogPage() {
         <div className="blog-post-meta">
           <ShareButton title={blog.title} />
         </div>
+
+        {/* Blog post navigation */}
+        {(blog.previous || (blog.next && nextBlogInfo)) && (
+          <div className="blog-post-navigation">
+            {blog.previous ? (
+              <Link to={`/blog/${blog.previous}`} className="blog-nav-button blog-nav-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Previous Part
+              </Link>
+            ) : (
+              <div className="blog-nav-placeholder"></div>
+            )}
+            
+            {blog.next && nextBlogInfo && new Date(nextBlogInfo.publishedDate) <= new Date() ? (
+              // Only show next if it exists, is loaded, and is not a future post
+              <Link to={`/blog/${blog.next}`} className="blog-nav-button blog-nav-next">
+                Next Part
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
+            ) : (
+              <div className="blog-nav-placeholder"></div>
+            )}
+          </div>
+        )}
       </article>
       <Link to="/" className="back-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

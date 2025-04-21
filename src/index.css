@@ -922,3 +922,43 @@ p {
   border-color: #3182ce;
 }
 
+/* Blog post navigation styling */
+.blog-post-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.blog-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #edf2f7;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.blog-nav-button:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.blog-nav-prev {
+  margin-right: auto;
+}
+
+.blog-nav-next {
+  margin-left: auto;
+}
+
+.blog-nav-placeholder {
+  width: 1rem; /* Creates space when only one button exists */
+}
+
