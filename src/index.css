@@ -912,17 +912,6 @@ p {
   outline-offset: 2px;
 }
 
-/* External links with icon */
-.blog-post a[href^="http"]:not([href*="yourdomain.com"])::after {
-  content: " ↗";
-  display: inline;
-  font-size: 80%;
-  vertical-align: super;
-  opacity: 0.7;
-  background: none;
-  transform: none;
-}
-
 /* Ensure proper styling for links with images */
 .blog-post a img {
   border: 2px solid transparent;
