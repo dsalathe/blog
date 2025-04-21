@@ -2,8 +2,10 @@ const e=`---
 id: 7
 title: "Building a Scala 3 LSP Server - Part 3"
 description: "Parsing with Purpose: Building a Resilient Context-Aware HOCON Processor for LSP"
-publishedDate: 2025-04-20
+publishedDate: 2025-05-06
 image: lsp03.png
+previous: 6
+next: 8
 keywords:
   - Scala 3
   - LSP
@@ -290,6 +292,6 @@ In this article, we've built the foundation of our HOCON parser with context awa
 
 The clever use of Scala 3 features like \`export\`, pattern matching, private constructors with companion objects, and tailrec optimization makes our code both robust and concise.
 
-In the next article, we'll explore how to use this context information to implement code completion and hover information based on JSON schema definitions. We'll also look at how to handle multi-file context awareness to provide more intelligent suggestions in complex projects with multiple configuration files.
+In the next article, we'll explore how to use this context information to implement code completion and hover information based on JSON schema definitions.
 
-Stay tuned for "Intelligent Suggestions: Implementing LSP Capabilities for HOCON," where we'll connect our context-aware parser to actual IDE features.`;export{e as default};
+Stay tuned for "Implementing a Schema Reader for Intelligent Code Suggestions" where we'll leverage our context-aware parser to traverse our Json schema.`;export{e as default};

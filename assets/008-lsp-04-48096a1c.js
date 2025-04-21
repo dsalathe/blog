@@ -2,8 +2,10 @@ const e=`---
 id: 8
 title: "Building a Scala 3 LSP Server - Part 4"
 description: "Implementing a Schema Reader for Intelligent Code Suggestions"
-publishedDate: 2025-04-22
+publishedDate: 2025-05-13
 image: lsp04.jpg
+previous: 7
+next: 9
 keywords:
   - Scala 3
   - LSP

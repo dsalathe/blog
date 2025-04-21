@@ -2,8 +2,9 @@ const e=`---
 id: 5
 title: "Building a Scala 3 LSP Server - Part 1"
 description: "Ever wondered how your favorite editor is able to help you write your project? Foundations of a Language Server Protocol for HOCON in Scala 3"
-publishedDate: 2025-04-18
+publishedDate: 2025-04-22
 image: lsp01.png
+next: 6
 keywords:
   - Scala 3
   - LSP
