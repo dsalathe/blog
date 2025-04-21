@@ -8,8 +8,9 @@ function BlogPage() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isFuturePost, setIsFuturePost] = useState(false);
 
-  // Add this useEffect to handle scroll reset
+  // handle scroll reset
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -31,7 +32,21 @@ function BlogPage() {
     const loadBlog = async () => {
       try {
         const foundBlog = await getBlogById(parseInt(id));
-        setBlog(foundBlog);
+        
+        if (foundBlog) {
+          // Check if post date is in the future
+          const postDate = new Date(foundBlog.publishedDate);
+          const now = new Date();
+          
+          if (postDate > now && process.env.NODE_ENV !== 'development') {
+            setIsFuturePost(true);
+            setBlog(null);
+          } else {
+            setBlog(foundBlog);
+          }
+        } else {
+          setBlog(null);
+        }
       } catch (error) {
         console.error('Error loading blog:', error);
         setBlog(null);
@@ -51,6 +66,15 @@ function BlogPage() {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (isFuturePost) {
+    return (
+      <div style={{ padding: '20px' }}>
+        <p>This post is scheduled for future publication and is not yet available.</p>
+        <Link to="/">Back to Home</Link>
+      </div>
+    );
   }
 
   if (!blog) {

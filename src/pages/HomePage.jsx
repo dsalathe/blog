@@ -9,7 +9,7 @@ function HomePage() {
   const [error, setError] = useState(null);
   const location = useLocation();
 
-  // Add this useEffect to handle scroll reset when navigating to the home page
+  // handle scroll reset when navigating to the home page
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);

@@ -16,6 +16,14 @@ export const loadBlogPost = async (id) => {
     const content = await blogFiles[fileName]();
     const { data, content: markdownContent } = matter(content);
     
+    // Check if the post date is in the future
+    const isInFuture = new Date(data.publishedDate) > new Date();
+    
+    // Return null for future posts unless running in development mode
+    if (isInFuture && process.env.NODE_ENV !== 'development') {
+      return null;
+    }
+    
     return {
       ...data,
       content: markdownContent,
@@ -32,21 +40,27 @@ export const loadBlogPosts = async () => {
     console.log('Available blog files:', Object.keys(blogFiles)); // Debug line
     const posts = [];
     const files = Object.keys(blogFiles);
+    const now = new Date();
     
     for (const path of files) {
       const content = await blogFiles[path]();
       console.log('Processing file:', path); // Debug line
       const { data, content: markdownContent } = matter(content);
       console.log('Parsed frontmatter:', data); // Debug line
-      posts.push({
-        id: data.id,
-        title: data.title,
-        description: data.description,
-        publishedDate: data.publishedDate,
-        keywords: data.keywords,
-        image: data.image,
-        readingTime: calculateReadingTime(markdownContent)
-      });
+      
+      // Only add posts with publication dates not in the future
+      const postDate = new Date(data.publishedDate);
+      if (postDate <= now || process.env.NODE_ENV === 'development') {
+        posts.push({
+          id: data.id,
+          title: data.title,
+          description: data.description,
+          publishedDate: data.publishedDate,
+          keywords: data.keywords,
+          image: data.image,
+          readingTime: calculateReadingTime(markdownContent)
+        });
+      }
     }
     
     // Sort by publishedDate instead of id
