@@ -294,4 +294,4 @@ The clever use of Scala 3 features like \`export\`, pattern matching, private co
 
 In the next article, we'll explore how to use this context information to implement code completion and hover information based on JSON schema definitions.
 
-Stay tuned for "Implementing a Schema Reader for Intelligent Code Suggestions" where we'll leverage our context-aware parser to traverse our Json schema.`;export{e as default};
+Stay tuned for *"Implementing a Schema Reader for Intelligent Code Suggestions"* where we'll leverage our context-aware parser to traverse our Json schema.`;export{e as default};

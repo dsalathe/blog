@@ -306,4 +306,4 @@ This Schema Reader is the foundation for intelligent code completion in our LSP 
 
 In the next article, we'll bring everything together by implementing the completion and hover capabilities of the LSP server. We'll see how to transform the schema information into LSP completion items, how to format them for different LSP clients (VS Code vs. IntelliJ), and how to implement hover documentation. We'll also start exploring how AI can be used to enhance these suggestions.
 
-Stay tuned for "From Schema to Suggestions: Implementing LSP Completion and Hover Capabilities"!`;export{e as default};
+Stay tuned for "Implementing Code Completion and Hover Capabilities"!`;export{e as default};
