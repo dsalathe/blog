@@ -23,7 +23,7 @@ But is vibe coding all it's cracked up to be? Let me share my experience navigat
 
 "Vibe coding" has emerged as a development approach where programmers leverage AI coding assistants to generate substantial portions of code in unfamiliar domains without fully understanding every line being written. Instead of deep comprehension, developers focus on results and iteration speed, trusting the AI to handle implementation details while they guide the high-level architecture.
 
-For experienced developers, vibe coding presents an opportunity to rapidly explore new technical domains by transferring core programming principles while letting AI fill knowledge gaps. This approach has gained significant traction in 2025 as AI coding assistants have become more capable and integrated.
+For developers, vibe coding presents an opportunity to rapidly explore new technical domains by transferring core programming principles while letting AI fill knowledge gaps. This approach has gained significant traction in 2025 as AI coding assistants have become more capable and integrated.
 
 ## Codespaces: The Foundation for Effective Vibe Coding
 
@@ -221,6 +221,8 @@ While vibe coding with these tools significantly streamlined my development proc
 
 The key benefit for experienced developers is the ability to apply core programming principles across domains. Understanding architecture, testing methodologies, and code organization principles allows for more effective guidance of AI tools, even when working in unfamiliar technical territory.
 
+My advice for junior developers is to focus on learning the core programming principles while playing with these AI tools, even if that yields slower developments; it will definitively pay off in the long run. 
+
 ## Power-User Tips for Maximizing Vibe Coding
 
 To get the most out of vibe coding with GitHub tools, consider these practical enhancements:
@@ -235,7 +237,7 @@ To get the most out of vibe coding with GitHub tools, consider these practical e
 
 ## Conclusion: The Future of Vibe Coding
 
-From zero frontend experience to a functional blog in a day, my journey demonstrates how experienced developers can leverage vibe coding to efficiently explore new technical domains. However, the most successful outcomes emerge when vibe coding complements—rather than replaces—software engineering principles.
+From zero frontend experience to a functional blog in a day, my journey demonstrates how developers can leverage vibe coding to efficiently explore new technical domains. However, the most successful outcomes emerge when vibe coding complements—rather than replaces—software engineering principles.
 
 As AI coding assistants continue to evolve throughout 2025, I expect the balance point between vibe coding and traditional development to shift, with AI handling increasingly complex tasks. The choice between agent mode's complete solution generation and edit mode's line-by-line assistance will remain a crucial decision point for developers. For my projects, I continue to prefer the deliberate, controlled pace of edit mode over the "full vibe" approach of agent mode, though both have their place depending on project requirements.
 
