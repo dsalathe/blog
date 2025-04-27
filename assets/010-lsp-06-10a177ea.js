@@ -3,7 +3,7 @@ id: 10
 title: "Building a Scala 3 LSP Server - Part 6"
 description: "Integrating AI for Smarter Code Completion"
 publishedDate: 2025-05-27
-image: lsp06.jpg
+image: lsp06.png
 previous: 9
 next: 11
 keywords:
@@ -258,7 +258,7 @@ Finally, let's modify our \`completion\` method in the \`TextDocumentService\` t
 \`\`\`scala
 override def completion(params: CompletionParams): CompletableFuture[messages.Either[util.List[CompletionItem], CompletionList]] = Future {
   val uri = params.getTextDocument.getUri
-  val context = getContext(uri)
+  val context = uriToContexts(uri)
   val caretContext = context.withCaretPosition(params.getPosition.getLine+1, params.getPosition.getCharacter)
   val completionItems: List[CompletionItem] = completionEngine.generateCompletionItems(caretContext)
   val formattedCompletionItems = completionItems.map(formattingStrategy.formatCompletionItem(_, caretContext, params))
