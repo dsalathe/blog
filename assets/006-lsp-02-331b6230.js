@@ -586,7 +586,13 @@ class SmartDataLakeLanguageServer(
 
 The most interesting part is the \`initialize\` method, where we negotiate with the client all the capabilities our server supports. For now, we only support code completion and hovering. The \`initializeWorkspaces\` method will be discussed in more detail in a later post.
 
-One important point to highlight is that we use \`initializeResult.getCapabilities.setTextDocumentSync(TextDocumentSyncKind.Full)\`, which means we ask the client to always provide the full content of the current edited text rather than just the delta. This simplifies handling significantly, and since HOCON files are usually quite small, it's an acceptable approach.
+One important point to highlight is that we use
+
+\`\`\`scala
+initializeResult.getCapabilities.setTextDocumentSync(TextDocumentSyncKind.Full)
+\`\`\`
+
+which means we ask the client to always provide the full content of the current edited text rather than just the delta. This simplifies handling significantly, and since HOCON files are usually quite small, it's an acceptable approach.
 
 ### The Text Document Service
 

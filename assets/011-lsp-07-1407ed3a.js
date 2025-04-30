@@ -3,7 +3,7 @@ id: 11
 title: "Building a Scala 3 LSP Server - Part 7"
 description: "Optimizing AI Completions for Low Latency"
 publishedDate: 2025-06-03
-image: lsp07.jpg
+image: lsp07.png
 previous: 10
 next: 12
 keywords:
@@ -207,4 +207,4 @@ These optimizations transform what could have been a frustratingly slow feature 
 
 In the next part of our series, we'll explore implementing multi-file context awareness, allowing our LSP server to provide even more intelligent suggestions by understanding relationships between different files in a project.
 
-Stay tuned for "Building a Scala 3 LSP Server - Part 8: Multi-File Context Awareness" where we'll tackle the challenge of making our LSP server understand the bigger picture beyond a single file.`;export{e as default};
+Stay tuned for *"Building a Scala 3 LSP Server - Part 8: Multi-File Context Awareness"* where we'll tackle the challenge of making our LSP server understand the bigger picture beyond a single file.`;export{e as default};
