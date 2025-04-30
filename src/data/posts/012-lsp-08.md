@@ -5,6 +5,7 @@ description: "Implementing Multi-File Context Awareness"
 publishedDate: 2025-06-10
 image: lsp08.png
 previous: 11
+next: 13
 keywords:
   - Scala 3
   - LSP
@@ -17,7 +18,7 @@ Welcome to the eighth part of this LSP series. In our previous articles, we buil
 
 When working with complex data pipeline configurations like those in Smart Data Lake Builder, definitions are often spread across multiple files. While our LSP server can already provide intelligent suggestions for a single file, it doesn't yet understand relationships between files. In this article, we'll implement a flexible system for grouping related files into workspaces to provide context-aware suggestions that span multiple files.
 
-📦 [**View the source code on GitHub**](https://github.com/smart-data-lake/sdl-vscode-extension) – Explore the complete client implementation. Leave a star if you like it!
+📦 [**View the source code on GitHub**](https://github.com/smart-data-lake/sdl-lsp) – Explore the complete implementation. Leave a star if you like it!
 
 ## The Need for Multi-File Context Awareness
 
