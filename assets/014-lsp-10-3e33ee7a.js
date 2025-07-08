@@ -18,7 +18,7 @@ Welcome to the tenth and final part of this LSP series. After building a compreh
 
 This final piece completes our journey from understanding LSP fundamentals to building a production-ready language server with AI capabilities, and finally to delivering it to end users through polished IDE integrations.
 
-📦 [**View the source code of VSCode part on GitHub**](https://github.com/smart-data-lake/sdl-vscode-extension) – Explore the complete client implementation. Leave a star if you like it!
+📦 Code source to be released soon, stay tuned!
 
 ## Two Paths to LSP Client Integration
 
