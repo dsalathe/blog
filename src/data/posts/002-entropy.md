@@ -14,13 +14,17 @@ keywords:
   - Data Engineering
 ---
 
-Entropy is everywhere. From the heat death of the universe to the compression algorithms running on your phone, this fundamental concept bridges physics, information theory, and software engineering in ways that might surprise you. But here's what most developers miss: **it's wrong to think that writing complex code is complex and writing simple code is simple.**
+Entropy is everywhere. From the heat death of the universe to the compression algorithms running on your phone, this fundamental concept bridges physics, information theory, and software engineering in ways that might surprise you. But here's what most developers miss: 
+
+> **it's wrong to think that writing complex code is complex and writing simple code is simple.**
 
 Let me take you on a journey through entropy's many faces and show you why this counterintuitive truth matters for everyone building software systems.
 
 ## <i class="fa-solid fa-atom"></i> What Is Entropy, Really?
 
 In physics, entropy measures disorder—the tendency of systems to move from organized to chaotic states. Your coffee gets cold, never hot. Broken things stay broken. The universe inexorably slides toward maximum entropy.
+
+There's an interesting theory about the meaning of life. In thermodynamics, the second law state that while you can transfer energy from one kind to another, you cannot transform what we call some "waste"; i.e increasing globally the heat, to another form of energy. The universe is increasing its total entropy over time and it's suspected that the very last state of universe is a state where entropy is at its maximum: everything ends in total chaos and energy cannot be transformed back to more meaningful kind of energy. While "42" is a common accepted non-answer to the meaning of life, some people think that we are servant of the universe with the goal of accelerating the process of increasing entropy.
 
 But in information theory, entropy tells a different story. Here, it measures information density—how much surprise each bit carries. A perfectly compressed file has maximum entropy because every bit is unpredictable. A file full of repeated "A"s has low entropy because it's completely predictable.
 
