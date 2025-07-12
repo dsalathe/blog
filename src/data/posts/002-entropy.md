@@ -2,6 +2,7 @@
 id: 2
 title: What is the answer to the universe, the life and everything? Entropy.
 description: Exploring how entropy principles from physics and information theory reveal the hidden complexities of software design, data quality, and system architecture
+description: Exploring how entropy principles from physics and information theory reveal the hidden complexities of software design, data quality, and system architecture
 publishedDate: 2025-02-16
 image: entropy.webp
 keywords:
@@ -31,9 +32,9 @@ Consider the DRY principle (Don't Repeat Yourself). When you eliminate redundanc
 
 But here's where it gets interesting: well-structured code exhibits multiple types of entropy simultaneously:
 
-**Lexical entropy**: High, thanks to DRY principles and meaningful abstractions
-**Structural entropy**: Low, because it follows predictable patterns and conventions
-**Semantic entropy**: Low, because each component has a clear, single responsibility
+- **Lexical entropy**: High, thanks to DRY principles and meaningful abstractions
+- **Structural entropy**: Low, because it follows predictable patterns and conventions
+- **Semantic entropy**: Low, because each component has a clear, single responsibility
 
 It's like the difference between a Shakespearean sonnet and white noise. Both have high lexical entropy (unpredictable word choices vs. random data), but the sonnet has low structural entropy (follows poetic patterns) while noise has high structural entropy (no patterns at all).
 
@@ -60,8 +61,8 @@ The real engineering challenge is what I call **entropy archaeology**—excavati
 
 In ML, the entropy story becomes even more nuanced. For training data, you want:
 
-**Good high entropy**: Lexical diversity, topical breadth, varied patterns
-**Bad high entropy**: Random noise, inconsistent facts, labeling errors
+- **Good high entropy**: Lexical diversity, topical breadth, varied patterns
+- **Bad high entropy**: Random noise, inconsistent facts, labeling errors
 
 Quality curation is essentially entropy engineering—maximizing the entropy of useful information while minimizing the entropy of irrelevant variation.
 
