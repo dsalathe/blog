@@ -13,11 +13,14 @@ keywords:
   - Sherlock Holmes
   - Tutorial
   - Markdown
+next: 16
 ---
 
 _Being a Most Instructive Account of How the Great Detective Sherlock Holmes Revolutionized His Methods of Investigation Through the Application of Modern Digital Organization_
 
 ---
+
+# Fundamental Principles
 
 ## Tutorial Overview: The Foundation of Digital Detection
 Join Holmes and Watson as they modernize their detective methods with Obsidian's powerful knowledge management system. This comprehensive four-part tutorial series transforms you from a scattered note-taker into a master knowledge architect:

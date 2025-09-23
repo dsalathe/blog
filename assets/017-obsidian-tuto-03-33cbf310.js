@@ -14,6 +14,8 @@ keywords:
   - PKM
   - Sherlock Holmes
   - Case Management
+previous: 16
+next: 18
 ---
 
 ## Tutorial Overview: Advanced Methods Revealed
