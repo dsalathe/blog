@@ -72,8 +72,44 @@ function BlogPage() {
 
   const baseUrl = import.meta.env.BASE_URL;
   
+  // Preprocess Obsidian-style callouts
+  // Map callout type to Font Awesome icon HTML
+  const calloutIcons = {
+    note: '<i class="fa-solid fa-pencil"></i>',           // or fa-pen-to-square
+    warning: '<i class="fa-solid fa-triangle-exclamation"></i>', // this one is good
+    tip: '<i class="fa-solid fa-fire"></i>',             // or fa-flame
+    info: '<i class="fa-solid fa-info"></i>',            // simpler than circle-info
+    danger: '<i class="fa-solid fa-zap"></i>',           // or fa-bolt
+  question: '<i class="fa-solid fa-circle-question"></i>',
+  };
+
   const processMarkdown = (content) => {
-    return content.replace(/\${baseUrl}/g, baseUrl);
+    let processed = content.replace(/\${baseUrl}/g, baseUrl);
+    // Regex to match callout blocks: > [!type] optional title\ncontent
+    processed = processed.replace(
+      /^> \[!(\w+)\](.*)?\n((?:> .*(?:\n|$))*)/gm,
+      (match, type, title, body) => {
+        const cleanType = type.toLowerCase();
+        const icon = calloutIcons[cleanType] || '<i class="fa-solid fa-message"></i>';
+        // Remove '> ' from each line in body
+        const cleanBody = body.replace(/^> ?/gm, '');
+        const titleText = title && title.trim() ? `${title.trim()}` : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+        const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+        return `<div class="callout callout-${cleanType}">${calloutTitle}${cleanBody}</div>`;
+      }
+    );
+    // Single-line callouts: > [!type] content
+    processed = processed.replace(
+      /^> \[!(\w+)\](.*)$/gm,
+      (match, type, content) => {
+        const cleanType = type.toLowerCase();
+        const icon = calloutIcons[cleanType] || '<i class="fa-solid fa-message"></i>';
+        const titleText = `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+        const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+        return `<div class="callout callout-${cleanType}">${calloutTitle}: ${content.trim()}</div>`;
+      }
+    );
+    return processed;
   };
 
   if (loading) {

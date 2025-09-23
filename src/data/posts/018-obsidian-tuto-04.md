@@ -13,6 +13,8 @@ keywords:
   - Claude Desktop
   - MCP Integration
   - Advanced Knowledge Management
+previous: 17
+next: 19
 ---
 
 ## Tutorial Overview: The Ultimate Integration

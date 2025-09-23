@@ -14,11 +14,11 @@ keywords:
   - Tutorial
   - DATA Framework
   - Metadata
+previous: 15
+next: 17
 ---
 
-_Being the Second Part of the Most Instructive Account of How the Great Detective Sherlock Holmes Revolutionized His Methods of Investigation Through the Application of Modern Digital Organization_
-
----
+# Structure and Organization of the Vault
 
 ## Tutorial Overview: Building the Architecture of Genius
 Having established the fundamental principles of networked thinking in Part 1, we now construct the proper framework for organizing knowledge with the precision of a master detective.
@@ -83,6 +83,9 @@ Holmes stepped to his blackboard with characteristic authority, chalk in hand li
 - Templates for consistent note-taking
 - Images, attachments, configuration files
 - Think: "What makes my system function smoothly?"
+
+> [!info] DATA Framework
+> The DATA Framework is my own idea, after testing multiple general-purpose structure. I am more than happy if you want to adopt it as well! I would however appreciate a brief mention if you also want to present it.
 
 **Step-by-Step Folder Creation:**
 

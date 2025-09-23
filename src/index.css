@@ -962,3 +962,84 @@ p {
   width: 1rem; /* Creates space when only one button exists */
 }
 
+/* Obsidian-style callouts */
+
+.callout {
+  border-radius: 12px;
+  padding: 0.5rem 1.25rem 0.1rem 1.25rem;
+  margin: 0 0;
+  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.08);
+  border-left: 6px solid #4299e1;
+  background: #f6f8fa;
+  font-size: 1rem;
+  position: relative;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0rem;
+}
+
+.callout-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.5em;
+  font-size: 1.25em;
+  flex-shrink: 0;
+}
+
+.callout-note {
+  border-left-color: #4299e1;
+  background: #e6f0ff;
+}
+.callout-note .callout-title, .callout-note .callout-title p {
+  color: #4299e1;
+  margin: 0;
+}
+.callout-warning {
+  border-left-color: #f6ad55;
+  background: #fff7e6;
+}
+.callout-warning .callout-title, .callout-warning .callout-title p {
+  color: #f6ad55;
+  margin: 0;
+}
+.callout-tip {
+  border-left-color: #38a169;
+  background: #e6fff2;
+}
+.callout-tip .callout-title, .callout-tip .callout-title p {
+  color: #38a169;
+  margin: 0;
+}
+.callout-info {
+  border-left-color: #3182ce;
+  background: #e6f7ff;
+}
+.callout-info .callout-title, .callout-info .callout-title p {
+  color: #3182ce;
+  margin: 0;
+}
+.callout-danger {
+  border-left-color: #e53e3e;
+  background: #ffe6e6;
+}
+.callout-danger .callout-title, .callout-danger .callout-title p {
+  color: #e53e3e;
+  margin: 0;
+}
+.callout-question {
+  border-left-color: #805ad5;
+  background: #f3e6ff;
+}
+.callout-question .callout-title, .callout-question .callout-title p {
+  color: #805ad5;
+  margin: 0;
+}
+
