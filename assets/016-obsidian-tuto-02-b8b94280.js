@@ -8,7 +8,6 @@ keywords:
   - Obsidian
   - Knowledge Management
   - Digital Organization
-  - PKM
   - Note-taking
   - Sherlock Holmes
   - Tutorial

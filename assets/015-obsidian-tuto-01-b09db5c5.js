@@ -8,7 +8,6 @@ keywords:
   - Obsidian
   - Knowledge Management
   - Digital Organization
-  - PKM
   - Note-taking
   - Sherlock Holmes
   - Tutorial
@@ -16,31 +15,25 @@ keywords:
 next: 16
 ---
 
-_Being a Most Instructive Account of How the Great Detective Sherlock Holmes Revolutionized His Methods of Investigation Through the Application of Modern Digital Organization_
-
----
-
 # Fundamental Principles
 
-## Tutorial Overview: The Foundation of Digital Detection
-Join Holmes and Watson as they modernize their detective methods with Obsidian's powerful knowledge management system. This comprehensive four-part tutorial series transforms you from a scattered note-taker into a master knowledge architect:
+In an age where information drowns us daily, the greatest minds require tools worthy of their capabilities. Most note-taking applications treat your thoughts like filing cabinets—static, isolated, forgotten. But what if your digital workspace could mirror the brilliant web of associations that defines superior thinking?
 
-### Part 1 (This Tutorial) - The Crisis and the Solution:
+Obsidian transforms scattered notes into an interconnected universe of knowledge. Unlike traditional systems that force linear organization, it allows every idea to connect with every other idea, creating a living network of insights that grows more powerful with each connection.
 
-**Chapter I:** The Crisis at 221B Baker Street - _Why superior minds require superior systems_
+## The Four Pillars of Digital Supremacy:
 
-**Chapter II:** In Which Holmes Establishes His Digital Dominion - _Creating your first vault and mastering basic markdown_
+**Efficient Organization**: No more hunting through folders or drowning in "untitled-document-47.txt" files. Every note finds its natural place through intelligent linking and structure.
 
-### Part 2 - The Architecture of Brilliance:
+**High Automation**: Let the system handle the mundane while your mind focuses on the extraordinary. Templates, dynamic queries, and automated cross-references eliminate repetitive tasks.
 
-The DATA framework for organizing knowledge, managing people and assets with metadata, and building your digital headquarters.
+**Superior Display**: Information presented with clarity and purpose. Clean typography, customizable layouts, and visual hierarchy that serves intelligence rather than decoration.
 
-### Part 3 - Advanced Automation:
+**The Graph of Genius**: Obsidian's unique graph view reveals the hidden patterns in your knowledge—connections you didn't know existed, gaps waiting to be filled, clusters of related insights ready for synthesis.
 
-Templates for consistent documentation, dynamic databases, graph visualization, daily chronicles with AI-powered analysis, and professional presentation mastery.
+A glimpse of the the result:
 
-### Part 4 - External Integration:
-Web research capture, AI-powered synthesis with Claude Desktop integration, advanced plugins for specialized needs, and the complete transformation into a thinking machine.
+![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922164432.png)
 
 ## Preface: A Message from Dr. Watson
 
@@ -159,7 +152,7 @@ _(Understanding Links and Backlinks)_
 
 1. **Create Your First Link**: In your welcome note (or create a new note), type \`[[Obsidian]]\` and press Enter.
 
-2. **Click the Link**: Notice the text becomes purple and underlined. Click on it.
+2. **Click the Link**: Notice the text becomes purple and underlined. Click on it. If your caret is within the link already, then you need to press \`Ctrl\` and then click on it. 
 
 3. **Witness the Creation**: A new note called "Obsidian" appears instantly. You've just created a note by linking to it—before it existed!
 
