@@ -11,7 +11,6 @@ keywords:
   - Automation
   - Graph View
   - Databases
-  - PKM
   - Sherlock Holmes
   - Case Management
 previous: 16
