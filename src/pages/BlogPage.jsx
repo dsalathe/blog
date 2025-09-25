@@ -72,61 +72,194 @@ function BlogPage() {
 
   const baseUrl = import.meta.env.BASE_URL;
   
-  // Preprocess Obsidian-style callouts
-  // Map callout type to Font Awesome icon HTML
-  const calloutIcons = {
-    note: '<i class="fa-solid fa-pencil"></i>',           // or fa-pen-to-square
-    warning: '<i class="fa-solid fa-triangle-exclamation"></i>', // this one is good
-    tip: '<i class="fa-solid fa-fire"></i>',             // or fa-flame
-    info: '<i class="fa-solid fa-info"></i>',            // simpler than circle-info
-    danger: '<i class="fa-solid fa-zap"></i>',           // or fa-bolt
+// Enhanced Obsidian-style callouts with comprehensive type support
+const calloutIcons = {
+  // Existing types
+  note: '<i class="fa-solid fa-pencil"></i>',
+  warning: '<i class="fa-solid fa-triangle-exclamation"></i>',
+  tip: '<i class="fa-solid fa-fire"></i>',
+  info: '<i class="fa-solid fa-info"></i>',
+  danger: '<i class="fa-solid fa-zap"></i>',
   question: '<i class="fa-solid fa-circle-question"></i>',
+  
+  // New types
+  abstract: '<i class="fa-solid fa-clipboard-list"></i>',
+  todo: '<i class="fa-solid fa-circle-check"></i>',
+  success: '<i class="fa-solid fa-check"></i>',
+  failure: '<i class="fa-solid fa-x"></i>',
+  bug: '<i class="fa-solid fa-bug"></i>',
+  example: '<i class="fa-solid fa-list-ol"></i>',
+  quote: '<i class="fa-solid fa-quote-left"></i>',
+  
+  // Aliases - these will map to the same styling as their parent types
+  summary: '<i class="fa-solid fa-clipboard-list"></i>', // -> abstract
+  tldr: '<i class="fa-solid fa-clipboard-list"></i>',    // -> abstract
+  hint: '<i class="fa-solid fa-fire"></i>',             // -> tip
+  important: '<i class="fa-solid fa-fire"></i>',        // -> tip
+  check: '<i class="fa-solid fa-check"></i>',           // -> success
+  done: '<i class="fa-solid fa-check"></i>',            // -> success
+  help: '<i class="fa-solid fa-circle-question"></i>',  // -> question
+  faq: '<i class="fa-solid fa-circle-question"></i>',   // -> question
+  caution: '<i class="fa-solid fa-triangle-exclamation"></i>', // -> warning
+  attention: '<i class="fa-solid fa-triangle-exclamation"></i>', // -> warning
+  fail: '<i class="fa-solid fa-x"></i>',                // -> failure
+  missing: '<i class="fa-solid fa-x"></i>',             // -> failure
+  error: '<i class="fa-solid fa-zap"></i>',             // -> danger
+  cite: '<i class="fa-solid fa-quote-left"></i>',       // -> quote
+};
+
+// Map aliases to their parent types for CSS styling
+const calloutTypeMapping = {
+  // Direct types
+  note: 'note',
+  warning: 'warning', 
+  tip: 'tip',
+  info: 'info',
+  danger: 'danger',
+  question: 'question',
+  abstract: 'abstract',
+  todo: 'todo',
+  success: 'success',
+  failure: 'failure',
+  bug: 'bug',
+  example: 'example',
+  quote: 'quote',
+  
+  // Aliases mapped to parent types
+  summary: 'abstract',
+  tldr: 'abstract',
+  hint: 'tip',
+  important: 'tip',
+  check: 'success',
+  done: 'success',
+  help: 'question',
+  faq: 'question',
+  caution: 'warning',
+  attention: 'warning',
+  fail: 'failure',
+  missing: 'failure',
+  error: 'danger',
+  cite: 'quote',
+};
+
+const processMarkdown = (content) => {
+  let processed = content.replace(/\${baseUrl}/g, baseUrl);
+  
+  // Enhanced callout processing function
+  const processCalloutBody = (body) => {
+    // Remove the '> ' prefix from each line
+    let cleanBody = body.replace(/^> ?/gm, '');
+    
+    // Clean up excessive whitespace while preserving intentional spacing
+    cleanBody = cleanBody.replace(/\n{3,}/g, '\n\n').trim();
+    
+    return '\n' + cleanBody;
   };
 
-  const processMarkdown = (content) => {
-    let processed = content.replace(/\${baseUrl}/g, baseUrl);
-    // Regex to match callout blocks: > [!type] optional title\ncontent
-    processed = processed.replace(
-      /^> \[!(\w+)\](.*)?\n((?:> .*(?:\n|$))*)/gm,
-      (match, type, title, body) => {
-        const cleanType = type.toLowerCase();
-        const icon = calloutIcons[cleanType] || '<i class="fa-solid fa-message"></i>';
-        // Remove '> ' from each line in body
-        const cleanBody = body.replace(/^> ?/gm, '');
-        const titleText = title && title.trim() ? `${title.trim()}` : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
-        const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
-  return `<div class="callout callout-${cleanType}">${calloutTitle}<div class="callout-body">${cleanBody}</div></div>`;
+  // Collapsible callouts EXPANDED by default: > [!type]+ title\ncontent
+  processed = processed.replace(
+    /^> \[!(\w+)\]\+\s*(.*)?\n((?:>.*(?:\n|$))*)/gm,
+    (match, type, title, body) => {
+      const lowerType = type.toLowerCase();
+      const mappedType = calloutTypeMapping[lowerType] || lowerType;
+      const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
+      
+      const cleanBody = processCalloutBody(body);
+      const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+      const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+      
+      return `<div class="callout callout-${mappedType} collapsible">${calloutTitle}<div class="callout-body"><br/>${cleanBody}</div></div>`;
+    }
+  );
+  
+  // Collapsible callouts COLLAPSED by default: > [!type]- title\ncontent
+  processed = processed.replace(
+    /^> \[!(\w+)\]-\s*(.*)?\n((?:>.*(?:\n|$))*)/gm,
+    (match, type, title, body) => {
+      const lowerType = type.toLowerCase();
+      const mappedType = calloutTypeMapping[lowerType] || lowerType;
+      const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
+      
+      const cleanBody = processCalloutBody(body);
+      const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+      const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+      
+      return `<div class="callout callout-${mappedType} collapsed">${calloutTitle}<div class="callout-body"><br/>${cleanBody}</div></div>`;
+    }
+  );
+  
+  // Non-collapsible callouts: > [!type] title\ncontent
+  processed = processed.replace(
+    /^> \[!(\w+)\]\s+(.*)?\n((?:>.*(?:\n|$))*)/gm,
+    (match, type, title, body) => {
+      const lowerType = type.toLowerCase();
+      const mappedType = calloutTypeMapping[lowerType] || lowerType;
+      const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
+      
+      const cleanBody = processCalloutBody(body);
+      const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+      const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+      
+      return `<div class="callout callout-${mappedType}">${calloutTitle}<div class="callout-body"><br/>${cleanBody}</div></div>`;
+    }
+  );
+  
+  // Handle single-line callouts (same logic as before)
+  processed = processed.replace(
+    /^> \[!(\w+)\]\+\s*(.*)$/gm,
+    (match, type, title) => {
+      const lowerType = type.toLowerCase();
+      const mappedType = calloutTypeMapping[lowerType] || lowerType;
+      const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
+      const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+      const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+      return `<div class="callout callout-${mappedType} collapsible">${calloutTitle}<div class="callout-body"></div></div>`;
+    }
+  );
+  
+  processed = processed.replace(
+    /^> \[!(\w+)\]-\s*(.*)$/gm,
+    (match, type, title) => {
+      const lowerType = type.toLowerCase();
+      const mappedType = calloutTypeMapping[lowerType] || lowerType;
+      const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
+      const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+      const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+      return `<div class="callout callout-${mappedType} collapsed">${calloutTitle}<div class="callout-body"></div></div>`;
+    }
+  );
+  
+  processed = processed.replace(
+    /^> \[!(\w+)\]\s+(.*)$/gm,
+    (match, type, title) => {
+      const lowerType = type.toLowerCase();
+      const mappedType = calloutTypeMapping[lowerType] || lowerType;
+      const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
+      const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
+      const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+      return `<div class="callout callout-${mappedType}">${calloutTitle}<div class="callout-body"></div></div>`;
+    }
+  );
+  
+  return processed;
+};
+
+// Add effect for folding callouts
+useEffect(() => {
+  const handleToggle = (e) => {
+    const title = e.target.closest('.callout-title');
+    if (title) {
+      const callout = title.parentElement;
+      if (callout.classList.contains('collapsed')) {
+        callout.classList.remove('collapsed');
+      } else {
+        callout.classList.add('collapsed');
       }
-    );
-    // Single-line callouts: > [!type] content
-    processed = processed.replace(
-      /^> \[!(\w+)\](.*)$/gm,
-      (match, type, content) => {
-        const cleanType = type.toLowerCase();
-        const icon = calloutIcons[cleanType] || '<i class="fa-solid fa-message"></i>';
-        const titleText = `${type.charAt(0).toUpperCase() + type.slice(1)}`;
-        const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><span class="callout-toggle">▼</span><p>${titleText}</p></span>`;
-  return `<div class="callout callout-${cleanType}">${calloutTitle}<div class="callout-body">${content.trim()}</div></div>`;
-      }
-    );
-    return processed;
+    }
   };
-  // Add effect for folding callouts
-  useEffect(() => {
-    const handleToggle = (e) => {
-      const title = e.target.closest('.callout-title');
-      if (title) {
-        const callout = title.parentElement;
-        if (callout.classList.contains('collapsed')) {
-          callout.classList.remove('collapsed');
-        } else {
-          callout.classList.add('collapsed');
-        }
-      }
-    };
-    document.addEventListener('click', handleToggle);
-    return () => document.removeEventListener('click', handleToggle);
-  }, []);
+  document.addEventListener('click', handleToggle);
+  return () => document.removeEventListener('click', handleToggle);
+}, []);
 
   if (loading) {
     return <div>Loading...</div>;
