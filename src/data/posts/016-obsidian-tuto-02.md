@@ -84,7 +84,7 @@ Holmes stepped to his blackboard with characteristic authority, chalk in hand li
 - Think: "What makes my system function smoothly?"
 
 > [!info] DATA Framework
-> The DATA Framework is my own idea, after testing multiple general-purpose structure. I am more than happy if you want to adopt it as well! I would however appreciate a brief mention if you also want to present it.
+> The DATA Framework is my own idea, after testing multiple general-purpose structure. I am more than happy if you want to adopt it as well! I would appreciate a brief mention if you also want to present it.
 
 **Step-by-Step Folder Creation:**
 
@@ -154,18 +154,16 @@ _(Creating Rich, Connected People Notes)_
 **Creating Your First Person Note (Sherlock Holmes):**
 
 **Step 1: Navigate and Create**
-1. **Click on the `2 Assets` folder** in your file explorer
-2. **Right-click in the empty space** below any existing files
-3. **Select "New note"**
-4. **Name it**: `Sherlock Holmes` (the filename automatically becomes the note title)
+1. **Right Click on the `2 Assets` folder** in your file explorer
+2. **Select "New note"**
+3. **Name it**: `Sherlock Holmes` (the filename automatically becomes the note title or vice-versa)
 
 **Step 2: Understanding Properties (Metadata)**
 "Observe this elegant feature, Watson..." Holmes gestured to his screen.
 
 1. **Type `---` on the first line** of your new note
 2. **Press Enter** and type `---` again
-3. **Position your cursor between the dashes**
-4. **Watch the properties panel appear** on the right side of your screen
+3. **Watch the properties panel appear** on the right side of your screen
 
 ![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250921144100.png)
 
@@ -174,6 +172,9 @@ _(Creating Rich, Connected People Notes)_
 "Properties, Watson, are metadata—data about data. They allow us to store structured information that can be searched, filtered, and analyzed. Think of them as the filing system within each note, allowing for both human-readable information and machine-processable data."
 
 "A note without properties is like a criminal without fingerprints—identifiable, but lacking the precise markers that allow for systematic categorization and retrieval."
+
+> [!tip] Source mode
+> You can click on the three vertical dots top right to enable `source view` which shows you how metadata are actually written in your Markdown. This can be very useful when trying to copy or paste markdown documents with properties.
 
 **Step 3: Add Structured Information**
 

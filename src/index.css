@@ -1043,3 +1043,24 @@ p {
   margin: 0;
 }
 
+/* --- Callout folding styles --- */
+.callout.collapsed .callout-title {
+  cursor: pointer;
+  user-select: none;
+}
+.callout.collapsed .callout-body {
+  display: none;
+}
+.callout .callout-title {
+  cursor: pointer;
+  user-select: none;
+}
+.callout-toggle {
+  font-size: 1em;
+  margin-right: 0.5em;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.callout.collapsed .callout-toggle {
+  transform: rotate(-90deg);
+}

@@ -94,8 +94,8 @@ function BlogPage() {
         // Remove '> ' from each line in body
         const cleanBody = body.replace(/^> ?/gm, '');
         const titleText = title && title.trim() ? `${title.trim()}` : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
-        const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
-        return `<div class="callout callout-${cleanType}">${calloutTitle}${cleanBody}</div>`;
+        const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
+  return `<div class="callout callout-${cleanType}">${calloutTitle}<div class="callout-body">${cleanBody}</div></div>`;
       }
     );
     // Single-line callouts: > [!type] content
@@ -105,12 +105,28 @@ function BlogPage() {
         const cleanType = type.toLowerCase();
         const icon = calloutIcons[cleanType] || '<i class="fa-solid fa-message"></i>';
         const titleText = `${type.charAt(0).toUpperCase() + type.slice(1)}`;
-        const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
-        return `<div class="callout callout-${cleanType}">${calloutTitle}: ${content.trim()}</div>`;
+        const calloutTitle = `<span class="callout-title"><span class="callout-icon">${icon}</span><span class="callout-toggle">▼</span><p>${titleText}</p></span>`;
+  return `<div class="callout callout-${cleanType}">${calloutTitle}<div class="callout-body">${content.trim()}</div></div>`;
       }
     );
     return processed;
   };
+  // Add effect for folding callouts
+  useEffect(() => {
+    const handleToggle = (e) => {
+      const title = e.target.closest('.callout-title');
+      if (title) {
+        const callout = title.parentElement;
+        if (callout.classList.contains('collapsed')) {
+          callout.classList.remove('collapsed');
+        } else {
+          callout.classList.add('collapsed');
+        }
+      }
+    };
+    document.addEventListener('click', handleToggle);
+    return () => document.removeEventListener('click', handleToggle);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
