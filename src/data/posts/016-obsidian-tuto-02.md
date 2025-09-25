@@ -2,8 +2,8 @@
 id: 16
 title: The Great Obsidian Mystery, Tutorial Part 2
 description: Build the perfect knowledge architecture with the DATA framework and master advanced people management. Holmes reveals his systematic approach to organizing genius while beginning the investigation into the Vanishing Venture Capital.
-publishedDate: 2025-09-30
-image: entropy.webp
+publishedDate: 2025-10-07
+image: Modern-Sherlock.png
 keywords:
   - Obsidian
   - Knowledge Management
@@ -225,13 +225,10 @@ Let's create a Dr. Watson note using a local image that we store directly in our
 > 4. **Double-click to open** the new note
 > 
 > **Add a Local Image:**
-> 1. **Find the image file** `watson-profile.png` [here](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/watson-profile.png) (or download any portrait image)
-> 2. **Copy the image** (Ctrl+C or right-click → Copy)
-> 3. **Click in your Watson note** where you want the image
-> 4. **Paste the image** (Ctrl+V)
-> 5. **When prompted, name it**: `watson-profile.png`
-
-![watson](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/watson-profile.png)
+> 1. **Copy the image below** (Ctrl+C or right-click → Copy)
+> 2. **Click in your Watson note** where you want the image
+> 3. **Paste the image** (Ctrl+V)
+> ![watson](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/watson-profile.png)
 
 Now update the note content to use the local image reference:
 
@@ -263,7 +260,6 @@ Now update the note content to use the local image reference:
 > **Step 2: Move the Image**
 > 1. **Find `watson-profile.png`** in your main vault folder
 > 2. **Drag it into** the `4 Arsenal/images` folder
-> 3. **Notice**: The link in your note still works! Obsidian automatically updates all references.
 
 "But Holmes! Won't that break all my references?"
 
@@ -277,7 +273,7 @@ Finally, let's configure Obsidian to automatically place future images in the co
 > 3. **Find**: "Default location for new attachments"
 > 4. **Select**: "In the folder specified below"
 > 5. **Enter**: `4 Arsenal/images`
-> 6. **Click**: "Close"
+
 
 > [!info]- Why This Configuration Matters
 > "Now any image you paste will automatically be filed correctly. Organization without effort—though of course, such convenience could never replace genuine intelligence."
@@ -320,7 +316,7 @@ Holmes's eyes gleamed with characteristic superiority. "Precisely! In Part 3, we
 > 4. **Master the folder structure** by moving notes between folders and observing how organization aids discovery
 > 5. **Link extensively**: connect your people notes to concepts, projects, or other relevant information
 
-"Remember, Watson—superior organization is not about rigid rules, but about creating a system that amplifies rather than constrains your thinking. The architecture you've built today will serve you whether investigating criminal conspiracies or organizing your weekly meal plans."
+"Watson, superior organization is not about rigid rules, but about creating a system that amplifies rather than constrains your thinking. The architecture you've built today will serve you whether investigating criminal conspiracies or organizing your weekly meal plans."
 
 "Remember, Watson—the difference between a good detective and a great one lies not in natural ability alone, but in the systematic application of superior methods. You now possess the architectural foundation of genius. In Part 3, we shall add the advanced techniques that will make you truly formidable."
 
