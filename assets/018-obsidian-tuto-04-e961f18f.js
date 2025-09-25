@@ -3,7 +3,7 @@ id: 18
 title: The Great Obsidian Mystery, Tutorial Part 4
 description: Perfect your professional presentation and create dynamic intelligence networks. Watch Holmes and Watson transform their vault into a sophisticated investigation system with advanced formatting, visual organization, and adaptive databases.
 publishedDate: 2025-10-21
-image: Modern-Sherlock.png
+image: sherlockPart4.png
 keywords:
   - Obsidian
   - Professional Formatting

@@ -3,7 +3,7 @@ id: 17
 title: The Great Obsidian Mystery, Tutorial Part 3
 description: Master automation, daily chronicles, and visual connections. Watch Holmes and Watson advance their detective skills with templates, daily notes, and graph view analysis in this comprehensive knowledge management tutorial.
 publishedDate: 2025-10-14
-image: Modern-Sherlock.png
+image: sherlockPart3.png
 keywords:
   - Obsidian
   - Advanced Knowledge Management
