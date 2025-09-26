@@ -37,7 +37,7 @@ This is a responsive personal blog application built with React and Vite, design
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/blog.git
+   git clone https://github.com/dsalathe/blog.git
    cd blog
    ```
 
