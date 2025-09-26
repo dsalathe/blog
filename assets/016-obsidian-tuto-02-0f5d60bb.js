@@ -63,7 +63,7 @@ Holmes stepped to his blackboard with characteristic authority, chalk in hand li
 **\`1 Delivery\`** - *Active work and completed projects*
 - Why first? Because this is where you spend 80% of your time
 - "Delivery" implies outcome-focused thinking
-- Contains both active investigations and archived cases
+- Can Contains both active investigations and archived cases
 - Think: "What am I delivering to the world?"
 
 **\`2 Assets\`** - *The building blocks of knowledge*

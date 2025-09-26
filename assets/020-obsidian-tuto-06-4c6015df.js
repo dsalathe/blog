@@ -1,9 +1,9 @@
 const e=`---
-id: 19
-title: The Great Obsidian Mystery, Tutorial Part 5
+id: 20
+title: The Great Obsidian Mystery, Tutorial Part 6
 description: Complete your mastery of knowledge management with external research integration, AI-powered analysis, and advanced workflow automation. Holmes demonstrates the ultimate synthesis of human intelligence and technological capability.
-publishedDate: 2025-10-28
-image: sherlockPart5.png
+publishedDate: 2025-11-04
+image: sherlockPart6.png
 keywords:
   - Obsidian
   - External Research
@@ -12,25 +12,25 @@ keywords:
   - Web Clipping
   - Claude Desktop
   - MCP Integration
-  - Advanced Knowledge Management
-previous: 18
+  - Sherlock Holmes
+previous: 19
 ---
 
 ## Tutorial Overview: The Ultimate Integration
 
 In this final chapter of our detective trilogy, Holmes reveals the most sophisticated techniques for connecting your knowledge vault to the wider world of information and artificial intelligence. Master these final methods to achieve the complete integration of internal knowledge management with external research and AI-powered analysis:
 
-**Chapter X**: The Web of All Knowledge - _Capturing external intelligence through automated web clipping_
+**Chapter XI**: The Web of All Knowledge - _Capturing external intelligence through automated web clipping_
 
-**Chapter XI**: The Chronicles of Daily Detection - _AI-powered synthesis of accumulated observations_
+**Chapter XII**: The Chronicles of Daily Detection - _AI-powered synthesis of accumulated observations_
 
-**Chapter XII**: The Final Deduction - _Advanced plugins for specialized needs_
+**Chapter XIII**: The Final Deduction - _Advanced plugins for specialized needs_
 
 **Final Inspector's Notes**: _Dr. Watson's practical guidance for real-world implementation_
 
 ---
 
-## Chapter X: The Web of All Knowledge
+## Chapter XI: The Web of All Knowledge
 
 ### Expanding Our Intelligence Network
 
@@ -94,7 +94,7 @@ Holmes observed with satisfaction. "The article has been captured, formatted, an
 
 ---
 
-## Chapter XI: The Chronicles of Daily Detection
+## Chapter XII: The Chronicles of Daily Detection
 
 ### The AI-Powered Intelligence Revolution
 
@@ -189,10 +189,11 @@ Within moments, Claude processed every daily entry and revealed:
 2. **Move Cases**: Drag \`Vanishing Venture Capital\` to \`Archive\`
 3. **Update Status**: Mark as "Closed - Resolved" with resolution date
 4. **Verify Links**: Ensure all references still function
+5. **Exercise for the Readers**: Adapt both the \`Delivery\` and \`Meeting\` template to reflect the new structure.
 
 ---
 
-## Chapter XII: The Final Deduction
+## Chapter XIII: The Final Deduction
 
 ### Advanced Techniques for the Ambitious Detective
 
