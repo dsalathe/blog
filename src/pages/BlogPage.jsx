@@ -184,7 +184,7 @@ const processMarkdown = (content) => {
       const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
       const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
       
-      return `<div class="callout callout-${mappedType} collapsed">${calloutTitle}<div class="callout-body"><br/>${cleanBody}</div></div>`;
+      return `<div class="callout callout-${mappedType} collapsible collapsed">${calloutTitle}<div class="callout-body"><br/>${cleanBody}</div></div>`;
     }
   );
   
@@ -225,7 +225,7 @@ const processMarkdown = (content) => {
       const icon = calloutIcons[lowerType] || '<i class="fa-solid fa-message"></i>';
       const titleText = title && title.trim() ? title.trim() : `${type.charAt(0).toUpperCase() + type.slice(1)}`;
       const calloutTitle = `<span class="callout-title"><span class="callout-toggle">▼</span><span class="callout-icon">${icon}</span><p>${titleText}</p></span>`;
-      return `<div class="callout callout-${mappedType} collapsed">${calloutTitle}<div class="callout-body"></div></div>`;
+      return `<div class="callout callout-${mappedType} collapsible collapsed">${calloutTitle}<div class="callout-body"></div></div>`;
     }
   );
   
@@ -250,10 +250,13 @@ useEffect(() => {
     const title = e.target.closest('.callout-title');
     if (title) {
       const callout = title.parentElement;
-      if (callout.classList.contains('collapsed')) {
-        callout.classList.remove('collapsed');
-      } else {
-        callout.classList.add('collapsed');
+      // Only allow toggling for callouts that are meant to be collapsible
+      if (callout.classList.contains('collapsible')) {
+        if (callout.classList.contains('collapsed')) {
+          callout.classList.remove('collapsed');
+        } else {
+          callout.classList.add('collapsed');
+        }
       }
     }
   };
