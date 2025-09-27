@@ -1,8 +1,36 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getBlogById } from '../data/blogs';
 import Markdown from 'markdown-to-jsx';
 import ShareButton from '../components/ShareButton';
+import CopyButton from '../components/CopyButton';
+
+// Custom code block component with copy functionality
+function CodeBlock({ children, className }) {
+  // Extract the actual code text from the children structure
+  const getCodeText = (children) => {
+    if (typeof children === 'string') return children;
+    if (React.isValidElement(children) && children.props?.children) {
+      return getCodeText(children.props.children);
+    }
+    if (Array.isArray(children)) {
+      return children.map(child => getCodeText(child)).join('');
+    }
+    return String(children || '');
+  };
+
+  const codeText = getCodeText(children);
+  const language = className ? className.replace('lang-', '') : '';
+  
+  return (
+    <div className="code-block-wrapper">
+      <CopyButton text={codeText} />
+      <pre className={className}>
+        <code>{children}</code>
+      </pre>
+    </div>
+  );
+}
 
 function BlogPage() {
   const { id } = useParams();
@@ -314,7 +342,17 @@ useEffect(() => {
           </div>
         </div>
         
-        <Markdown>{processMarkdown(blog.content)}</Markdown>
+        <Markdown 
+          options={{
+            overrides: {
+              pre: {
+                component: CodeBlock,
+              },
+            },
+          }}
+        >
+          {processMarkdown(blog.content)}
+        </Markdown>
         
         <div className="blog-post-meta">
           <ShareButton title={blog.title} />
