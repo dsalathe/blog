@@ -130,7 +130,7 @@ Holmes stepped to his blackboard with characteristic authority, chalk in hand li
 > [!question]- How do I create subfolders when needed?
 > 1. **Right-click on any main folder** (like \`2 Assets\`)
 > 2. **Select "New folder"**
-> 3. **Create subfolders**: \`People\`, \`Concepts\`, etc.
+> 3. **Create subfolders**: \`People\`, \`Concepts\` and optionally others if you feel you need it
 > 4. **Keep it simple**: No more than 2-3 levels deep, or navigation becomes laborious
 > 
 > Remember, Watson—this structure grows organically. Start simple, add complexity only when the volume of information demands it. A system that's too complex for your current needs is as useless as no system at all.
@@ -156,7 +156,7 @@ _(Creating Rich, Connected People Notes)_
 We'll start by creating a note for Sherlock Holmes himself, complete with metadata and structured information.
 
 > [!question]- How do I create a person note in the Assets folder?
-> 1. **Right Click on the \`2 Assets\` folder** in your file explorer
+> 1. **Right Click on the \`2 Assets/People\` folder** in your file explorer
 > 2. **Select "New note"**
 > 3. **Name it**: \`Sherlock Holmes\` (the filename automatically becomes the note title or vice-versa)
 
@@ -166,10 +166,10 @@ We'll start by creating a note for Sherlock Holmes himself, complete with metada
 
 > [!question]- How do I add properties to my note?
 > 1. **Type \`---\` on the first line** of your new note
-> 2. **Press Enter** and type \`---\` again
-> 3. **Watch the properties panel appear** on the right side of your screen
->
+> 2. **Watch the properties panel appear** within your note
 > ![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250921144100.png)
+> 3. Select \`tags\` (or create it yourself if it doesn't appear as suggestion) and in the right part write \`People\`
+> 4. Click in the middle of your note to remove focus. It should render properly.
 
 **Why Properties Matter:**
 
@@ -177,26 +177,32 @@ We'll start by creating a note for Sherlock Holmes himself, complete with metada
 
 "A note without properties is like a criminal without fingerprints—identifiable, but lacking the precise markers that allow for systematic categorization and retrieval."
 
-> [!tip]- Source Mode for Advanced Users
+> [!tip]- Source Mode
 > You can click on the three vertical dots top right to enable \`source view\` which shows you how metadata are actually written in your Markdown. This can be very useful when trying to copy or paste markdown documents with properties.
 
 Now let's fill in the complete content for your Sherlock Holmes note with proper metadata, image, and description.
 
 > [!example]+ Complete Sherlock Holmes Note Template
-> Copy this exact format into your Sherlock Holmes note:
+> 1. Toggle \`Source Mode\` and remove all the content we just did.
+> 2. Copy this exact format into your Sherlock Holmes note:
 > 
 > \`\`\`markdown
 > ---
 > tags:
 >   - People
 > created: 2025-09-21
-> image: https://upload.wikimedia.org/wikipedia/commons/2/25/Sherlock_Holmes_%281922%29_-_8.jpg
+> image: https://dsalathe.github.io/blog/Modern-Sherlock.png
 > ---
+>
 > ---
-> ![Sherlock](https://upload.wikimedia.org/wikipedia/commons/2/25/Sherlock_Holmes_%281922%29_-_8.jpg)
+> ![Sherlock](https://dsalathe.github.io/blog/Modern-Sherlock.png)
+>
 > ---
-> The world's only consulting detective. When the police are out of their depth—which is to say, always—they come to me.
+>
 > \`\`\`
+> 3. Toggle back the source mode for a nicer rendering.
+> The world's only consulting detective. When the police are out of their depth—which is to say, always—they come to me.
+
 
 **Understanding Each Element:**
 
@@ -206,6 +212,11 @@ Now let's fill in the complete content for your Sherlock Holmes note with proper
 - **The horizontal lines** - Separate metadata from content visually
 - **The image embed** - \`![Alt text](URL)\` displays the image within the note
 - **The description** - Free-form text about this person
+
+You may optionally clean up all initial files such as \`Obsidian\` and \`Welcome\` by right-clicking on the file in your file tree view and select \`Delete\`.
+
+> [!Success]- The Result
+> ![First Person Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart2CreatingFirstPersonNote.png)
 
 ### Advanced Image Management
 
@@ -222,10 +233,9 @@ Let's create a Dr. Watson note using a local image that we store directly in our
 > 1. **Right-click on your "Sherlock Holmes" note** in the file explorer
 > 2. **Select "Make a copy"**
 > 3. **Rename the copy**: \`Dr. John H. Watson\`
-> 4. **Double-click to open** the new note
 > 
 > **Add a Local Image:**
-> 1. **Copy the image below** (Ctrl+C or right-click → Copy)
+> 1. **Copy the image below** (Ctrl+C or right-click → Copy Image)
 > 2. **Click in your Watson note** where you want the image
 > 3. **Paste the image** (Ctrl+V)
 > ![watson](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/watson-profile.png)
@@ -233,6 +243,7 @@ Let's create a Dr. Watson note using a local image that we store directly in our
 Now update the note content to use the local image reference:
 
 > [!example]+ Dr. Watson Note Template
+> Toggle on / off \`Source mode\` as we did we Sherlock and replace with the following content for the Watson's note:
 > \`\`\`markdown
 > ---
 > tags:
@@ -245,6 +256,7 @@ Now update the note content to use the local image reference:
 > 
 > ---
 > My steadfast companion and chronicler. Somewhat limited in deductive capacity, but possesses admirable loyalty and a gift for stating the obvious.
+>
 > \`\`\`
 
 **Organizing Your Images:**
@@ -265,6 +277,9 @@ Now update the note content to use the local image reference:
 
 Holmes smiled with insufferable smugness. "Check your note, dear fellow."
 
+> [!Success]- The Result
+> ![First Person Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart2WatsonNote.png)
+
 Finally, let's configure Obsidian to automatically place future images in the correct location:
 
 > [!question]- How do I set up automatic image organization?
@@ -273,12 +288,12 @@ Finally, let's configure Obsidian to automatically place future images in the co
 > 3. **Find**: "Default location for new attachments"
 > 4. **Select**: "In the folder specified below"
 > 5. **Enter**: \`4 Arsenal/images\`
+> 6. **Test it**: Delete your Watson image and paste it again.
 
 
-> [!info]- Why This Configuration Matters
-> "Now any image you paste will automatically be filed correctly. Organization without effort—though of course, such convenience could never replace genuine intelligence."
-> 
-> "This configuration ensures that all future images, documents, and attachments are automatically placed in your Arsenal folder, keeping your main workspace clean while ensuring everything is systematically organized."
+"Now any image you paste will automatically be filed correctly. Organization without effort—though of course, such convenience could never replace genuine intelligence."
+
+"This configuration ensures that all future images, documents, and attachments are automatically placed in your Arsenal folder, keeping your main workspace clean while ensuring everything is systematically organized."
 
 ---
 
@@ -286,15 +301,14 @@ Finally, let's configure Obsidian to automatically place future images in the co
 
 "Superb work, Watson," Holmes declared, surveying their newly organized vault with evident satisfaction. "We have now constructed a knowledge management system that would be the envy of Scotland Yard—if they possessed the intelligence to appreciate its elegance."
 
-**What You've Accomplished:**
-
-**1. Structural Mastery**: The DATA framework provides a logical foundation that scales from simple personal use to complex professional investigations.
-
-**2. Advanced Documentation**: Your people notes contain metadata, images, and structured information that creates rich, searchable profiles.
-
-**3. Efficient Workflows**: Automatic image organization and consistent folder structures eliminate friction while maintaining organization.
-
-**4. Connected Foundation**: You now understand how to create systematic connections between all elements of your knowledge base.
+> [!success]+ What You've Accomplished:
+> **1. Structural Mastery**: The DATA framework provides a logical foundation that scales from simple personal use to complex professional investigations.
+> 
+> **2. Advanced Documentation**: Your people notes contain metadata, images, and structured information that creates rich, searchable profiles.
+> 
+> **3. Efficient Workflows**: Automatic image organization and consistent folder structures eliminate friction while maintaining organization.
+> 
+> **4. Connected Foundation**: You now understand how to create systematic connections between all elements of your knowledge base.
 
 **The Path to Mastery:**
 

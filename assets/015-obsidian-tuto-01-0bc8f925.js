@@ -7,7 +7,6 @@ image: Modern-Sherlock.png
 keywords:
   - Obsidian
   - Knowledge Management
-  - Digital Organization
   - Note-taking
   - Sherlock Holmes
   - Tutorial
@@ -128,13 +127,15 @@ _[Follow along precisely, dear reader—Holmes insists you practice as he instru
 > [!question]- How do I create my first vault?
 > **Step-by-Step Vault Creation:**
 > 
-> 1. **Download Obsidian**: Go to obsidian.md and download the application for your operating system. Install it as you would any other program.
+> 1. **Download Obsidian**: Go to [obsidian.md](https://obsidian.md/) and download the application for your operating system. Install it as you would any other program.
 > 
 > 2. **Launch and Create**: Open Obsidian. You'll see a welcome screen. Click the purple "Create new vault" button.
 > 
-> 3. **Choose Location**: Click "Browse" and select where you want your vault to live on your computer. Create a new folder called "Holmes-Detective-Vault" (or whatever name appeals to your investigative spirit).
+> 3. **Choose Location**: Click "Browse" and select where you want your vault to live on your computer. Create a new folder called "sherlock-tutorial" (or whatever name appeals to your investigative spirit).
 > 
 > 4. **Vault Creation**: Click "Create" and watch as your digital headquarters materializes.
+> 
+> 5. _(Optional)_ **Switching Vault or Creating New Ones**: Bottom left you will find a menu to manage your vaults.
 > 
 > ![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250921111257.png)
 
