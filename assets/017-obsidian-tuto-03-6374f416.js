@@ -28,6 +28,8 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 
 **Chapter VI**: The Daily Chronicle - _Systematic observation through daily notes_
 
+**Chapter VII**: The Taxonomy of Investigation - _Hierarchical organization with tags_
+
 ### Upcoming Parts:
 - **Part 4**: Visual Intelligence & Professional Presentation
 - **Part 5**: Intelligence Networks & Dynamic Systems  
@@ -373,7 +375,7 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 
 Transform basic observations into professional documentation. In the Daily Note you just created:
 
-> [!warning] Avoid Amateur Documentation
+> [!warning]- Avoid Amateur Documentation
 > **Instead of:**
 > \`\`\`
 > Warning, Sir Pumpernickel looked too much angry
@@ -397,16 +399,92 @@ Transform basic observations into professional documentation. In the Daily Note 
 
 ---
 
+## Chapter VII: The Taxonomy of Investigation
+
+### Understanding Information Architecture with LATCH
+
+"Watson," Holmes observed while examining his case files, "information without organization is merely chaos. Richard Saul Wurman's LATCH principle provides us with five fundamental ways humans organize information: Location, Alphabet, Time, Category, and Hierarchy."
+
+> [!info]- The LATCH Principle
+> Every piece of information can be organized in one of five ways:
+> - **Location**: Where something happens (crime scenes, witness locations)
+> - **Alphabet**: Alphabetical ordering (suspect names, evidence catalog)
+> - **Time**: Chronological sequence (investigation timeline, witness statements)
+> - **Category**: Grouping by type (evidence types, case classifications)
+> - **Hierarchy**: Importance or relationships (case priority, command structure)
+>
+> Tags excel at Category and Hierarchy organization, while links create Location-based connections between related concepts.
+
+### Hierarchical Tag Systems in Action
+
+"Now observe, Watson, how we shall transform our flat tag system into an intelligent hierarchy that mirrors the structure of our investigations."
+
+> [!question]- How do I access the tag system?
+> 1. **Open Right Sidebar**: Click the expand icon in the top-right corner
+> 2. **Find Tags Panel**: Look for the tag icon in the right sidebar
+> 3. **Explore Current Tags**: You should see existing tags like "Meeting", "People", and "Delivery"
+> 
+> ![Tag Panel Access](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3TagPanel.png)
+
+> [!example]+ Creating Tag Hierarchy
+> 1. **Click on "Meeting" tag**: This shows all notes with the Meeting tag
+> 2. **Open your Client Interview meeting**: Navigate to the meeting note you created earlier
+> 3. **Edit the Tag**: In the frontmatter, change:
+> 
+>    \`\`\`yaml
+>    tags:
+>      - Meeting
+>    \`\`\`
+> 
+>    To:
+> 
+>    \`\`\`yaml
+>    tags:
+>      - Vanishing-Venture-Capital/Meeting
+>    \`\`\`
+> 4. **Add Contextual Tags**: Within the note content, add relevant tags using the \`#\` format:
+> 
+>    \`\`\`markdown
+>    During the interview, client showed signs of #nervousness and #deception.
+>    Key topics discussed: #financial-records #missing-documents #timeline
+>    \`\`\`
+
+> [!success]- Observing Tag Hierarchy Formation
+> Return to your Tags panel and witness the transformation:
+> 
+> ![Tag Hierarchy Formation](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3TagHierarchy.png)
+> 
+> Notice how "Vanishing-Venture-Capital" now appears as a parent category with "Meeting" as a subcategory. This creates a logical hierarchy that mirrors your case structure. You may collapse the right sidebar again.
+
+### Tags vs Links: The Strategic Difference
+
+> [!info] When to Use Tags vs Links
+> **Tags**: Best for categorization and filtering
+> - Use for: status indicators, case types, evidence categories, priority levels
+> - Example: \`#high-priority\`, \`#financial-crime\`, \`#witness-statement\`
+> 
+> **Links**: Best for creating relationships and connections
+> - Use for: connecting people, places, cases, and concepts
+> - Example: \`[[Reginald Pumpernickel]]\`, \`[[Vanishing Venture Capital]]\`, \`[[Baker Street]]\`
+
+> [!quote] Holmes's Professional Opinion
+> "In my experience, Watson, links prove more valuable than tags for investigative work. Links create the web of connections that reveal patterns—they show *relationships* between elements."
+
+> [!warning] Tag Overuse Anti-Pattern
+> Avoid the amateur mistake of over-tagging every concept. If you find yourself creating tags like \`#person\`, \`#place\`, or \`#thing\`, you're duplicating the work that links already accomplish more effectively. Reserve tags for genuine categorization needs: priority levels, status indicators, or case types.
+
+---
+
 ## Systematic Foundation Complete
 
 > [!success] What You've Accomplished
 > - **Template Mastery**: Automated creation with intelligent filing
 > - **Daily Chronicles**: Systematic observation through structured reviews
+> - **Hierarchical Organization**: Strategic tag systems for categorization
 > - **Professional Presentation**: Enhanced formatting with authority
 > - **Systematic Integration**: Cohesive investigation system
 
-From manual repetition to automated consistency, from scattered observations to systematic chronicles, from informal notes to professional documentation. You now possess the automation skills that separate the efficient detective from the overwhelmed amateur.
+From manual repetition to automated consistency, from scattered observations to systematic chronicles, from flat organization to hierarchical intelligence. You now possess the automation skills that separate the efficient detective from the overwhelmed amateur.
 
 **Next Steps:**
-Part 4 focuses on visual intelligence and professional presentation with graph view mastery, while Part 5 creates dynamic intelligence networks that adapt to your investigations.
-`;export{e as default};
+Part 4 focuses on visual intelligence and professional presentation with graph view mastery, while Part 5 creates dynamic intelligence networks that adapt to your investigations.`;export{e as default};
