@@ -54,17 +54,24 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 ### Configuring Graph View for Intelligence
 
 > [!question]- How do I open and set up Graph View?
-> 1. **Open Graph View**: Click the network/graph icon in the left sidebar, or use \`Ctrl+G\`
+> 1. **Open Graph View**: Click the network/graph icon in the left sidebar, or open a new tab \`Ctrl+T\` and use \`Ctrl+G\`
 > 2. **Dock Graph View**: Drag it to your right sidebar for permanent visibility
 
 "First, Watson, we must eliminate the administrative clutter that obscures meaningful connections."
 
 > [!question]- How do I exclude unnecessary files from the graph?
-> 1. **Access Graph Settings**: Click the settings gear icon in the graph view
-> 2. **Navigate to Files**: Settings > Files and links > Excluded files
+> Current Graph View shows irrelevant nodes such as templates fragments:
+> ![Irrelevant Graph Nodes](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4IrrelevantGraph.png)
+>
+> 1. **Access Graph Settings**: Click the settings gear icon in the bottom left
+> 2. **Navigate to Files**: Files and links > Excluded files
 > 3. **Manage Exclusions**: Click "Manage"
 > 4. **Exclude Arsenal**: Add \`4 Arsenal\` to exclude templates, images, and configurations
-> 5. **Rebuild Graph**: Click the red "Rebuild" button to refresh
+> 5. **Save**
+> 6. **Rebuild Graph**: Click the red "Rebuild" button to refresh
+
+> [!success]- The Result
+> ![Relevant Graph](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4RrelevantGraph.png)
 
 ### Color-Coding for Clarity
 
@@ -75,21 +82,19 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 > 2. **Create Color Groups**:
 > 
 >    **Group 1 - Delivery (Red):**
->    - Name: \`Delivery\`
 >    - Search Query: \`path:"1 Delivery"\`
->    - Color: Red (#FF0000)
+>    - Color: Red (RGB: 224, 82, 82)
 > 
->    **Group 2 - Assets (Yellow):**
->    - Name: \`Assets\` 
+>    **Group 2 - Assets (Orange):**
 >    - Search Query: \`path:"2 Assets"\`
->    - Color: Yellow (#FFFF00)
+>    - Color: Orange (RGB: 224, 177, 82)
 > 
 >    **Group 3 - Timeline (Green):**
->    - Name: \`Timeline\`
 >    - Search Query: \`path:"3 Timeline"\`
->    - Color: Green (#00FF00)
-> 
-> ![Graph Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922162125.png)
+>    - Color: Green (RGB: 177, 224, 82)
+
+> [!success]- The Result
+> ![Colored Graph](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4ColoredGraph.png)
 
 ### Reading the Network
 
@@ -97,53 +102,52 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 
 > [!info] What the Colors Reveal
 > - **Red Nodes**: Active cases and investigations
-> - **Yellow Nodes**: People, concepts, and assets
+> - **Orange Nodes**: People, concepts, and assets
 > - **Green Nodes**: Timeline entries and meetings
 > - **Connecting Lines**: Relationships and mentions between notes
 > 
 > "Notice how Mr. Pumpernickel connects to our case, how our meetings link to our investigation, how personnel connect across multiple cases. This is deduction made visible—the pattern of connections that reveals the truth!"
 
 > [!question]- How do I interact with the graph for analysis?
-> 1. **Click Nodes**: Click any node to highlight its direct connections
-> 2. **Drag to Rearrange**: Drag nodes to better visualize clusters
-> 3. **Zoom**: Use mouse wheel to zoom in on specific areas of interest
-> 4. **Filter**: Use the search box to highlight specific tags or terms
+> 1. **Hover Nodes**: Hover any node to highlight its direct connections
+> 2. **Click Nodes**: Click any node to go to the associated note
+> 3. **Drag to Rearrange**: Drag nodes to better visualize clusters
+> 4. **Zoom**: Use mouse wheel to zoom in on specific areas of interest
+> 5. **Filter**: Use the search box to highlight specific tags or terms
 > 
 > "Practice this now, Watson. Click on the Vanishing Venture Capital node and observe how it connects to all relevant personnel, meetings, and evidence. The graph reveals the investigation's scope at a glance."
+
+> [!tip]- Better Navigation
+> Even someone like you may have noticed, Watson, that opening a note using the graph view opens it within the graph view tab. It would be better to stick it on the right side and opening the note in our main panel. Also the tags navigation cannot leave the right sidebar. Let's enhance that:
+>
+> 1. Open the right sidebar.
+> 2. Open the tag panel.
+> 3. Drag the graph view below it.
+> 4. Drag the Calendar view below the graph view.
+> 5. Now observe the new rendering and try to open a note using the graph view again, but using \`Ctrl+Left Click\`.
+> 
+> ![Enhanced Layout](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4EnhancedLayout.png)
 
 ### Local Graph View for Focused Analysis
 
 "For detailed investigation of specific cases, Watson, we require focused visualization that eliminates distracting information."
 
 > [!question]- How do I activate and use Local Graph?
-> 1. **Open Any Case File**: Navigate to your Vanishing Venture Capital case
-> 2. **Toggle Local Graph**: Click the local graph icon in the note header (or use \`Ctrl+Shift+G\`)
-> 3. **Configure Local Settings**: Adjust depth and filters to show only relevant connections
+> 1. **Open Any File**: Use your favorite way to navigate to my personal page (Sherlock Holmes): Using the Graph View (\`Ctrl+Left Click\` on Sherlock Holmes' node), click on the \`People\` tag and select \`Sherlock Holmes\` or use the File System view on the left and browse \`2 Assets\` > \`People\` > \`Sherlock Holmes\`.
+> 2. **Toggle Local Graph**: Right click on Sheldon's node in the graph view and select \`Open linked view > Open local graph\`
+> 3. **Drag it aside of the global graph view**: Ensure your focus is on Sherlock's Note by clicking anywhere on the note in the main panel.
+> 4. **Configure Local Settings**: Adjust depth and filters to show only relevant connections. You may want to re-create the same groups to color-code your nodes as we did with the Global Graph.
+> 5. **Browse it**: \`Ctrl+Left Click\` on a neighbor node of the graph and watch the Local Graph dynamically adapt.
+
+> [!success]- The Result
+> You should now have the two different graph views configured in the same panel:
+> ![Local Graph Layout](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4LocalGraph.png)
 
 > [!info] Local Graph Advantages
 > - **Context Focus**: Shows only connections relevant to the current note
 > - **Reduced Clutter**: Eliminates unrelated information that confuses analysis
 > - **Dynamic Updates**: Changes automatically as you navigate between different notes
 > - **Investigation Mapping**: Perfect for visualizing the scope of individual cases
-
-### Setting Up Your Optimal Workspace
-
-> [!question]- How do I create the perfect investigation environment?
-> 1. **Open Right Sidebar**: Click the right sidebar toggle
-> 2. **Add Graph View**: Drag the global graph to the top of the right sidebar
-> 3. **Add Journals Panel**: Ensure your Journals calendar is at the bottom
-> 4. **Test Local Graph**: Open a case file and activate local graph to see focused connections
-> 
-> ![Optimal Workspace Setup](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922161919.png)
-
-> [!info] Workspace Benefits
-> "This configuration, Watson, provides:
-> - **Global Overview**: Constant visibility of your entire knowledge network
-> - **Local Focus**: Detailed view of current investigation connections
-> - **Timeline Access**: Quick navigation to daily notes and reviews
-> - **Efficient Navigation**: Everything visible without switching between views"
-
----
 
 ## Chapter IX: The Aesthetic of Excellence
 
@@ -166,46 +170,54 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 > 
 > "Observe, Watson—immediately our vault appears more professional, more befitting minds of our caliber."
 
+> [!success]- The Result
+> ![Obsidianite](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4Obsidianite.png)
+
 ### Icon Management for Visual Clarity
 
 > [!question]- How do I install and configure the Iconize plugin?
 > 1. **Install Plugin**: Community plugins > Browse > Search "Iconize" > Install and Enable
-> 2. **Download Icon Pack**: In Iconize settings, download the FontAwesome icon pack
-> 3. **Configure Icons**: Right-click any folder to assign appropriate icons
+> 2. **Download Icon Pack**: In Iconize settings, download the \`FontAwesome Regular\` icon pack and \`FontAwesome Solid\` icon pack
+> 3. Right-click each folder and select "Change Icon":
+> - **1 Delivery**: Star icon ⭐ \`Star (Far)\` - represents our primary work output
+> - **2 Assets**: Gem icon 💎 \`Gem (Far)\` - valuable resources and references  
+> - **3 Timeline**: Calendar icon 📅 \`Calendar (Far)\` - chronological organization
+> - **4 Arsenal**: Toolbox icon 🧰 \`Toolbox (Fas)\` - utilities and tools
 
-> [!info]+ Systematic Icon Assignment
-> Right-click each folder and select "Change Icon":
-> 
-> - **1 Delivery**: Star icon (⭐ \`fa-regular fa-star\`) - represents our primary work output
-> - **2 Assets**: Gem icon (💎 \`fa-regular fa-gem\`) - valuable resources and references  
-> - **3 Timeline**: Calendar icon (📅 \`fa-regular fa-calendar\`) - chronological organization
-> - **4 Arsenal**: Toolbox icon (🧰 \`fa-regular fa-toolbox\`) - utilities and tools
+> [!success]- The Result
+> ![Iconize](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4Iconize.png)
 
 ### Color-Coded Organization
 
 > [!question]- How do I install and configure File Color plugin?
 > 1. **Install Plugin**: Community plugins > Browse > Search "File Color" > Install and Enable
 > 2. **Create Color Schemes**: Settings > File Color > Create color sets:
->    - **Red**: For active cases and urgent matters
->    - **Yellow**: For assets and reference materials
->    - **Green**: For timeline and routine documentation
-> 3. **Enable Cascade**: Check "Apply cascade" so colors apply to subfolders
+>    - **Red (224, 82, 82)**: For active cases and urgent matters
+>    - **Orange (224, 177, 82)**: For assets and reference materials
+>    - **Green (177, 224, 82)**: For timeline and routine documentation
+> 3. **Click Save**: Important, don't forget to click on the "save" button
+> 4. **Enable Cascade**: Check "Cascade Colors" so colors apply to subfolders
+> 5. **Enable Color Background**: Check "Color Background" so colors apply in background mode in the navigation.
+>
+> ![File Color Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4FileColorConfiguration.png)
 
 > [!question]- How do I apply colors systematically?
 > Right-click each main folder and select "Set Color":
-> - \`1 Delivery\`: Red (matching your graph view)
-> - \`2 Assets\`: Yellow (consistency across systems)
-> - \`3 Timeline\`: Green (chronological coding)
-> 
-> ![Visual Organization Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922162720.png)
+> - \`1 Delivery\`: Red
+> - \`2 Assets\`: Orange
+> - \`3 Timeline\`: Green
 > 
 > "Watson! Now our system communicates its organization visually, even to the most casual observer."
+
+> [!success]- The result
+> ![File Color Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4FileColor.png)
 
 ### Enhanced Documentation with Advanced Callouts
 
 "Beyond basic callouts, Watson, we shall master the advanced formatting that distinguishes professional documentation from amateur notes."
 
 > [!example]+ Advanced Callout Techniques
+> In your \`Vanishing Venture Capital\` Note, under the \`Investigation Log\` section, paste the following:
 > \`\`\`markdown
 >  > [!warning]+ Suspicious Behavior Alert
 >  > **Subject**: Reginald Pumpernickel  
@@ -223,11 +235,13 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 >  > — Reginald Pumpernickel, Client Interview, 2025-09-22
 > \`\`\`
 
+> [!success]- The result
+> ![Advanced Callouts Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4AdvancedCallouts.png)
+
 > [!info] Callout Enhancement Features
 > - **\`+\` Symbol**: Makes callouts expanded by default
 > - **\`-\` Symbol**: Makes callouts collapsible/foldable
 > - **Bold Formatting**: Creates structured information hierarchy
-> - **Attribution Lines**: Professional citation of sources and dates
 > 
 > "Notice, Watson, how our systematic visual approach transforms raw information into authoritative professional presentation. This is the difference between amateur note-taking and professional investigation services."
 
@@ -259,7 +273,5 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 **Next Steps:**
 
 "In Part 5, we shall create dynamic intelligence networks and adaptive databases that automatically organize and reveal patterns in your growing knowledge base."
-
-"In Part 6, we shall integrate external intelligence sources and AI-powered analysis to complete your transformation into a comprehensive investigation system."
 
 "The game, as they say, is afoot—and we are now equipped with visual intelligence and professional presentation capabilities that match our analytical excellence."`;export{e as default};
