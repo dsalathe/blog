@@ -14,6 +14,8 @@ keywords:
 next: 16
 ---
 
+> [!note] This tutorial uses Obsidian version v1.9.12
+
 # Fundamental Principles
 
 In an age where information drowns us daily, the greatest minds require tools worthy of their capabilities. Most note-taking applications treat your thoughts like filing cabinets—static, isolated, forgotten. But what if your digital workspace could mirror the brilliant web of associations that defines superior thinking?

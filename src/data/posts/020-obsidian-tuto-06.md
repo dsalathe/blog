@@ -16,6 +16,8 @@ keywords:
 previous: 19
 ---
 
+> [!note] This tutorial uses Obsidian version v1.9.12
+
 ## Tutorial Overview: The Ultimate Integration
 
 In this final chapter of our detective trilogy, Holmes reveals the most sophisticated techniques for connecting your knowledge vault to the wider world of information and artificial intelligence. Master these final methods to achieve the complete integration of internal knowledge management with external research and AI-powered analysis:
