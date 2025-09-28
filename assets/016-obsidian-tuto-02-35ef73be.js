@@ -17,6 +17,8 @@ previous: 15
 next: 17
 ---
 
+> [!note] This tutorial uses Obsidian version v1.9.12
+
 # Structure and Organization of the Vault
 
 ## Tutorial Overview: Building the Architecture of Genius

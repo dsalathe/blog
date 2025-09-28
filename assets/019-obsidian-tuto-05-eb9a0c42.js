@@ -15,6 +15,8 @@ previous: 18
 next: 20
 ---
 
+> [!note] This tutorial uses Obsidian version v1.9.12
+
 ## Tutorial Overview: Intelligence Networks & Case Resolution
 
 Having mastered visual intelligence and professional presentation in Part 4, you are now ready to create dynamic intelligence networks and apply your complete methodology to solve complex cases. This is Part 5 of our comprehensive six-part series.
@@ -43,18 +45,19 @@ Having mastered visual intelligence and professional presentation in Part 4, you
 
 > [!question]- How do I create my Bases workspace?
 > 1. **Create Bases Folder**: Right-click \`4 Arsenal\` > New folder > Name it \`bases\`
-> 2. **Access Base Creation**: Look for the bases icon in the left sidebar
-> 3. **Create Your First Base**: Click and drag the base creation tool into your bases folder
+> 2. **Create Your First Base**: Right Click on your \`bases\` folder and select \`New base\`
+> 3. **Name You Base**: \`People\`
 > 
-> ![Base Creation](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922084103.png)
+> ![Base Creation](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart5ConfigureBases.png)
 
 ### The Personnel Registry
 
 "We'll create a 'People' base—our complete registry of every individual connected to our investigations."
 
 > [!question]- How do I configure my People Base?
-> 1. **Name Your Base**: \`People\`
-> 2. **Set Up Filtering**: Click "Filter" and add the condition \`where file tags contains People\`
+> 1. **Set Up Filtering**: Click "Filter"
+> 2. **Choose The Scope**: Click on \`All views\`
+> 3. **Configure Filter Logic**: Add the condition \`where file tags contains People\`
 > 
 > This ensures your base shows only notes tagged with "People", automatically including all your person notes while excluding unrelated content.
 > 
@@ -65,18 +68,20 @@ Having mastered visual intelligence and professional presentation in Part 4, you
 ### Visual Intelligence Gallery
 
 > [!question]- How do I create a Gallery View?
-> 1. **Add New View**: Click the view creation button
+> 1. **Open View Settings**: Click the \`Table\` button top-left
+> 2. **Add New View**: Click on \`+ Add view\`
+>
 > ![Gallery Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922084313.png)
 > 
-> 2. **Set View Parameters**:
+> 3. **Set View Parameters**:
 >    - **Name**: Display
 >    - **Layout**: Cards
->    - **Image Source**: Use the \`image\` property from your person notes
+>    - **Image Property**: Use the \`image\` property from your person notes
 > 
 > ![Gallery Settings](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922084510.png)
 
-> [!success] The Result
-> ![Personnel Gallery](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922084531.png)
+> [!success]- The Result
+> ![Personnel Gallery](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart5GalleryView.png)
 > 
 > "Magnificent! A proper intelligence gallery where every person is immediately recognizable and accessible."
 
@@ -85,33 +90,33 @@ Having mastered visual intelligence and professional presentation in Part 4, you
 "Here's where bases truly shine, Watson—imagine if every case file could automatically display only the people relevant to that specific investigation."
 
 > [!question]- How do I create a Dynamic "In File" View?
-> 1. **Copy Existing View**: Duplicate your gallery view
-> 2. **Rename**: Call it "In File"  
-> 3. **Configure Advanced Filter**: Click "Advanced Filter"
+> 1. **Copy Existing View**: Duplicate your gallery view: Right-click on the \`Display\` button top-left, click on the three vertical dots and select \`Duplicate view\`
+>
+> ![Duplicating a View](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart5DuplicateView.png)
+> 2. **Rename**: Call it "In File"
+> 3. **Set Up Filtering**: Click "Filter"
+> 4. **Choose The Scope**: Click on \`This view\`
+> 5. **Configure Advanced Filter**: Click "Advanced Filter"
 > 
 > ![Advanced Filter Setup](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922084656.png)
 > 
-> 4. **Enter Filter Logic**: \`this.file.hasLink(file)\`
+> 6. **Enter Filter Logic**: \`this.file.hasLink(file)\`
 
 "But Holmes," Watson protested, examining the empty view, "it shows nothing!"
 
 "Patience, my dear fellow. Genius reveals itself to those who wait."
 
 > [!question]- How do I test the Dynamic Intelligence?
-> 1. **Open Your Client Interview Note**: Navigate to your meeting note
+> 1. **Open The Client Interview Meeting Note**: Use your favorite navigation system (Graph View, Tags, File System or Quick Switcher)
 > 2. **Add Base Embed**: Insert this line: \`![[People.base#In File]]\`
-> 3. **Observe the Magic**: The view automatically populates with people mentioned in that document
+> 3. **Observe the Magic**: The view automatically populates with people mentioned in that document. Try removing or adding people in the \`attendees\` property
 
 Watson typed the addition, and suddenly the magic revealed itself.
 
-> [!tip]- Dynamic Updates in Action
-> "Now if you remove Watson from the people attribute, it will automatically render a new view:"
+> [!success]- What You've Built
 > 
-> ![Dynamic Base Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922084927.png)
+> ![Dynamic View](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart5DynamicView.png)
 > 
-> "Now Watson, if you modify the people mentioned in your notes, the base view automatically updates to reflect only the relevant personnel for this particular meeting."
-
-> [!success] What You've Built
 > - **Centralized Intelligence**: Every person appears in master registries
 > - **Multiple Perspectives**: Same data as lists, galleries, or filtered views
 > - **Dynamic Context**: Automatic filtering based on document content
@@ -128,6 +133,26 @@ Watson typed the addition, and suddenly the magic revealed itself.
 
 Holmes accessed their People base, which now displayed all individuals connected to the case with complete context.
 
+"Our vault is missing Marcus Blackwood, Reginald's Swiss Banker, responsible of his company's account!"
+
+Copy the image below, paste it in any note temporarily and create a new \`People\` using the appropriate template:
+
+![Marcus Blackwood](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Blackwood.png)
+
+Then add the following information in Blackwood's note:
+
+\`\`\`markdown
+- Markus is [[Reginald Pumpernickel]]'s personal banker.
+- Swiss police noticed abnormal activity on the [[Swiss Account 1234]].
+\`\`\`
+
+Finally, add the following information in Reginald's note:
+
+\`\`\`markdown
+- Mr Pumpernickel claims his [[Swiss Account 1234]] has been emptied illegally.
+- The fraud was discovered on [[2025-09-08]].
+\`\`\`
+
 "Observe what our intelligence network reveals about Sir Reginald himself..."
 
 Using the gallery view, Watson could immediately see:
@@ -138,6 +163,14 @@ Using the gallery view, Watson could immediately see:
 ### The Visual Intelligence Breakthrough
 
 "Watson, examine the local graph view for Sir Reginald's profile."
+
+> [!tip]- Play With The Local Graph
+> 1. Open Reginald's note
+> 2. Open the local graph view on the right sidebar.
+> 3. In \`filters\`, change \`depth\` to 2 and toggle \`Neighbor links\`
+> 4. Observe the triangle between Reginald, Mr Blackwood and the Swiss account.
+>
+> ![Solving the case](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart5SolvingCase.png)
 
 > [!warning]+ The Revealing Connection
 > The graph showed something extraordinary: the connection revealed a bank account number that appeared in both Sir Reginald's note properties and Marcus Blackwood's contact information—the same account that allegedly received the 'stolen' investment funds.
@@ -186,13 +219,6 @@ Using the gallery view, Watson could immediately see:
 ---
 
 ## Preparation for External Integration
-
-"Watson, our internal intelligence system now operates with professional precision. We have:
-
-- **Dynamic Databases**: Intelligence networks adapting to our needs
-- **Visual Intelligence**: Pattern recognition through systematic analysis  
-- **Professional Documentation**: Evidence-quality organization
-- **Case Resolution**: Systematic methodology revealing hidden truths"
 
 "In Part 6, we'll connect our systematic approach with external resources—web research automation, AI-powered analysis, and tools that transform our vault into a comprehensive intelligence-gathering system."
 
