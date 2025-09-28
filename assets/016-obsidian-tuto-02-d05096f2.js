@@ -334,8 +334,6 @@ Holmes's eyes gleamed with characteristic superiority. "Precisely! In Part 3, we
 
 "Remember, Watson—the difference between a good detective and a great one lies not in natural ability alone, but in the systematic application of superior methods. You now possess the architectural foundation of genius. In Part 3, we shall add the advanced techniques that will make you truly formidable."
 
-_[To be continued in Part 3: "Advanced Investigation" - Where we master templates, unlock the secrets of the graph view, employ advanced search techniques, and begin our first proper case using the methods of the world's greatest detective...]_
-
 ---
 
 **Next in Part 3**: *Advanced Investigation* - Templates for consistency, graph visualization for pattern recognition, search mastery, and the opening moves in the Case of the Vanishing Venture Capital!`;export{e as default};

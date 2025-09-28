@@ -68,7 +68,7 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > \`\`\`markdown
 > <%* 
 > const personName = await tp.system.prompt("Enter person's name");
-> const imageName = await tp.system.prompt("Enter image filename (e.g., watson.png)");
+> const imageName = await tp.system.prompt("Enter image filename (e.g., watson-profile.png)");
 > %>---
 > tags:
 >   - People
@@ -109,8 +109,6 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > [!question]- How do I configure the template hotkey?
 > 1. **Template Hotkeys**: Settings → Templater → Template hotkeys → Add "People.md"
 > 2. **Set Shortcut**: Settings → Hotkeys → Search "Templater: Create People" → Assign \`Ctrl+Shift+P\`
-> 
-> ![Template Structure](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250921180850.png)
 > 
 > **Test**: Press \`Ctrl+Shift+P\` anywhere and watch the automated creation process!
 
@@ -207,9 +205,14 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > 
 > **Test**: Press \`Ctrl+Shift+D\` and create case: 'Vanishing Venture Capital' with priority 'High'
 
+> [!success]- The Result
+> You should have at minimum the following structure now:
+> ![First Delivery Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart3CreatingDelivery.png)
+
 ### Meeting Documentation Template
 
 > [!example]+ Complete Meeting Template Code
+> Create \`Meeting\` in \`4 Arsenal/templates\` and paste the following:
 > \`\`\`markdown
 > <%*
 > const projectNames = [... new Set(app.vault.getMarkdownFiles().map(f => f.path).filter(path => path.startsWith("1 Delivery")).map(path => path.split("/")[1]))].filter(name => !name.endsWith(".md"));
@@ -258,12 +261,16 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > 2. **Create a Meeting**: Press the hotkey and create a "Client Interview" meeting
 > 3. **Add Attendees**: Include \`[[Reginald Pumpernickel]]\` in the attendees list
 
-"Now, Watson, we must document our client properly. Use your People template (\`Ctrl+Shift+P\`) to create Reginald Pumpernickel's profile. Use the provided image."
+"Now, Watson, we must document our client properly. Paste the provided image anywhere in any note. Ensure it is called \`reginald.png\` and remove the link from the note; that should keep the image but remove the internal link. Then use your People template (\`Ctrl+Shift+P\`) to create Reginald Pumpernickel's profile."
 
 ![Reginald Profile](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/reginald.png)
 
 > [!info]+ Organize Your People
 > "Finally, ensure proper organization by dragging both Sherlock Holmes and Dr. Watson notes into the \`2 Assets/People\` folder if they aren't already there. Systematic organization, Watson—it's what separates us from the common constabulary."
+
+> [!success]- The Result
+> You should end up with this minimal structure:
+> ![First Delivery Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart3CreatingReginald.png)
 
 ---
 
@@ -283,10 +290,9 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > 2. **Enter the template code** shown in the example below
 
 > [!example]+ Daily Template Code
-> remove all \`\\\`
-> \`\`\`markdown
-> \\\`\\\`\\\`calendar-nav
-> \\\`\\\`\\\`
+> \`\`\`\`markdown
+> \`\`\`calendar-nav
+> \`\`\`
 > 
 > ## Today's Investigations
 > - [ ]
@@ -296,23 +302,24 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > 
 > ## Deductions in Progress
 > - 
-> \`\`\`
+> \`\`\`\`
 
 ### Monthly Review Template
 
+ **Create New Template**: In \`4 Arsenal/templates\`, create note named \`Monthly\`
+
 > [!example]+ Monthly Template Code
-> remove all \`\\\`
-> \`\`\`markdown
-> \\\`\\\`\\\`calendar-nav
-> \\\`\\\`\\\`
+> \`\`\`\`markdown
+> \`\`\`calendar-nav
+> \`\`\`
 > 
-> \\\`\\\`\\\`calendar-timeline
+> \`\`\`calendar-timeline
 > mode: week
-> \\\`\\\`\\\`
+> \`\`\`
 > 
 > ## Overall review
 > - [ ]
-> \`\`\`
+> \`\`\`\`
 
 ### Setting Up the Journals Plugin
 
@@ -329,34 +336,42 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > 
 > 1. **Access Settings**: Settings → Journals
 > 2. **Create Daily Journal**:
->    - Click "Create new journal"
+>    - Click "Create new journal" (\`+\` icon)
 >    - Name: \`Daily\`
 >    - Interval: \`day\`
->    - Template: Select \`Daily\` template
+>    - Template: Select \`4 Arsenal/templates/Daily\` template
 >    - Folder: \`3 Timeline/Daily\`
 >    - Date Format: \`YYYY-MM-DD\`
 > 
-> ![Journals Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250921202516.png)
+> ![Daily Settings](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart3DailySettings.png)
 > 
-> 3. **Create Monthly Journal**:
+> 3. **Click on \`Journals\` on left menu again**
+> 4. **Create Monthly Journal**:
 >    - Name: \`Monthly\`, Interval: \`month\`
->    - Template: \`Monthly\`, Folder: \`3 Timeline/Monthly\`
+>    - Template: \`4 Arsenal/templates/Monthly\`
+>    - Folder: \`3 Timeline/Monthly\`
 >    - Date Format: \`YYYY-MM\`
+>
+> ![Monthly Settings](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart3MonthlySettings.png)
 
 > [!question]- How do I set up the interface for daily workflow?
-> 1. **Open Right Sidebar**: \`Ctrl+Shift+Right Arrow\`
+> 1. **Open Right Sidebar**: Click \`expand\` icon top-right:
+> ![Expand Button](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart3RightSidebar.png)
 > 2. **Access Journals Panel**: Calendar icon in right sidebar
 > 3. **Dock at Bottom**: Drag journals panel to bottom
 > 
-> ![Daily Workflow Setup](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922161919.png)
+> ![Daily Workflow Setup](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3DraggingCalendar.png)
+> 4. You may collapse the right sidebar again
 > 
 > **Test**: Click today's date to create your first daily note!
 
+> [!success]- The Result
+> ![Creating First Daily](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3CreatingDaily.png)
 ---
 
 ## Professional Formatting with Callouts
 
-Transform basic observations into professional documentation:
+Transform basic observations into professional documentation. In the Daily Note you just created:
 
 > [!warning] Avoid Amateur Documentation
 > **Instead of:**
@@ -369,8 +384,7 @@ Transform basic observations into professional documentation:
 >  > [!warning] Suspicious Behavior
 >  > Client displayed excessive anger during interview—performance suggests deception.
 > \`\`\`
-
-![Professional Callout Example](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922162905.png)
+> ![Professional Callout Example](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3WarningCallout.png)
 
 > [!info] Essential Callout Types
 > \`\`\`markdown
@@ -395,7 +409,4 @@ From manual repetition to automated consistency, from scattered observations to 
 
 **Next Steps:**
 Part 4 focuses on visual intelligence and professional presentation with graph view mastery, while Part 5 creates dynamic intelligence networks that adapt to your investigations.
-
----
-
-*Continue to [Part 4: Visual Intelligence & Professional Presentation] to master graph view analysis and visual organization.*`;export{e as default};
+`;export{e as default};
