@@ -60,6 +60,7 @@ export const loadBlogPosts = async () => {
           publishedDate: data.publishedDate,
           keywords: data.keywords,
           image: data.image,
+          audience: data.audience,
           readingTime: calculateReadingTime(markdownContent)
         });
       }

@@ -803,7 +803,7 @@ p {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .reading-time {
@@ -816,6 +816,23 @@ p {
 }
 
 .reading-time svg {
+  color: #4a5568;
+}
+
+.blog-audience-section {
+  margin-top: -24px;
+}
+
+.blog-audience {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #718096;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.blog-audience svg {
   color: #4a5568;
 }
 

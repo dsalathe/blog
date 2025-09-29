@@ -115,6 +115,17 @@ function HomePage() {
                     {blog.readingTime}
                   </p>
                 </div>
+                {blog.audience && (
+                  <div className="blog-audience-section">
+                    <p className="blog-audience">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                      {Array.isArray(blog.audience) ? blog.audience.join(', ') : blog.audience}
+                    </p>
+                  </div>
+                )}
                 <div className="keywords-container">
                   {blog.keywords.map(keyword => (
                     <span key={keyword} className="keyword-tag">
