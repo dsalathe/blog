@@ -4,6 +4,9 @@ title: "Vibe Coding in 2025: Exploring GitHub's Codespaces and Copilot"
 description: "A backend engineer's journey into 'vibe coding' with GitHub Codespaces and Copilot to build a React app with no prior React experience, balancing AI-powered development with software engineering principles."
 publishedDate: 2025-04-24
 image: devflexingcartoon.PNG
+audience: 
+  - "Developers"
+  - "Managers"
 keywords:
   - GitHub
   - Codespaces

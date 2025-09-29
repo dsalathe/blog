@@ -4,6 +4,7 @@ title: The Great Obsidian Mystery, Tutorial Part 1
 description: Master the art of digital organization through the superior methods of the world's greatest consulting detective. Learn why Obsidian revolutionizes knowledge management and create your first vault.
 publishedDate: 2025-09-30
 image: Modern-Sherlock.png
+audience: "Everyone"
 keywords:
   - Obsidian
   - Knowledge Management
@@ -36,7 +37,7 @@ A glimpse of the the result:
 
 ![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultGlobal.png)
 
-> [!info]+ Tutorial Overview: The Complete Investigation
+> [!info]- Tutorial Overview: The Complete Investigation
 > ![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultGlobalAnnotated.png)
 
 ## Preface: A Message from Dr. Watson
