@@ -2,7 +2,7 @@ const e=`---
 id: 15
 title: The Great Obsidian Mystery, Tutorial Part 1
 description: Master the art of digital organization through the superior methods of the world's greatest consulting detective. Learn why Obsidian revolutionizes knowledge management and create your first vault.
-publishedDate: 2025-09-23
+publishedDate: 2025-09-30
 image: Modern-Sherlock.png
 keywords:
   - Obsidian
@@ -34,22 +34,10 @@ Obsidian transforms scattered notes into an interconnected universe of knowledge
 
 A glimpse of the the result:
 
-![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922164432.png)
+![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultGlobal.png)
 
 > [!info]+ Tutorial Overview: The Complete Investigation
-> **Part 1 (This Tutorial) - Fundamental Principles:**
-> 
-> **Chapter I:** The Crisis at 221B Baker Street - _Why Obsidian revolutionizes knowledge management_
-> 
-> **Chapter II:** In Which Holmes Establishes His Digital Dominion - _Creating your first vault and mastering markdown_
-> 
-> ### Coming Next:
-> 
-> **Part 2 - The Architecture of Brilliance:** The DATA framework for organizing knowledge, advanced people management with metadata
-> 
-> **Part 3 - Advanced Investigation:** Templates for consistent documentation, graph visualization, search mastery, and beginning the Case of the Vanishing Venture Capital
-> 
-> **Part 4 - Master Detective Techniques:** Dynamic databases, AI-powered analysis, web research integration, and the complete transformation into a thinking machine
+> ![screenshot](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultGlobalAnnotated.png)
 
 ## Preface: A Message from Dr. Watson
 
