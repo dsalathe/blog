@@ -367,7 +367,7 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > ![Daily Workflow Setup](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3DraggingCalendar.png)
 > 4. You may collapse the right sidebar again
 > 
-> **Test**: Click today's date to create your first daily note!
+> **Test**: Click today's date to create your first daily note! Optionally, click on the month displayed on top of the calendar to create a monthly note.
 
 > [!success]- The Result
 > ![Creating First Daily](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3CreatingDaily.png)
@@ -389,6 +389,9 @@ Transform basic observations into professional documentation. In the Daily Note 
 >  > Client displayed excessive anger during interview—performance suggests deception.
 > \`\`\`
 > ![Professional Callout Example](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3WarningCallout.png)
+
+> [!tip]- Create Callouts Faster
+> Callout syntax are a bit messy. Use \`Ctrl+P\` and write \`cal\` and you should be suggested \`insert callout\`. Press \`Enter\` to confirm and you can type the callout type right away to adapt it.
 
 > [!info] Essential Callout Types
 > \`\`\`markdown
