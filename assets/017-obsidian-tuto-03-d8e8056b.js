@@ -445,7 +445,7 @@ Transform basic observations into professional documentation. In the Daily Note 
 > 
 >    \`\`\`yaml
 >    tags:
->      - Vanishing-Venture-Capital/Meeting
+>      - Meeting/Client-Interview/Vanishing-Venture-Capital
 >    \`\`\`
 > 4. **Add Contextual Tags**: Within the note content, add relevant tags using the \`#\` format:
 > 
@@ -453,6 +453,11 @@ Transform basic observations into professional documentation. In the Daily Note 
 >    During the interview, client showed signs of #nervousness and #deception.
 >    Key topics discussed: #financial-records #missing-documents #timeline
 >    \`\`\`
+
+> [!question]- Why This Order For Tag Hierarchies?
+> You may ask why we chose \`Meeting/Client-Interview/Vanishing-Venture-Capital\` and not \`Vanishing-Venture-Capital/Meeting/Client-Interview\` for example or any other orders. It depends about your hierarchy needs. Do you want to first regroup everything related to the case, then the kind of note and in case of a meeting, the type of meeting? Or do you prefer to regroup all meetings together, then split them by type of meeting and finally by case? That really depends on your brain and your way to think!
+>
+> However I would argue that we already have the file system splitting by case first, so I find it useful to have my tags having a different representation than my filesystem, allowing me different way to retrieve information given the needs.
 
 > [!success]- Observing Tag Hierarchy Formation
 > Return to your Tags panel and witness the transformation:

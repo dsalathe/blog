@@ -125,6 +125,51 @@ Watson typed the addition, and suddenly the magic revealed itself.
 
 ---
 
+"I can see why you love Obsidian so much, Holmes," Watson remarked, studying the dynamic display. "Showing the people cited in each meeting is brilliant. But I only wish we could reverse the perspective—view which meetings mention a specific person!"
+
+"Of course we can, Watson!" Holmes exclaimed. "The system works bidirectionally. Observe:"
+
+### Reverse Intelligence Tracking
+
+> [!question]- How do I create a Meetings Base with Reverse Links?
+> 1. **Create New Base**: Right-click your \`bases\` folder > \`New base\` > Name it \`Meetings\`
+> 2. **Configure Properties**: Top right, click \`Properties\` > Select \`type\`, \`case\`, and \`attendees\` > Drag columns to reorder as needed
+> 3. **Set Base Filter**: \`Filter\` > \`All views\` > Add condition \`where file tags contains Meeting\`
+> 4. **Create Display View**: 
+>    - Add new view named \`Mentioned in\`
+>    - Set \`row height\` to \`Tall\` (to accommodate attendees lists)
+>    - Include the same properties configured earlier
+> 5. **Add Time Formula**:
+>    - Click \`Properties\` > \`Add Formula\`
+>    - Display name: \`When\`
+>    - Formula: \`date(date).relative()\`
+> 6. **Configure Reverse Filter**: 
+>    - Click \`Filter\` > \`This view\` > \`Advanced Filter\`
+>    - Enter logic: \`file.hasLink(this.file)\`
+>    
+>    Notice how \`this\` refers to the current document—the reverse of our People base logic!
+> 
+> 7. **Test the System**:
+>    - Open Sir Reginald's note
+>    - Add a new section: \`## Meetings\`
+>    - Insert: \`![[Meetings.base#Mentioned in]]\`
+
+"Remarkable!" Watson gasped, watching the view populate automatically.
+
+> [!success]- The Bidirectional Intelligence Result
+> ![Meeting Reverse View](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart5MeetingBase.png)
+> 
+> **What You've Achieved:**
+> - **Person → Meetings**: See all meetings mentioning a specific individual
+> - **Meeting → People**: See all people mentioned in a specific meeting
+> - **Automatic Updates**: Both views refresh as you add links
+> - **Temporal Context**: The \`When\` formula shows relative time ("2 days ago", "last week")
+> - **Complete Context**: Each meeting shows type, case, and full attendee list
+
+"Now we have complete bidirectional intelligence, Watson. From any person's profile, we see their meeting history. From any meeting, we see all participants. The network reveals itself from every angle."
+
+---
+
 ## Chapter XI: The Final Resolution
 
 ### The Truth About Sir Reginald
