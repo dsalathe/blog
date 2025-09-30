@@ -4,6 +4,7 @@ import { getBlogById } from '../data/blogs';
 import Markdown from 'markdown-to-jsx';
 import ShareButton from '../components/ShareButton';
 import CopyButton from '../components/CopyButton';
+import ImageModal from '../components/ImageModal';
 
 // Custom code block component with copy functionality
 function CodeBlock({ children, className }) {
@@ -32,17 +33,47 @@ function CodeBlock({ children, className }) {
   );
 }
 
+// Custom clickable image component for the modal
+function ClickableImage({ src, alt, title, openModal, ...props }) {
+  const handleImageClick = () => {
+    openModal(src, alt || title || '');
+  };
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      title={title}
+      className="clickable"
+      onClick={handleImageClick}
+      {...props}
+    />
+  );
+}
+
 function BlogPage() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFuturePost, setIsFuturePost] = useState(false);
   const [nextBlogInfo, setNextBlogInfo] = useState(null);
+  
+  // Image modal state
+  const [modalImage, setModalImage] = useState({ isOpen: false, src: '', alt: '' });
 
   // handle scroll reset
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Modal functions
+  const openModal = (imageSrc, imageAlt) => {
+    setModalImage({ isOpen: true, src: imageSrc, alt: imageAlt });
+  };
+
+  const closeModal = () => {
+    setModalImage({ isOpen: false, src: '', alt: '' });
+  };
 
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('en-US', {
@@ -357,6 +388,12 @@ useEffect(() => {
               pre: {
                 component: CodeBlock,
               },
+              img: {
+                component: ClickableImage,
+                props: {
+                  openModal: openModal,
+                },
+              },
             },
           }}
         >
@@ -401,6 +438,14 @@ useEffect(() => {
         </svg>
         Back to Home
       </Link>
+      
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={modalImage.isOpen}
+        onClose={closeModal}
+        imageSrc={modalImage.src}
+        imageAlt={modalImage.alt}
+      />
     </div>
   );
 }
