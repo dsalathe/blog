@@ -35,21 +35,93 @@ function CodeBlock({ children, className }) {
 
 // Custom clickable image component for modal functionality
 function ClickableImage({ src, alt, title, openModal, ...props }) {
+  const [isHovering, setIsHovering] = useState(false);
+  
   const handleImageClick = (e) => {
     e.preventDefault();
     openModal(src, alt || title || 'Image');
   };
 
+  const handleMouseEnter = () => setIsHovering(true);
+  const handleMouseLeave = () => setIsHovering(false);
+
+  const baseStyle = {
+    cursor: 'zoom-in',
+    transition: 'all 0.3s ease',
+    position: 'relative',
+    border: '2px solid',
+    borderColor: 'transparent',
+    borderRadius: '8px',
+    maxWidth: '100%',
+    height: 'auto',
+    margin: '2rem auto',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    display: 'block',
+  };
+
+  const hoverStyle = {
+    ...baseStyle,
+    borderColor: '#4299e1',
+    boxShadow: '0 12px 35px rgba(66, 153, 225, 0.25)',
+    filter: 'brightness(1.05)',
+  };
+
   return (
-    <img
-      src={src}
-      alt={alt}
-      title={title}
-      className="clickable"
-      onClick={handleImageClick}
-      style={{ cursor: 'zoom-in' }}
-      {...props}
-    />
+    <div style={{ position: 'relative', display: 'inline-block' }}>
+      <img
+        src={src}
+        alt={alt}
+        title={title}
+        className="clickable"
+        onClick={handleImageClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={isHovering ? hoverStyle : baseStyle}
+        {...props}
+      />
+      {/* Magnifying glass icon */}
+      {isHovering && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            width: '32px',
+            height: '32px',
+            background: 'rgba(66, 153, 225, 0.9)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '16px',
+            color: 'white',
+            backdropFilter: 'blur(4px)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            animation: 'fadeIn 0.3s ease forwards',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }}
+        >
+          🔍
+        </div>
+      )}
+      {/* Shimmer overlay */}
+      {isHovering && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(45deg, transparent 40%, rgba(66, 153, 225, 0.1) 50%, transparent 60%)',
+            borderRadius: '8px',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        />
+      )}
+    </div>
   );
 }
 
