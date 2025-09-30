@@ -33,10 +33,11 @@ function CodeBlock({ children, className }) {
   );
 }
 
-// Custom clickable image component for the modal
+// Custom clickable image component for modal functionality
 function ClickableImage({ src, alt, title, openModal, ...props }) {
-  const handleImageClick = () => {
-    openModal(src, alt || title || '');
+  const handleImageClick = (e) => {
+    e.preventDefault();
+    openModal(src, alt || title || 'Image');
   };
 
   return (
@@ -46,6 +47,7 @@ function ClickableImage({ src, alt, title, openModal, ...props }) {
       title={title}
       className="clickable"
       onClick={handleImageClick}
+      style={{ cursor: 'zoom-in' }}
       {...props}
     />
   );

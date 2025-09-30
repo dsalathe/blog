@@ -1343,36 +1343,98 @@ p {
 
 /* Clickable image styles for blog posts */
 .blog-post img.clickable {
-  cursor: pointer;
+  cursor: zoom-in;
   transition: all 0.3s ease;
   position: relative;
+  border: 2px solid transparent;
 }
 
 .blog-post img.clickable:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(66, 153, 225, 0.25);
+  border-color: #4299e1;
+  filter: brightness(1.05);
 }
 
-.blog-post img.clickable::after {
+/* Shimmer overlay effect */
+.blog-post img.clickable::before {
   content: '';
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 24px;
-  height: 24px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 40%, rgba(66, 153, 225, 0.1) 50%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 14px 14px;
+  z-index: 1;
+  border-radius: 6px;
+}
+
+.blog-post img.clickable:hover::before {
+  opacity: 1;
+}
+
+/* Magnifying glass icon */
+.blog-post img.clickable::after {
+  content: '🔍';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(66, 153, 225, 0.9);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(0.8);
+  z-index: 2;
 }
 
 .blog-post img.clickable:hover::after {
   opacity: 1;
+  transform: scale(1);
+}
+
+/* Tooltip using a wrapper approach */
+.blog-post img.clickable {
+  position: relative;
+}
+
+.blog-post img.clickable:hover {
+  position: relative;
+}
+
+.blog-post .clickable-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.blog-post .clickable-wrapper:hover::after {
+  content: 'Click to enlarge';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 1;
+  animation: tooltipFadeIn 0.3s ease forwards;
+  z-index: 3;
+  pointer-events: none;
 }
 
 /* Animation keyframes */
@@ -1391,6 +1453,17 @@ p {
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }
 
