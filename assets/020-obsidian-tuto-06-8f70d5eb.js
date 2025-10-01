@@ -4,6 +4,9 @@ title: The Great Obsidian Mystery, Tutorial Part 6
 description: Complete your mastery of knowledge management with external research integration, AI-powered analysis, and advanced workflow automation. Holmes demonstrates the ultimate synthesis of human intelligence and technological capability.
 publishedDate: 2025-11-04
 image: sherlockPart6.png
+audience:
+  - AI-Augmented Builders
+  - Tech-Savvy Explorers
 keywords:
   - Obsidian
   - External Research

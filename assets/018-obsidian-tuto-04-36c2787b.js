@@ -4,6 +4,7 @@ title: The Great Obsidian Mystery, Tutorial Part 4
 description: Master visual intelligence and professional presentation. Watch Holmes and Watson transform their systematic foundation with graph view analysis and polished formatting that reveals hidden patterns and presents findings with authority.
 publishedDate: 2025-10-21
 image: sherlockPart4.png
+audience: "Everyone"
 keywords:
   - Obsidian
   - Graph View

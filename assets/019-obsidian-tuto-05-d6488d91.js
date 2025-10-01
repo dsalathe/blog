@@ -4,6 +4,7 @@ title: The Great Obsidian Mystery, Tutorial Part 5
 description: Create dynamic intelligence networks with Obsidian Bases and solve the case through systematic application. Watch Holmes and Watson construct adaptive databases and uncover the truth about Sir Reginald.
 publishedDate: 2025-10-28
 image: sherlockPart5Cropped3.PNG
+audience: "Data-Curious Users"
 keywords:
   - Obsidian
   - Intelligence Networks

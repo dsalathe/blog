@@ -4,6 +4,7 @@ title: The Great Obsidian Mystery, Tutorial Part 2
 description: Build the perfect knowledge architecture with the DATA framework and master advanced people management. Holmes reveals his systematic approach to organizing genius while beginning the investigation into the Vanishing Venture Capital.
 publishedDate: 2025-10-07
 image: sherlockPart2.png
+audience: "Everyone"
 keywords:
   - Obsidian
   - Knowledge Management
