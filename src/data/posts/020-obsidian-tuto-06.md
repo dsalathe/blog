@@ -131,59 +131,150 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 
 ### Privacy-Conscious AI Integration
 
-"Watson, while cloud-based AI services offer convenience, the discerning detective values privacy, particularly when handling sensitive case information."
+"Watson," Holmes said, setting down his pipe with a thoughtful expression, "while cloud-based AI services offer remarkable convenience, the discerning detective must consider the implications of transmitting sensitive information to external servers."
 
-> [!warning] Privacy Considerations
-> "External AI services process your clipped content on remote servers. For confidential investigations—internal corporate documents, legal materials, or sensitive research—local AI processing ensures complete privacy."
+"You mean the clipped content travels through their systems?" Watson asked with concern.
 
-> [!tip]- Advanced: Local AI with Ollama
-> For maximum privacy and control:
+"Precisely! Every article, every snippet of research passes through remote infrastructure. For routine public information, this poses no concern. But consider the implications when clipping internal corporate documents, legal materials, or confidential case information."
+
+> [!danger] The Privacy Consideration
+> External AI services process your clipped content on remote servers. For sensitive investigations—whether personal, professional, or confidential—this presents potential privacy and compliance concerns.
+
+"Fortunately," Holmes continued with satisfaction, "the solution is elegant: self-hosted AI models that process information locally, ensuring complete privacy while maintaining analytical capability."
+
+### Understanding Self-Hosted AI Options
+
+> [!info] Three Paths to Privacy
+> The modern detective has three distinct approaches to self-hosted AI:
 > 
-> **Why Local AI Matters:**
-> - Complete data privacy—content never leaves your machine
-> - No usage limits or API costs
-> - Works offline
-> - Customizable for specific domains
+> **1. Cloud Self-Hosting**: Deploy models on your organization's cloud infrastructure (Azure, AWS, GCP)
+>
+> **2. On-Premises Hosting**: Maintain models on your company's internal servers
+>
+> **3. Local Edge Computing**: Run models directly on your own machine (recommended for maximum privacy)
+
+### Configuring Cloud or On-Premises AI
+
+"For those working within organizations," Holmes explained, "the first two options typically involve coordination with your technical department."
+
+> [!question]- How do I connect to cloud or on-premises AI?
+> **Configuration Steps:**
+> 1. **Access Web Clipper Settings**: Navigate to Interpreter tab
+> 2. **Add Custom Provider**: Click `+` and select `Custom`
+> 
+> ![Custom Provider Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6CustomProvider.png)
+> 
+> 3. **Obtain Credentials**: Contact your IT department for:
+>    - API Endpoint URL
+>    - API Key (if required)
+>    - Model ID for the specific LLM deployment
+> 4. **Configure Access**: For on-premises solutions, ensure you're connected via VPN or on-site network
+> 5. **Add Model**: Input the specific Model ID as provided by your organization
+> 6. **Test Connection**: Attempt a simple clip to verify functionality
+> 
+> **Provider Naming Convention:**
+> - Cloud deployments: Use descriptive names like `MyCompany-Azure` or `Corporate-AWS`
+> - On-premises: Use your organization name, e.g., `Acme-OnPrem`
+
+"This approach," Holmes noted, "provides privacy while leveraging enterprise-grade infrastructure and compliance frameworks."
+
+### Local AI with Ollama: Maximum Privacy
+
+"However, Watson, for the truly independent detective—or when handling the most sensitive matters—nothing surpasses running AI directly on one's own machine."
+
+> [!warning] Advanced User Territory
+> Local AI deployment requires basic understanding of system configuration and hardware capabilities. If unfamiliar with command-line interfaces or system resources, consider cloud or on-premises options first.
+
+> [!tip]- Local AI with Ollama: Complete Guide
+> **Why Choose Local AI:**
+> - **Absolute Privacy**: Content never leaves your machine
+> - **No Usage Limits**: Unlimited processing without API costs
+> - **Offline Capability**: Works without internet connection
+> - **Domain Customization**: Fine-tune models for specific needs
 > 
 > **System Requirements:**
-> - **Minimum**: 8GB RAM, modern CPU
-> - **Recommended**: 16GB+ RAM, dedicated GPU
-> - **Note**: Snapdragon X Elite CPUs can run models efficiently without GPU
+> - **Minimum**: 8GB RAM, modern multi-core CPU
+> - **Recommended**: 16GB+ RAM, dedicated GPU (NVIDIA/AMD)
+> - **Emerging Option**: Snapdragon X Elite CPUs efficiently run models without discrete GPU
+> - **Storage**: 5-10GB per model
 > 
 > **Installation Process:**
-> 1. **Download Ollama**: Visit [ollama.com](https://ollama.com) and install for your platform
-> 2. **Pull a Model**: Run `ollama pull llama3.2:3b` (smaller, faster) or `llama3.2:8b` (larger, more capable)
-> 3. **Optimize Context**: Increase context length based on available RAM:
->
->  ```bash
->  ollama run llama3.2
->  >>> /set parameter num_ctx 8192
->  Set parameter 'num_ctx' to '8192'
->  >>> /save llama3-8k
->  Created new model 'llama3-8k'
->  >>> /bye
->  ```
 > 
-> 4. **Configure Web Clipper**: Add Ollama provider with your model name and model-ID (e.g., `llama3-8k`)
-> 5. **Create Private Template**: Copy default template, name it `Local` and put it in second place, then modify Interpreter Context for efficiency and avoiding hallucinations:
+> **1. Install Ollama**
+> - Visit [ollama.com](https://ollama.com)
+> - Download installer for your platform (Windows/Mac/Linux)
+> - Run installation following standard procedures
 > 
->  ```text
->  {{content}}
->  ```
+> **2. Download Your First Model**
+> Open terminal/command prompt and run:
+> ```bash
+> ollama pull llama3.2:3b
+> ```
+> *For better quality but slower processing, use `llama3.2:8b`*
 > 
-> > ![Local AI Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6WebClipperLocalConfiguration.png)
+> **3. Optimize for Web Clipping**
+> Increase context window based on available RAM:
+> ```bash
+> ollama run llama3.2
+> >>> /set parameter num_ctx 8192
+> Set parameter 'num_ctx' to '8192'
+> >>> /save llama3-8k
+> Created new model 'llama3-8k'
+> >>> /bye
+> ```
 > 
-> You may even trim further the context if you still encounter hallucinations:
+> **4. Configure Web Clipper**
+> - Settings > Interpreter > Add `Ollama` provider
+> - Model name: `llama3-8k` (or your custom name)
+> - URL: `http://localhost:11434` (default Ollama endpoint)
 > 
->  ```text
->  {{content|slice:0,2000}}
->  ```
+> **5. Create Privacy-Optimized Template**
+> - Duplicate your default template, name it `Local`
+> - Position it as second option for easy access
+> - Modify Interpreter Context for efficiency:
 > 
+> ```text
+> {{content}}
+> ```
+> 
+> ![Local AI Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6WebClipperLocalConfiguration.png)
+> 
+> **6. Prevent AI Hallucinations**
+> If summaries include invented information, reduce context:
+> ```text
+> {{content|slice:0,2000}}
+> ```
+> *This limits input to first 2000 characters—adjust based on results*
 
-> [!success]- Local AI Result
-> ![Local AI Processing](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6LocalLLM.png)
+> [!success]- Local AI in Action
+> ![Local Processing Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6LocalLLM.png)
 > 
-> "Complete privacy maintained while achieving intelligent content processing. The first run may take several minutes due to model loading, but subsequent processing is rapid."
+> "Observe, Watson—complete privacy maintained while achieving intelligent content processing. The initial clip may take 30-60 seconds as the model loads into memory, but subsequent operations process rapidly."
+
+### Choosing Your AI Strategy
+
+"The question becomes," Holmes mused, "which approach suits your investigative practice?"
+
+> [!question] Decision Framework
+> **Choose Cloud/On-Premises If:**
+> - Working within organizational compliance frameworks
+> - Require enterprise-grade uptime and support
+> - Need consistent performance across teams
+> - Prefer managed infrastructure
+> 
+> **Choose Local AI If:**
+> - Handling personally sensitive information
+> - Require absolute privacy guarantees
+> - Have adequate hardware resources
+> - Value zero ongoing costs
+> 
+> **Choose External AI If:**
+> - Processing only public information
+> - Require cutting-edge model capabilities
+> - Prioritize convenience over privacy
+> - Have limited local computing resources
+
+"Remember," Holmes concluded, "privacy is not paranoia—it's professional responsibility. The method you choose should reflect both your needs and your principles."
 
 ### Integrating External Intelligence
 
