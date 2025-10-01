@@ -191,6 +191,9 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 > - **3 Timeline**: Calendar icon 📅 \`Calendar (Far)\` - chronological organization
 > - **4 Arsenal**: Toolbox icon 🧰 \`Toolbox (Fas)\` - utilities and tools
 
+> [!warning]- For Git Users
+> Icon packs may take a lot of spaces. You may want to add \`.obsidian/icons/\` in your \`.gitignore\`.
+
 > [!success]- The Result
 > ![Iconize](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart4Iconize.png)
 
