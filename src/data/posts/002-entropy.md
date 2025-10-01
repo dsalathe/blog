@@ -4,6 +4,9 @@ title: What is the answer to the universe, the life and everything? Entropy.
 description: Exploring how entropy principles from physics and information theory reveal the hidden complexities of software design, data quality, and system architecture
 publishedDate: 2025-07-22
 image: entropy.webp
+audience:
+  - Engineering Leaders
+  - Technical Managers
 keywords:
   - Software Architecture
   - Entropy

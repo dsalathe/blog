@@ -4,6 +4,7 @@ title: The Great Obsidian Mystery, Tutorial Part 3
 description: Master automation and daily chronicles. Watch Holmes and Watson advance their detective skills with templates and systematic observation in this comprehensive knowledge management tutorial.
 publishedDate: 2025-10-14
 image: sherlockPart3.png
+audience: "Power Users"
 keywords:
   - Obsidian
   - Templates
