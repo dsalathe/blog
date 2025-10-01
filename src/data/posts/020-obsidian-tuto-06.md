@@ -306,12 +306,12 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 > **Step 1: Install Claude Desktop**
 > - Download from [Claude Desktop](https://claude.ai/download)
 > - Install following standard procedures for your platform
+> - Don't launch it yet
 > 
 > **Step 2: Install Required Obsidian Plugins**
 > 
 > **Local REST API Plugin:**
 > - Community Plugins > Browse > "Local REST API" > Install and Enable
-> - Settings > Local REST API > Enable API (note the port number)
 > 
 > **MCP Tools Plugin:**
 > - Search "MCP Tools" > Install and Enable
@@ -322,9 +322,18 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 > **Step 3: Verify Connection**
 > - Launch Claude Desktop
 > - Check for Obsidian integration in available tools
-> - If connection fails, restart both applications
+> - If connection fails, restart both applications. You may restart you computer to ensure that. Then open your Obsidian vault before Claude Desktop.
 > 
 > ![Claude Desktop MCP](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/Pasted%20image%2020250922105100.png)
+>
+> **Step 4: Configure it**
+> - Click on the `>` icon.
+> - Only select tools you want to allow Claude to use. For a read-only-like set of permissions, you may only allow: `Search vault smart`, `Get Vault file`, `List vault files`, `Search vault simple`, `Search vault`, `Show file in Obsidian`, `Get active file`, `Get server info`, `Fetch`.
+
+> [!warning]- For Git Users
+> Local REST API Plugin exposes your private RSA key. Even if it should be exposed locally, it is good practice to never push this configuration. You should add `.obsidian/plugins/obsidian-local-rest-api/` in your `.gitignore`.
+>
+> MCP Tools is an MCP server binary that takes a lot of spaces. You should add `.obsidian/plugins/mcp-tools/` in your `.gitignore`.
 
 ### Demonstrating AI-Powered Analysis
 
