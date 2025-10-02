@@ -433,7 +433,7 @@ useEffect(() => {
     return (
       <div className="container" style={{ padding: '40px 20px', textAlign: 'center', minHeight: '400px' }}>
         <h2>📝 Blog Post Not Found</h2>
-        <p style={{ marginTop: '16px', color: '#718096' }}>
+        <p style={{ marginTop: '16px', color: '#060708ff' }}>
           The blog post you're looking for doesn't exist or has been removed.
         </p>
         <Link to="/" className="back-button" style={{ marginTop: '24px', display: 'inline-flex' }}>
