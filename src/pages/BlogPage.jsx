@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { getBlogById } from '../data/blogs';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Markdown from 'markdown-to-jsx';
+import { getBlogById } from '../data/blogs';
 import ShareButton from '../components/ShareButton';
 import CopyButton from '../components/CopyButton';
+import { useEasterEgg } from '../contexts/EasterEggContext';
 import ImageModal from '../components/ImageModal';
+import { isValidElement } from 'react';
 
 // Custom code block component with copy functionality
 function CodeBlock({ children, className }) {
   // Extract the actual code text from the children structure
   const getCodeText = (children) => {
     if (typeof children === 'string') return children;
-    if (React.isValidElement(children) && children.props?.children) {
+    if (isValidElement(children) && children.props?.children) {
       return getCodeText(children.props.children);
     }
     if (Array.isArray(children)) {
@@ -131,6 +133,7 @@ function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [isFuturePost, setIsFuturePost] = useState(false);
   const [nextBlogInfo, setNextBlogInfo] = useState(null);
+  const { isUnlocked } = useEasterEgg();
   
   // Image modal state
   const [modalImage, setModalImage] = useState({ isOpen: false, src: '', alt: '' });
@@ -165,23 +168,27 @@ function BlogPage() {
   useEffect(() => {
     const loadBlog = async () => {
       try {
-        const foundBlog = await getBlogById(parseInt(id));
+        setLoading(true);
+        setIsFuturePost(false); // Reset the future post flag
+        
+        const foundBlog = await getBlogById(parseInt(id), isUnlocked);
         
         if (foundBlog) {
           // Check if post date is in the future
           const postDate = new Date(foundBlog.publishedDate);
           const now = new Date();
           
-          if (postDate > now && process.env.NODE_ENV !== 'development') {
+          if (postDate > now && import.meta.env.MODE !== 'development' && !isUnlocked) {
             setIsFuturePost(true);
             setBlog(null);
           } else {
             setBlog(foundBlog);
+            setIsFuturePost(false); // Ensure it's false when we have a blog
             
             // If there's a next blog post ID, fetch its publication date
             if (foundBlog.next) {
               try {
-                const nextBlog = await getBlogById(parseInt(foundBlog.next));
+                const nextBlog = await getBlogById(parseInt(foundBlog.next), isUnlocked);
                 setNextBlogInfo(nextBlog);
               } catch (nextError) {
                 console.error('Error loading next blog:', nextError);
@@ -201,7 +208,7 @@ function BlogPage() {
     };
     
     loadBlog();
-  }, [id]);
+  }, [id, isUnlocked]);
 
   const baseUrl = import.meta.env.BASE_URL;
   
@@ -398,23 +405,43 @@ useEffect(() => {
 }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+      </div>
+    );
   }
 
   if (isFuturePost) {
     return (
-      <div style={{ padding: '20px' }}>
-        <p>This post is scheduled for future publication and is not yet available.</p>
-        <Link to="/">Back to Home</Link>
+      <div className="container" style={{ padding: '40px 20px', textAlign: 'center' }}>
+        <h2>🔒 Post Not Available Yet</h2>
+        <p style={{ marginTop: '16px', color: '#718096' }}>
+          This post is scheduled for future publication and is not yet available.
+        </p>
+        <Link to="/" className="back-button" style={{ marginTop: '24px', display: 'inline-flex' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Home
+        </Link>
       </div>
     );
   }
 
   if (!blog) {
     return (
-      <div style={{ padding: '20px' }}>
-        <p>Blog post not found</p>
-        <Link to="/">Back to Home</Link>
+      <div className="container" style={{ padding: '40px 20px', textAlign: 'center', minHeight: '400px' }}>
+        <h2>📝 Blog Post Not Found</h2>
+        <p style={{ marginTop: '16px', color: '#718096' }}>
+          The blog post you're looking for doesn't exist or has been removed.
+        </p>
+        <Link to="/" className="back-button" style={{ marginTop: '24px', display: 'inline-flex' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Home
+        </Link>
       </div>
     );
   }

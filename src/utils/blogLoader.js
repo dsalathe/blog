@@ -3,12 +3,12 @@ import { calculateReadingTime } from './readingTime';
 
 const blogFiles = import.meta.glob('../data/posts/*.md', { as: 'raw' });
 
-export const loadBlogPost = async (id) => {
+export const loadBlogPost = async (id, ignorePublishDate = false) => {
   try {
     const fileName = Object.keys(blogFiles).find(
       path => path.includes(`${id.toString().padStart(3, '0')}-`)
     );
-
+    
     if (!fileName) {
       return null;
     }
@@ -19,8 +19,8 @@ export const loadBlogPost = async (id) => {
     // Check if the post date is in the future
     const isInFuture = new Date(data.publishedDate) > new Date();
     
-    // Return null for future posts unless running in development mode
-    if (isInFuture && process.env.NODE_ENV !== 'development') {
+    // Return null for future posts unless running in development mode or ignorePublishDate is true
+    if (isInFuture && import.meta.env.MODE !== 'development' && !ignorePublishDate) {
       return null;
     }
     
@@ -37,7 +37,7 @@ export const loadBlogPost = async (id) => {
   }
 };
 
-export const loadBlogPosts = async () => {
+export const loadBlogPosts = async (includeAllPosts = false) => {
   try {
     console.log('Available blog files:', Object.keys(blogFiles)); // Debug line
     const posts = [];
@@ -50,9 +50,9 @@ export const loadBlogPosts = async () => {
       const { data, content: markdownContent } = matter(content);
       console.log('Parsed frontmatter:', data); // Debug line
       
-      // Only add posts with publication dates not in the future
+      // Only add posts with publication dates not in the future (unless includeAllPosts is true or dev mode)
       const postDate = new Date(data.publishedDate);
-      if (postDate <= now || process.env.NODE_ENV === 'development') {
+      if (includeAllPosts || postDate <= now || import.meta.env.MODE === 'development') {
         posts.push({
           id: data.id,
           title: data.title,

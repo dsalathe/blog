@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getBlogs } from '../data/blogs';
+import { useEasterEgg } from '../contexts/EasterEggContext';
+import Toast from '../components/Toast';
 
 function HomePage() {
   const [blogs, setBlogs] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [clickCount, setClickCount] = useState(0);
+  const [showToast, setShowToast] = useState(false);
   const location = useLocation();
+  const { isUnlocked, unlock } = useEasterEgg();
 
   // handle scroll reset when navigating to the home page
   useEffect(() => {
@@ -17,7 +22,7 @@ function HomePage() {
   useEffect(() => {
     const loadBlogs = async () => {
       try {
-        const loadedBlogs = await getBlogs();
+        const loadedBlogs = await getBlogs(isUnlocked);
         setBlogs(loadedBlogs);
       } catch (err) {
         setError(err.message);
@@ -26,7 +31,19 @@ function HomePage() {
       }
     };
     loadBlogs();
-  }, []);
+  }, [isUnlocked]);
+
+  const handleTitleClick = () => {
+    if (isUnlocked) return; // Already unlocked
+    
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    
+    if (newCount === 5) {
+      unlock();
+      setShowToast(true);
+    }
+  };
 
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('en-US', {
@@ -68,8 +85,19 @@ function HomePage() {
 
   return (
     <div className="container">
+      <Toast 
+        message="Looks like you found the hidden peak! 🏔️ Future posts are now visible."
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+      
       <div className="hero-section">
-        <h1>Welcome to The Blog</h1>
+        <h1 
+          onClick={handleTitleClick} 
+          className={`hero-title ${!isUnlocked ? 'clickable' : ''}`}
+        >
+          Welcome to The Blog
+        </h1>
         <p className="subtitle">Exploring ideas, sharing knowledge</p>
       </div>
       
@@ -84,23 +112,30 @@ function HomePage() {
       </div>
 
       <div className="blog-grid">
-        {filteredBlogs.map(blog => (
-          <Link
-            key={blog.id}
-            to={`/blog/${blog.id}`}
-            className="blog-card-link"
-          >
-            <article className="blog-card">
-              {blog.image && (
-                <div className="blog-card-image">
-                  <img 
-                    src={getImageUrl(blog.image)} 
-                    alt={blog.title}
-                    loading="lazy"
-                  />
-                </div>
-              )}
-              <div className="blog-card-content">
+        {filteredBlogs.map(blog => {
+          const isFuturePost = new Date(blog.publishedDate) > new Date();
+          return (
+            <Link
+              key={blog.id}
+              to={`/blog/${blog.id}`}
+              className="blog-card-link"
+            >
+              <article className={`blog-card ${isFuturePost ? 'future-post' : ''}`}>
+                {isFuturePost && (
+                  <div className="future-badge">
+                    🏔️ Hidden Peak
+                  </div>
+                )}
+                {blog.image && (
+                  <div className="blog-card-image">
+                    <img 
+                      src={getImageUrl(blog.image)} 
+                      alt={blog.title}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div className="blog-card-content">
                 <h2>{blog.title}</h2>
                 <p className="blog-description">{blog.description}</p>
                 <div className="blog-meta">
@@ -136,7 +171,8 @@ function HomePage() {
               </div>
             </article>
           </Link>
-        ))}
+        );
+        })}
       </div>
 
       {filteredBlogs.length === 0 && (

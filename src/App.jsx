@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { EasterEggProvider } from './contexts/EasterEggContext';
 import Layout from './components/Layout/Layout';
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
@@ -27,16 +28,18 @@ function App() {
   }, [baseUrl]);
 
   return (
-    <Router>
-      {/* Add ScrollToTop component to handle scrolling to top on route changes */}
-      <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blog/:id" element={<BlogPage />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <EasterEggProvider>
+      <Router>
+        {/* Add ScrollToTop component to handle scrolling to top on route changes */}
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blog/:id" element={<BlogPage />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </EasterEggProvider>
   );
 }
 
