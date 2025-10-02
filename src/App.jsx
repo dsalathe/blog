@@ -9,20 +9,27 @@ import BlogPage from './pages/BlogPage';
 // ScrollToTop component that will be used inside the Router
 function ScrollToTop() {
   const { pathname } = useLocation();
-  
+ 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Track pageview in Google Analytics
+    if (window.gtag) {
+      window.gtag('config', 'G-BW77JNPKYW', {
+        page_path: pathname,
+      });
+    }
   }, [pathname]);
-  
+ 
   return null;
 }
 
 function App() {
   const baseUrl = import.meta.env.BASE_URL || '';
-  
+ 
   useEffect(() => {
     document.documentElement.style.setProperty(
-      '--mountain-bg-url', 
+      '--mountain-bg-url',
       `url(${baseUrl}mountainAlps.webp)`
     );
   }, [baseUrl]);
