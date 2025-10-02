@@ -7,11 +7,12 @@ image: sherlockPart5Cropped3.PNG
 audience: "Data-Curious Users"
 keywords:
   - Obsidian
+  - Sherlock Holmes
+  - Tutorial
   - Intelligence Networks
   - Dynamic Databases
   - Bases
   - Case Resolution
-  - Sherlock Holmes
 previous: 18
 next: 20
 ---

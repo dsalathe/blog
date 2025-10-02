@@ -7,10 +7,11 @@ image: sherlockPart3.png
 audience: "Power Users"
 keywords:
   - Obsidian
+  - Sherlock Holmes
+  - Tutorial
   - Templates
   - Automation
   - Daily Notes
-  - Sherlock Holmes
   - Case Management
 previous: 16
 next: 18
@@ -50,6 +51,8 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > Traditional note-taking forces you to recreate the same structure repeatedly—wasting time and introducing inconsistencies. Templates eliminate this inefficiency by capturing your best practices and reproducing them instantly. Think of templates as crystallized intelligence: once you determine the optimal structure for a type of document, you never need to recreate it manually again.
 
 > [!question]- How do I install the Templater plugin?
+> Obsidian provides a native \`Template\` plugin but is quite limited. You cannot run custom javascript and are limited with user's interaction: it doesn't handle prompting information from the user. Let's use the \`Templater\` community plugin instead.
+> 
 > 1. **Access Community Plugins**: Settings gear → Community plugins
 > 2. **Enable Community Plugins**: Click "Turn on community plugins" if first time
 > 3. **Browse Available Plugins**: Click "Browse"
