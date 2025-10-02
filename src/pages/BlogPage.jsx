@@ -210,6 +210,21 @@ function BlogPage() {
     loadBlog();
   }, [id, isUnlocked]);
 
+  // Update document title when blog is loaded
+  useEffect(() => {
+    if (blog?.title) {
+      document.title = `${blog.title} - The Blog`;
+    } else if (isFuturePost) {
+      document.title = 'Hidden Peak - The Blog';
+    } else {
+      document.title = 'The Blog';
+    }
+    
+    return () => {
+      document.title = 'The Blog'; // Reset on unmount
+    };
+  }, [blog, isFuturePost]);
+
   const baseUrl = import.meta.env.BASE_URL;
   
 // Enhanced Obsidian-style callouts with comprehensive type support

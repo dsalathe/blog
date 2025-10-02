@@ -19,6 +19,11 @@ function HomePage() {
     window.scrollTo(0, 0);
   }, [location]);
 
+  // Set document title for home page
+  useEffect(() => {
+    document.title = 'The Blog - Welcome';
+  }, []);
+
   useEffect(() => {
     const loadBlogs = async () => {
       try {
