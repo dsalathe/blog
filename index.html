@@ -10,7 +10,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-BW77JNPKYW');
+      // Disable automatic page view tracking - we'll handle it manually in React
+      gtag('config', 'G-BW77JNPKYW', {
+        send_page_view: false
+      });
     </script>
 
     <!-- Favicon for modern browsers (SVG preferred for scalability) -->
@@ -66,7 +69,7 @@
         }
       })();
     </script>
-    <script type="module" crossorigin src="/blog/assets/index-ee87ad33.js"></script>
+    <script type="module" crossorigin src="/blog/assets/index-d0f4573c.js"></script>
     <link rel="stylesheet" href="/blog/assets/index-e715b50e.css">
   </head>
   <body>
