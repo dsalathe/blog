@@ -10,7 +10,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-BW77JNPKYW');
+      // Disable automatic page view tracking - we'll handle it manually in React
+      gtag('config', 'G-BW77JNPKYW', {
+        send_page_view: false
+      });
     </script>
 
     <!-- Favicon for modern browsers (SVG preferred for scalability) -->
