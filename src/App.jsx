@@ -23,16 +23,8 @@ function ScrollToTop() {
           page_title: document.title,
           page_location: window.location.href,
         });
-        // Debug logging - remove after confirming it works
-        console.log('GA Page View:', {
-          page_path,
-          page_title: document.title,
-          page_location: window.location.href
-        });
-      } else {
-        console.warn('Google Analytics not loaded');
       }
-    }, 100); // Increased timeout slightly to ensure title update
+    }, 100);
   }, [pathname]);
  
   return null;
