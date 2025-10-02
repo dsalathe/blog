@@ -7,10 +7,10 @@ image: Modern-Sherlock.png
 audience: "Everyone"
 keywords:
   - Obsidian
-  - Knowledge Management
-  - Note-taking
   - Sherlock Holmes
   - Tutorial
+  - Knowledge Management
+  - Note-taking
   - Markdown
 next: 16
 ---

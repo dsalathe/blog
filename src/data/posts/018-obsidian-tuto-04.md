@@ -7,11 +7,12 @@ image: sherlockPart4.png
 audience: "Everyone"
 keywords:
   - Obsidian
+  - Sherlock Holmes
+  - Tutorial
   - Graph View
   - Visual Intelligence
   - Professional Presentation
   - Visual Organization
-  - Sherlock Holmes
 previous: 17
 next: 19
 ---

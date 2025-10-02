@@ -18,7 +18,7 @@ function Toast({ message, isVisible, onClose, duration = 5000 }) {
       <div className="toast">
         <div className="toast-icon">🧭</div>
         <div className="toast-content">
-          <div className="toast-title">Hidden Peak Unlocked!</div>
+          <div className="toast-title">Hidden Peaks Unlocked!</div>
           <div className="toast-message">{message}</div>
         </div>
         <button className="toast-close" onClick={onClose}>×</button>

@@ -7,11 +7,11 @@ image: sherlockPart2.png
 audience: "Everyone"
 keywords:
   - Obsidian
+  - Sherlock Holmes
+  - Tutorial
   - Knowledge Management
   - Digital Organization
   - Note-taking
-  - Sherlock Holmes
-  - Tutorial
   - DATA Framework
   - Metadata
 previous: 15

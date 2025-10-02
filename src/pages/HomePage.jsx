@@ -86,7 +86,7 @@ function HomePage() {
   return (
     <div className="container">
       <Toast 
-        message="Looks like you found the hidden peak! 🏔️ Future posts are now visible."
+        message="Looks like you found the hidden peaks! 🏔️ Future posts are now visible."
         isVisible={showToast}
         onClose={() => setShowToast(false)}
       />
