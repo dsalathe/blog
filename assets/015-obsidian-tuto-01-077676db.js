@@ -245,7 +245,7 @@ Holmes smiled with characteristic superiority. "Precisely, my dear fellow! In Pa
 > **Remember**: Superior organization comes through practice, not mere understanding. These fundamentals form the bedrock of all advanced knowledge management.
 
 > [!tip]- Solution Part 1
-> You can find Solution Part 1 [here](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part1).
+> You can find [Solution Part 1](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part1).
 
 > [!quote] Holmes's Final Wisdom
 > "Remember, Watson—and you too, dear readers—mastery comes through practice, not mere understanding. The techniques you've learned today form the bedrock upon which all advanced knowledge management is built. The difference between a good detective and a great one lies not in natural ability alone, but in the systematic application of superior methods."

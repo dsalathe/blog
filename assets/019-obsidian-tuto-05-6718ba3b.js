@@ -23,11 +23,8 @@ next: 20
 
 Having mastered visual intelligence and professional presentation in Part 4, you are now ready to create dynamic intelligence networks and apply your complete methodology to solve complex cases. This is Part 5 of our comprehensive six-part series.
 
-### Part 5 (This Tutorial) - Intelligence Networks & Case Resolution:
-
-**Chapter X**: The Intelligence Network - _Creating dynamic databases that adapt to your investigations_
-
-**Chapter XI**: The Final Resolution - _Discovering the truth about Sir Reginald through systematic analysis_
+> [!tip]- Solution Part 4
+> You can find [Solution Part 4](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part4).
 
 ---
 
@@ -281,6 +278,9 @@ Using the gallery view, Watson could immediately see:
 > - **Visual Analysis**: Pattern recognition systems
 > - **Professional Presentation**: Legal-standard organization
 > - **Case Resolution**: Systematic truth discovery"
+
+> [!tip]- Solution Part 5
+> You can find [Solution Part 5](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part5).
 
 "You've transformed from amateur note-taker to professional intelligence analyst. Every future case will leverage this infrastructure, and every investigation will benefit from accumulated intelligence patterns."
 

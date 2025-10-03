@@ -23,20 +23,8 @@ next: 19
 
 Having mastered automation and daily chronicles in Part 3, you are now ready to transform your systematic foundation with visual intelligence and professional presentation. This is Part 4 of our comprehensive six-part series:
 
-### Parts 1-3 - The Foundation (Completed):
-Vault creation, markdown mastery, internal linking, DATA framework organization, rich metadata management, templates, automation, and daily chronicles.
-
-### Part 4 (This Tutorial) - Visual Intelligence & Professional Presentation:
-
-**Chapter VIII**: The Web of Deduction - _Visualizing connections through graph view and advanced filtering_
-
-**Chapter IX**: The Aesthetic of Excellence - _Professional appearance and enhanced formatting for superior presentation_
-
-### Part 5 - Intelligence Networks & Dynamic Systems:
-Creating dynamic databases and intelligence networks that adapt to your investigations and reveal hidden patterns.
-
-### Part 6 - External Integration:
-Web research capture with Obsidian Clipper, AI-powered analysis through Claude Desktop integration, advanced specialized plugins, and the complete transformation into an external intelligence-gathering system.
+> [!tip]- Solution Part 3
+> You can find [Solution Part 3](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part3).
 
 ---
 
@@ -270,6 +258,9 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 > - **Systematic Visual Design**: Color coding and iconography that creates instant understanding
 > - **Advanced Documentation**: Professional callouts and typography that convey expertise
 > - **Integrated Workflow**: Visual tools that enhance rather than distract from analytical work
+
+> [!tip]- Solution Part 4
+> You can find [Solution Part 4](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part4).
 
 "Consider the evolution, Watson:
 - From chaotic connections to organized visual intelligence

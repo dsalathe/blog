@@ -23,21 +23,8 @@ next: 18
 
 Having mastered the fundamentals in Parts 1 and 2, you're now ready for automation techniques that eliminate repetitive work. This is Part 3 of our six-part series:
 
-### Parts 1 & 2 - The Foundation (Completed):
-Vault creation, markdown mastery, internal linking, DATA framework organization, and rich metadata management.
-
-### Part 3 (This Tutorial) - Automation & Daily Chronicles:
-
-**Chapter V**: The Art of Automation - _Templates that eliminate repetitive work_
-
-**Chapter VI**: The Daily Chronicle - _Systematic observation through daily notes_
-
-**Chapter VII**: The Taxonomy of Investigation - _Hierarchical organization with tags_
-
-### Upcoming Parts:
-- **Part 4**: Visual Intelligence & Professional Presentation
-- **Part 5**: Intelligence Networks & Dynamic Systems  
-- **Part 6**: External Integration & AI-powered Analysis
+> [!tip]- Solution Part 2
+> You can find [Solution Part 2](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part2).
 
 ---
 
@@ -365,7 +352,7 @@ Vault creation, markdown mastery, internal linking, DATA framework organization,
 > [!question]- How do I set up the interface for daily workflow?
 > 1. **Open Right Sidebar**: Click \`expand\` icon top-right:
 > ![Expand Button](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/refs/heads/main/obsidian-tutorial/images/ScreenshotResultPart3RightSidebar.png)
-> 2. **Access Journals Panel**: Calendar icon in right sidebar
+> 2. **Access Journals Panel**: Calendar icon in right sidebar (you may drag the expanded right sidebar a bit more to see the icon appearing)
 > 3. **Dock at Bottom**: Drag journals panel to bottom
 > 
 > ![Daily Workflow Setup](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart3DraggingCalendar.png)
@@ -497,6 +484,9 @@ Transform basic observations into professional documentation. In the Daily Note 
 > - **Hierarchical Organization**: Strategic tag systems for categorization
 > - **Professional Presentation**: Enhanced formatting with authority
 > - **Systematic Integration**: Cohesive investigation system
+
+> [!tip]- Solution Part 3
+> You can find [Solution Part 3](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part3).
 
 From manual repetition to automated consistency, from scattered observations to systematic chronicles, from flat organization to hierarchical intelligence. You now possess the automation skills that separate the efficient detective from the overwhelmed amateur.
 
