@@ -24,11 +24,8 @@ previous: 20
 
 Having integrated external research and privacy-conscious AI capabilities in Part 6, you are now ready to deploy artificial intelligence as an active investigative partner and master the complete arsenal of specialized tools. This is Part 7, the final chapter of our comprehensive detective methodology.
 
-### Part 7 (This Tutorial) - AI Integration & Complete Mastery:
-
-**Chapter XIII**: The AI Detective - _Transforming Claude Desktop into your investigative partner through MCP integration_
-
-**Chapter XIV**: The Master's Arsenal - _Specialized tools, workflow completion, and the philosophy of systematic excellence_
+> [!tip]- Solution Part 6
+> You can find [Solution Part 6](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part6).
 
 ---
 
@@ -318,7 +315,7 @@ Holmes settled into his chair with evident satisfaction as Claude began its syst
 > Ensure all internal references continue functioning properly
 > 
 > **5. Update Templates**  
-> Modify both your `Delivery` and `Meeting` templates to reflect this new archival structure
+> Modify both your `Delivery` and `Meeting` templates to reflect this new archival structure. Exercise is left for the user. You may look at the solution if you struggle: [Solution](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part7/4%20Arsenal/templates)
 
 ---
 
@@ -336,6 +333,9 @@ Holmes settled into his chair with evident satisfaction as Claude began its syst
 > ✅ **Pattern Recognition** — AI-powered analysis and synthesis capabilities deployed  
 > ✅ **Professional Workflow** — From case initiation to archive management perfected  
 > ✅ **Systematic Excellence** — Repeatable processes ensuring consistent quality achieved
+
+> [!tip]- Solution Part 7
+> You can find [Solution Part 7](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part7).
 
 ---
 

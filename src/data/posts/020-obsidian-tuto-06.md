@@ -26,9 +26,8 @@ next: 21
 
 Having mastered intelligence networks and case resolution in Part 5, you are now ready to transcend the boundaries of your vault by integrating external research and artificial intelligence.
 
-### Part 6 (This Tutorial) - External Intelligence & AI Integration:
-
-**Chapter XII**: The Web of All Knowledge - _Capturing external intelligence through automated web clipping_
+> [!tip]- Solution Part 5
+> You can find [Solution Part 5](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part5).
 
 ---
 
@@ -118,7 +117,7 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 > {{content}}
 > ```
 >
-> 7. **Test Integration**: Return to any Wikipedia page, ensure your Gemini model is selected, then `Add to Obsidian`
+> 7. **Test Integration**: Return to any Wikipedia page (eg [Startup Company](https://en.wikipedia.org/wiki/Startup_company)), ensure your Gemini model is selected, then `Add to Obsidian`
 > 
 > ![Web Clipper with AI](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6AddToObsidianAI.png)
 
@@ -245,6 +244,7 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 > *This limits input to first 2000 characters—adjust based on results*
 
 > [!success]- Local AI in Action
+> Click on any wikipedia page of small size (eg [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product))
 > ![Local Processing Result](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6LocalLLM.png)
 > 
 > "Observe, Watson—complete privacy maintained while achieving intelligent content processing. The initial clip may take 30-60 seconds as the model loads into memory, but subsequent operations process rapidly."
@@ -286,6 +286,9 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 > 5. **Verify Graph Integration**: Check your graph view for expanded connections
 
 "Your knowledge network now extends beyond personal observations to include the vast corpus of external intelligence, creating exponentially richer investigative capabilities."
+
+> [!tip]- Solution Part 6
+> You can find [Solution Part 6](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part6).
 
 ## The Foundation Complete, Advanced Integration Awaits
 

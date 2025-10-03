@@ -24,22 +24,8 @@ next: 17
 
 Having established the fundamental principles of networked thinking in Part 1, we now construct the proper framework for organizing knowledge with the precision of a master detective.
 
-### Part 2 (This Tutorial) - The Architecture of Brilliance:
-
-**Chapter III:** The Architecture of Brilliance - _The DATA framework for organizing knowledge_
-
-**Chapter IV:** The Dramatis Personae - _Managing people and assets with metadata_
-
-### Previously Completed (Part 1):
-✅ Understanding why Obsidian revolutionizes knowledge management  
-✅ Creating your first vault and mastering basic markdown  
-✅ The web of knowledge through internal linking and backlinks  
-
-### Coming Next:
-
-**Part 3 - Advanced Investigation:** Templates for consistent documentation, graph visualization, search mastery, and beginning the Case of the Vanishing Venture Capital.
-
-**Part 4 - Master Detective Techniques:** Dynamic databases, AI-powered analysis, web research integration, and the complete transformation into a thinking machine.
+> [!tip]- Solution Part 1
+> You can find [Solution Part 1](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part1).
 
 ---
 
@@ -365,6 +351,9 @@ Finally, let's configure Obsidian to automatically place future images in the co
 > **3. Efficient Workflows**: Automatic image organization and consistent folder structures eliminate friction while maintaining organization.
 > 
 > **4. Connected Foundation**: You now understand how to create systematic connections between all elements of your knowledge base.
+
+> [!tip]- Solution Part 2
+> You can find [Solution Part 2](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part2).
 
 **The Path to Mastery:**
 
