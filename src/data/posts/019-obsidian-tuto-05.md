@@ -19,7 +19,7 @@ next: 20
 
 > [!note] This tutorial uses Obsidian version v1.9.12
 
-## Tutorial Overview: Intelligence Networks & Case Resolution
+# Intelligence Networks & Case Resolution
 
 Having mastered visual intelligence and professional presentation in Part 4, you are now ready to create dynamic intelligence networks and apply your complete methodology to solve complex cases. This is Part 5 of our comprehensive six-part series.
 

@@ -22,7 +22,7 @@ next: 21
 
 > [!note] This tutorial uses Obsidian version v1.9.12
 
-## Tutorial Overview: The Ultimate Integration
+# The Ultimate Integration
 
 Having mastered intelligence networks and case resolution in Part 5, you are now ready to transcend the boundaries of your vault by integrating external research and artificial intelligence.
 

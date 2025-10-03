@@ -20,7 +20,7 @@ previous: 20
 
 > [!note] This tutorial uses Obsidian version v1.9.12
 
-## Tutorial Overview: The AI Detective & Final Mastery
+# The AI Detective & Final Mastery
 
 Having integrated external research and privacy-conscious AI capabilities in Part 6, you are now ready to deploy artificial intelligence as an active investigative partner and master the complete arsenal of specialized tools. This is Part 7, the final chapter of our comprehensive detective methodology.
 

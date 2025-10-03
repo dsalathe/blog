@@ -19,7 +19,7 @@ next: 18
 
 > [!note] This tutorial uses Obsidian version v1.9.12
 
-## Tutorial Overview: Automation & Daily Chronicles
+# Automation & Daily Chronicles
 
 Having mastered the fundamentals in Parts 1 and 2, you're now ready for automation techniques that eliminate repetitive work. This is Part 3 of our six-part series:
 
