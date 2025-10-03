@@ -22,7 +22,6 @@ next: 17
 
 # Structure and Organization of the Vault
 
-## Tutorial Overview: Building the Architecture of Genius
 Having established the fundamental principles of networked thinking in Part 1, we now construct the proper framework for organizing knowledge with the precision of a master detective.
 
 ### Part 2 (This Tutorial) - The Architecture of Brilliance:

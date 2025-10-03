@@ -19,7 +19,7 @@ next: 19
 
 > [!note] This tutorial uses Obsidian version v1.9.12
 
-## Tutorial Overview: Visual Intelligence & Professional Presentation
+# Visual Intelligence & Professional Presentation
 
 Having mastered automation and daily chronicles in Part 3, you are now ready to transform your systematic foundation with visual intelligence and professional presentation. This is Part 4 of our comprehensive six-part series:
 
