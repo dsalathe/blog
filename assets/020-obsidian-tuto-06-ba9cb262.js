@@ -108,7 +108,7 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 > 
 > ![Interpreter Configuration](https://raw.githubusercontent.com/dsalathe/obsidian-tutorial/main/obsidian-tutorial/images/ScreenshotResultPart6WebClipperInterpreterConfiguration.png)
 > 
-> 6. **Update Template**: Return to \`Default\` template and use this prompt (trim first space):
+> 6. **Update Template**: Return to \`Default\` template and use this prompt in \`Note content\` (trim first space):
 > 
 > \`\`\`text
 >  > [!abstract]+ {{"a summary of the page, maximum 5 words"}}
@@ -255,19 +255,19 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 
 > [!question] Decision Framework
 > **Choose Cloud/On-Premises If:**
-> - Working within organizational compliance frameworks
+> - Work within organizational compliance frameworks
 > - Require enterprise-grade uptime and support
 > - Need consistent performance across teams
 > - Prefer managed infrastructure
 > 
 > **Choose Local AI If:**
-> - Handling personally sensitive information
+> - Handle personally sensitive information
 > - Require absolute privacy guarantees
 > - Have adequate hardware resources
 > - Value zero ongoing costs
 > 
 > **Choose External AI If:**
-> - Processing only public information
+> - Process only public information
 > - Require cutting-edge model capabilities
 > - Prioritize convenience over privacy
 > - Have limited local computing resources

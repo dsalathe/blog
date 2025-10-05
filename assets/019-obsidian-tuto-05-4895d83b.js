@@ -21,7 +21,7 @@ next: 20
 
 # Intelligence Networks & Case Resolution
 
-Having mastered visual intelligence and professional presentation in Part 4, you are now ready to create dynamic intelligence networks and apply your complete methodology to solve complex cases. This is Part 5 of our comprehensive six-part series.
+Having mastered visual intelligence and professional presentation in Part 4, you are now ready to create dynamic intelligence networks and apply your complete methodology to solve complex cases. This is Part 5 of our comprehensive series.
 
 > [!tip]- Solution Part 4
 > You can find [Solution Part 4](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part4).
@@ -39,6 +39,12 @@ Having mastered visual intelligence and professional presentation in Part 4, you
 
 > [!info] The Bases Advantage
 > "Fortunately, Obsidian's 'bases' system doesn't just store information—it reveals patterns, enables filtering, provides multiple views of the same data, and automatically updates as new information becomes available."
+
+> [!tip]- Real-World Applications Beyond Detective Work
+> 1. **Academic Research**: Track papers, authors, and citations across projects
+> 2. **Project Management**: Monitor team members, tasks, and meetings per project
+> 3. **Content Creation**: Organize characters, plot points, and references for writing
+> 4. **Business Development**: Track contacts, companies, and opportunities
 
 ### Setting Up Your Intelligence Infrastructure
 
@@ -166,6 +172,12 @@ Watson typed the addition, and suddenly the magic revealed itself.
 > - **Complete Context**: Each meeting shows type, case, and full attendee list
 
 "Now we have complete bidirectional intelligence, Watson. From any person's profile, we see their meeting history. From any meeting, we see all participants. The network reveals itself from every angle."
+
+> [!tip] Adapt This Pattern
+> This bidirectional linking works for any domain:
+> - **Academic**: Papers ↔ Authors, Conferences ↔ Attendees
+> - **Business**: Projects ↔ Clients, Meetings ↔ Stakeholders  
+> - **Personal**: Books ↔ Authors, Events ↔ Friends
 
 ---
 

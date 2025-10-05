@@ -21,7 +21,7 @@ next: 19
 
 # Visual Intelligence & Professional Presentation
 
-Having mastered automation and daily chronicles in Part 3, you are now ready to transform your systematic foundation with visual intelligence and professional presentation. This is Part 4 of our comprehensive six-part series:
+Having mastered automation and daily chronicles in Part 3, you are now ready to transform your systematic foundation with visual intelligence and professional presentation. This is Part 4 of our comprehensive series:
 
 > [!tip]- Solution Part 3
 > You can find [Solution Part 3](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part3).
@@ -130,7 +130,7 @@ Holmes raised an eyebrow with characteristic disdain. "Precisely why we shall re
 > - **Tags**: Click on the \`People\` tag and select \`Sherlock Holmes\`
 > - **File System**: Browse \`2 Assets\` > \`People\` > \`Sherlock Holmes\`.
 > - **Quick Switcher**: Use the native \`Quick Switcher\` plugin: Press \`Ctrl+O\` and type \`Sherlock Holmes\`
-> 2. **Toggle Local Graph**: Right click on Sheldon's node in the graph view and select \`Open linked view > Open local graph\`
+> 2. **Toggle Local Graph**: Right click on Sherlock's node in the graph view and select \`Open linked view > Open local graph\`
 > 3. **Drag it aside of the global graph view**: Then ensure your focus is on Sherlock's Note by clicking anywhere on the note in the main panel, otherwise the local graph will look empty.
 > 4. **Configure Local Settings**: Adjust depth and filters to show only relevant connections. You may want to re-create the same groups to color-code your nodes as we did with the Global Graph.
 > 5. **Browse it**: \`Ctrl+Left Click\` on a neighbor node of the graph and watch the Local Graph dynamically adapt.
