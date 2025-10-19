@@ -3,7 +3,7 @@ id: 23
 title: ACID and Saga Fundamentals
 description: Deep dive into ACID properties with nuanced explanations of atomicity, consistency, isolation, and durability. Learn how sagas coordinate distributed transactions through three key dimensions, and understand why XA transactions rarely fit modern microservices architectures.
 publishedDate: 9999-12-30
-image: sherlockPart7.png
+image: acidAndSaga.png
 audience:
   - Software Architects
   - Backend Engineers
