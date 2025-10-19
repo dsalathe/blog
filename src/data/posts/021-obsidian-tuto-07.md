@@ -259,7 +259,7 @@ Holmes settled into his chair with evident satisfaction as Claude began its syst
 
 **Most Popular (Use Cautiously):**
 - **Dataview** — Powerful but complex. Avoid until necessary; Obsidian's native `Base` is developing as replacement.
-- **Advanced Tables** — Install immediately when struggling with markdown tables. Highly portable, just speeds formatting.
+- **Advanced Tables** — Was a must-have before. Managing tables in markdown format is a nightmare. But today Obsidian offers native help around tables. However, this plugin still provides additional features and can still be relevant.
 - **QuickAdd** — Automates repetitive writing. Holmes advises using templates instead for better long-term maintainability.
 
 **For Task Management:**
