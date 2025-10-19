@@ -3,7 +3,7 @@ id: 22
 title: Data Ownership
 description: Learn how to break apart monolithic databases when migrating to microservices. Explore proven strategies for data ownership and access patterns that balance consistency, performance, and operational complexity in distributed systems.
 publishedDate: 9999-12-29
-image: sherlockPart7.png
+image: dataOwnership.png
 audience:
   - Software Architects
   - Backend Engineers
