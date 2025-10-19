@@ -137,15 +137,15 @@ This definition served the distributed systems community well for decades. But t
 
 Let's unpack what this really means:
 
-**Key components:**
-
-- **Local Transactions**: Each step in the saga is a local transaction within a single service's database domain. The saga coordinates these local transactions to achieve what appears to the application as a single global transaction.
-
-- **Consistency Mechanisms**:
-  - **Compensating Transactions**: For each local transaction, a corresponding "compensation" transaction must exist that can undo the work done by that step. Think of these as application-level rollbacks.
-  - **Transaction State Management**: The saga must track each step's progress to enable recovery and compensation. A common implementation adds a `state` column to relevant tables tracking each step's status (e.g., PENDING, COMPLETED, COMPENSATING, FAILED).
-
-- **Idempotency**: Particularly crucial for asynchronous implementations, operations must produce the same result whether executed once or multiple times. This protects against duplicate messages and retry storms.
+> [!abstract]- **Key components**
+> 
+> - **Local Transactions**: Each step in the saga is a local transaction within a single service's database domain. The saga coordinates these local transactions to achieve what appears to the application as a single global transaction.
+> 
+> - **Consistency Mechanisms**:
+>   - **Compensating Transactions**: For each local transaction, a corresponding "compensation" transaction must exist that can undo the work done by that step. Think of these as application-level rollbacks.
+>   - **Transaction State Management**: The saga must track each step's progress to enable recovery and compensation. A common implementation adds a `state` column to relevant tables tracking each step's status (e.g., PENDING, COMPLETED, COMPENSATING, FAILED).
+> 
+> - **Idempotency**: Particularly crucial for asynchronous implementations, operations must produce the same result whether executed once or multiple times. This protects against duplicate messages and retry storms.
 
 To truly understand modern sagas, we need to explore the three dimensions that define their implementation.
 
@@ -171,31 +171,34 @@ REST is an architectural style, and services implementing it are called RESTful 
 
 REST communications are typically synchronous—the client makes a request and waits for a response:
 
-![Sync REST](tobeincluded)
+> [!example]- Sync Rest
+> ![Sync REST](${baseUrl}blog-images/distributed-transactions/communicationRestSync.png)
 
 However, you can simulate asynchronous behavior with callbacks or polling:
 
-![Async REST](tobeincluded)
+> [!example]- Async Rest
+> ![Async REST](${baseUrl}blog-images/distributed-transactions/communicationRestAsync.png)
 
-**Tradeoffs:**
-
-- **Pros**:
-  - Simple and universally understood
-  - Stateless design enables easy horizontal scaling
-  - Human-readable payloads
-  - Seamless browser integration
-  - Extensive tooling and ecosystem support
-
-- **Cons**:
-  - Verbose payloads increase bandwidth
-  - Risk of stamp coupling or endpoint proliferation
-  - Over-fetching or under-fetching data
-  - Multiple round trips needed for related data
-  - Inefficient for real-time updates
+> [!tip]- **Tradeoffs**
+> 
+> - **Pros**:
+>   - Simple and universally understood
+>   - Stateless design enables easy horizontal scaling
+>   - Human-readable payloads
+>   - Seamless browser integration
+>   - Extensive tooling and ecosystem support
+> 
+> - **Cons**:
+>   - Verbose payloads increase bandwidth
+>   - Risk of stamp coupling or endpoint proliferation
+>   - Over-fetching or under-fetching data
+>   - Multiple round trips needed for related data
+>   - Inefficient for real-time updates
 
 **Note**: Stamp coupling and over/under-fetching can be mitigated with GraphQL, though this introduces server complexity, harder security governance, and potentially expensive queries without proper safeguards.
 
-**Best for**: North-south communication (external clients to services).
+> [!todo] Best For
+> North-south communication (external clients to services).
 
 ##### Messaging
 
@@ -203,60 +206,62 @@ Messaging relies on intermediary message brokers (RabbitMQ, Kafka, ActiveMQ, AWS
 
 Messaging is inherently asynchronous:
 
-![Async Messaging](tobeincluded)
+> [!example]- Async Messaging
+> ![Async Messaging](${baseUrl}blog-images/distributed-transactions/communicationMessageSync.png)
 
 Though you can simulate synchronous patterns with request-reply queues:
 
-![Sync Messaging](tobeincluded)
+> [!example]- Sync Messaging
+> ![Sync Messaging](${baseUrl}blog-images/distributed-transactions/communicationMessageAsync.png)
 
-**Tradeoffs:**
+> [!tip]- **Tradeoffs**
+> 
+> - **Pros**:
+>   - Strong decoupling between services
+>   - Superior fault tolerance through message buffering
+>   - Handles traffic spikes gracefully
+>   - Enables non-blocking operations
+>   - Supports event-driven architectures
+>   - Multiple consumers can process the same events
+> 
+> - **Cons**:
+>   - Additional infrastructure complexity
+>   - Eventual consistency challenges
+>   - Harder to debug distributed flows
+>   - Message ordering complexities
+>   - Broker can become a single point of failure (mitigated with clustering)
 
-- **Pros**:
-  - Strong decoupling between services
-  - Superior fault tolerance through message buffering
-  - Handles traffic spikes gracefully
-  - Enables non-blocking operations
-  - Supports event-driven architectures
-  - Multiple consumers can process the same events
-
-- **Cons**:
-  - Additional infrastructure complexity
-  - Eventual consistency challenges
-  - Harder to debug distributed flows
-  - Message ordering complexities
-  - Broker can become a single point of failure (mitigated with clustering)
-
-**Best for**: East-west communication (service-to-service) when decoupling and asynchronous processing are priorities.
+> [!todo] Best For
+> East-west communication (service-to-service) when decoupling and asynchronous processing are priorities.
 
 ##### gRPC
 
 Google Remote Procedure Call (gRPC) is a framework using Protocol Buffers for serialization and HTTP/2 for transport. It supports both synchronous and asynchronous communication patterns.
 
-Synchronous unary RPC:
+> [!example]- Synchronous Unary RPC
+> ![Sync gRPC](${baseUrl}blog-images/distributed-transactions/communicationGrpcSync.png)
 
-![Sync gRPC](tobeincluded)
+> [!example]- Asynchronous Streaming
+> ![Async gRPC](${baseUrl}blog-images/distributed-transactions/communicationGrpcAsync.png)
 
-Asynchronous streaming:
+> [!tip]- **Tradeoffs**
+> 
+> - **Pros**:
+>   - High performance with binary serialization
+>   - Low latency over persistent HTTP/2 connections
+>   - Strongly typed contracts reduce runtime errors
+>   - Built-in streaming support (unidirectional and bidirectional)
+>   - Efficient for microservices communication
+> 
+> - **Cons**:
+>   - Tighter coupling through shared Protocol Buffer contracts
+>   - Binary format is not human-readable
+>   - Steeper learning curve
+>   - Limited browser support
+>   - Requires HTTP/2 infrastructure
 
-![Async gRPC](tobeincluded)
-
-**Tradeoffs:**
-
-- **Pros**:
-  - High performance with binary serialization
-  - Low latency over persistent HTTP/2 connections
-  - Strongly typed contracts reduce runtime errors
-  - Built-in streaming support (unidirectional and bidirectional)
-  - Efficient for microservices communication
-
-- **Cons**:
-  - Tighter coupling through shared Protocol Buffer contracts
-  - Binary format is not human-readable
-  - Steeper learning curve
-  - Limited browser support
-  - Requires HTTP/2 infrastructure
-
-**Best for**: East-west communication (service-to-service) with low-latency requirements.
+> [!todo] Best For
+> East-west communication (service-to-service) with low-latency requirements.
 
 #### Coordination: Who's in charge?
 
@@ -266,45 +271,45 @@ The *Commit Esports* team faces a crucial decision: should they use orchestratio
 
 In orchestration, a central orchestrator service manages the entire transaction lifecycle. Think of it as a conductor directing an orchestra—it knows the score, cues each musician, and handles any mistakes.
 
-Successful registration workflow:
+> [!success]- Successful registration workflow
+> 
+> ![Successful orchestration](${baseUrl}blog-images/distributed-transactions/coordinationOrchestrationSuccess.png)
 
-![Successful orchestration](tobeincluded)
+> [!failure]- Error management with compensating transactions
+> 
+> ![Error orchestration](${baseUrl}blog-images/distributed-transactions/coordinationOrchestrationFailure.png)
 
-Error management with compensating transactions:
-
-![Error orchestration](tobeincluded)
-
-**When to use orchestration:**
-- Complex business rules require centralized logic
-- You need sophisticated error handling strategies
-- Explicit transaction visibility and monitoring matter
-- Recovery operations must be carefully sequenced
-
-**Tradeoffs:**
-- **Pros**: Clear transaction flow, easier debugging, centralized error handling
-- **Cons**: Orchestrator becomes a single point of failure, potential bottleneck, tighter coupling to orchestrator service
+> [!tip] When to use orchestration
+> - Complex business rules require centralized logic
+> - You need sophisticated error handling strategies
+> - Explicit transaction visibility and monitoring matter
+> - Recovery operations must be carefully sequenced
+> 
+> **Tradeoffs:**
+> - **Pros**: Clear transaction flow, easier debugging, centralized error handling
+> - **Cons**: Orchestrator becomes a single point of failure, potential bottleneck, tighter coupling to orchestrator service
 
 ##### Choreography: The dance pattern
 
 In choreography, no central coordinator exists—each service knows its role and responds to events from other services. Like dancers in a choreographed performance, each service knows when to act based on what others do.
 
-Successful registration workflow:
+> [!success]- Successful registration workflow
+> 
+> ![Successful choreography](${baseUrl}blog-images/distributed-transactions/coordinationChoreographySuccess.png)
 
-![Successful choreography](tobeincluded)
+> [!failure]- Error management through event propagation
+> 
+> ![Error choreography](${baseUrl}blog-images/distributed-transactions/coordinationChoreographyFailure.png)
 
-Error management through event propagation:
-
-![Error choreography](tobeincluded)
-
-**When to use choreography:**
-- Prioritizing system responsiveness
-- Maximizing scalability and throughput
-- Fire-and-forget operations are acceptable
-- Simple workflows with few participants
-
-**Tradeoffs:**
-- **Pros**: No single point of failure, better scalability, lower latency
-- **Cons**: Harder to understand complete flow, debugging complexity, risk of cyclic dependencies
+> [!tip] When to use choreography
+> - Prioritizing system responsiveness
+> - Maximizing scalability and throughput
+> - Fire-and-forget operations are acceptable
+> - Simple workflows with few participants
+> 
+> **Tradeoffs:**
+> - **Pros**: No single point of failure, better scalability, lower latency
+> - **Cons**: Harder to understand complete flow, debugging complexity, risk of cyclic dependencies
 
 #### Consistency: The spectrum of guarantees
 
@@ -347,7 +352,7 @@ In theory, restarting the coordinator reads the log and resolves all in-doubt tr
 
 A concrete example for *Commit Esports*:
 
-![XA transactions](tobeincluded)
+![XA transactions](${baseUrl}blog-images/distributed-transactions/xaSuccess.png)
 
 **The verdict:**
 
