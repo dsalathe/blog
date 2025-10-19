@@ -80,7 +80,7 @@ What follows is Mark Richards and Neal Ford's saga taxonomy—a systematic explo
 - **Synchronous** communication  
 - **Orchestration** coordination
 
-![Epic Saga](tobeincluded)
+![Epic Saga](${baseUrl}blog-images/distributed-transactions/sagaEpic.png)
 
 <div align="center">
 <em>A long-running, heroic story</em>
@@ -91,52 +91,53 @@ As we discussed earlier, achieving atomicity requires implementing a two-phase c
 A successful scenario looks like this:
 
 > [!success]- Epic Saga Success
-> ![Epic Saga Success](tobeincluded)
+> ![Epic Saga Success](${baseUrl}blog-images/distributed-transactions/sagaEpicSuccess.png)
 
 A common implementation strategy uses **state management**—each table adds a `state` column tracking the current status of rows involved in the transaction. States might progress from `PENDING` to `COMPLETED`.
 
 But wait... doesn't this flow look familiar?
 
 > [!success]- XA Success
-> ![XA Success](tobeincluded)
+> ![XA Success](${baseUrl}blog-images/distributed-transactions/xaSuccess.png)
 
-That's right—this is essentially the same pattern as XA transactions! The failure scenarios also mirror each other:
+That's right—this is essentially the same pattern as XA transactions, as seen in previous post! The failure scenarios also mirror each other:
 
 > [!failure]- Error Handling (Both)
-> ![Epic Saga Failure](tobeincluded)
+> ![Epic Saga Failure](${baseUrl}blog-images/distributed-transactions/sagaEpicFailure.png)
 > 
-> ![XA Failure](tobeincluded)
+> ![XA Failure](${baseUrl}blog-images/distributed-transactions/xaFailure.png)
 
 > [!warning] The relationship between XA and Sagas
 > Sagas are often presented as the alternative to XA transactions. The truth is more nuanced: Epic Sagas and XA are close relatives.
 > 
 > **The key difference**: Epic Sagas implement two-phase commit at the application level, while XA implements it at the database/message broker level. XA can maintain additional guarantees like consistent secondary indexes. Epic Sagas break the abstraction layer (adding state columns, for example) but gain compatibility with participants that don't support XA protocols.
 
-**When to use XA transactions:**
-- Consistency is paramount and you need database-level guarantees (like consistent secondary indexes)
-- All participants are XA-compliant
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - Low logical complexity—the pattern is straightforward to understand
+> - Strong consistency guarantees
+> 
+> **Cons:**
+> - **High coupling:**
+>   - Direct synchronous communication between services
+>   - Central mediator creates a dependency point
+>   - Atomic scope spans all participants globally
+> - **Limited responsiveness and scalability:**
+>   - Mediator becomes a bottleneck
+>   - Atomicity requires additional coordination steps
+>   - Synchronous communication blocks other operations
+> - **Operational complexity:** Mediator failure impacts the entire system
 
-**When to use Epic Sagas:**
-- You want to minimize lock duration
-- Some participants don't support XA protocols
-- You need more control over the coordination logic
-
-**Tradeoffs:**
-
-**Pros:**
-- Low logical complexity—the pattern is straightforward to understand
-- Strong consistency guarantees
-
-**Cons:**
-- **High coupling:**
-  - Direct synchronous communication between services
-  - Central mediator creates a dependency point
-  - Atomic scope spans all participants globally
-- **Limited responsiveness and scalability:**
-  - Mediator becomes a bottleneck
-  - Atomicity requires additional coordination steps
-  - Synchronous communication blocks other operations
-- **Operational complexity:** Mediator failure impacts the entire system
+> [!todo] Practical note
+> **When to use XA transactions:**
+> - Consistency is paramount and you need database-level guarantees (like consistent secondary indexes)
+> - All participants are XA-compliant
+> 
+> **When to use Epic Sagas:**
+> - You want to minimize lock duration
+> - Some participants don't support XA protocols
+> - You need more control over the coordination logic
 
 ---
 
@@ -147,7 +148,7 @@ That's right—this is essentially the same pattern as XA transactions! The fail
 - **Asynchronous** communication
 - **Orchestration** coordination
 
-![Fantasy Fiction Saga](tobeincluded)
+![Fantasy Fiction Saga](${baseUrl}blog-images/distributed-transactions/sagaFantasyFiction.png)
 
 <div align="center">
 <em>A complex story that's hard to believe</em>
@@ -156,26 +157,27 @@ That's right—this is essentially the same pattern as XA transactions! The fail
 We're attempting to achieve atomicity with asynchronous communication—implementing 2PC through a message broker. The logical flow becomes significantly more complex:
 
 > [!success]- Fantasy Fiction Saga Success
-> ![Fantasy Fiction Saga Success](tobeincluded)
+> ![Fantasy Fiction Saga Success](${baseUrl}blog-images/distributed-transactions/sagaFantasyFictionSuccess.png)
 
 > [!failure]- Fantasy Fiction Saga Error Handling
-> ![Fantasy Fiction Saga Error Handling](tobeincluded)
+> ![Fantasy Fiction Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaFantasyFictionFailure.png)
 
 The fundamental problem with achieving atomicity through non-blocking workflows is that the orchestrator must manage multiple concurrent transactions, each requiring multiple coordination steps.
 
 The asynchronous nature creates a dangerous feedback loop: while responsiveness appears enhanced initially, you're actually allowing more transactions to pile up simultaneously. This increases the orchestrator's load, which leads to more row locks, which slows down subsequent transactions, which causes even more transactions to queue up. The number of possible failure scenarios explodes due to workflow complexity and increased transaction volume, making this pattern extremely challenging to implement reliably.
 
-**Tradeoffs:**
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - Strong consistency guarantees (in theory)
+> 
+> **Cons:**
+> - **Coupling:** Central mediator creates dependencies
+> - **Complexity explosion:** Managing distributed atomic transactions asynchronously is extraordinarily difficult—the mediator must coordinate multiple atomic commits simultaneously, causing error-handling complexity to grow exponentially
+> - **Performance degradation:** Making distributed atomic transactions non-blocking paradoxically worsens performance—it increases pending transaction count, slowing resolution even further
 
-**Pros:**
-- Strong consistency guarantees (in theory)
-
-**Cons:**
-- **Coupling:** Central mediator creates dependencies
-- **Complexity explosion:** Managing distributed atomic transactions asynchronously is extraordinarily difficult—the mediator must coordinate multiple atomic commits simultaneously, causing error-handling complexity to grow exponentially
-- **Performance degradation:** Making distributed atomic transactions non-blocking paradoxically worsens performance—it increases pending transaction count, slowing resolution even further
-
-**Reality check:** This pattern is rarely seen in production systems for good reason. The complexity typically outweighs any theoretical benefits.
+> [!danger] Reality check
+> This pattern is rarely seen in production systems for good reason. The complexity typically outweighs any theoretical benefits.
 
 ---
 
@@ -186,7 +188,7 @@ The asynchronous nature creates a dangerous feedback loop: while responsiveness 
 - **Synchronous** communication
 - **Orchestration** coordination
 
-![Fairy Tale Saga](tobeincluded)
+![Fairy Tale Saga](${baseUrl}blog-images/distributed-transactions/sagaFairyTale.png)
 
 <div align="center">
 <em>An easy story with a pleasant ending</em>
@@ -195,31 +197,32 @@ The asynchronous nature creates a dangerous feedback loop: while responsiveness 
 Let's return to synchronous communication while relaxing the atomicity constraint. This is where sagas start becoming practical.
 
 > [!success]- Fairy Tale Saga Success
-> ![Fairy Tale Saga Success](tobeincluded)
+> ![Fairy Tale Saga Success](${baseUrl}blog-images/distributed-transactions/sagaFairyTaleSuccess.png)
 
 > [!failure]- Fairy Tale Saga Error Handling
-> ![Fairy Tale Saga Error Handling](tobeincluded)
+> ![Fairy Tale Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaFairyTaleFailure.png)
 
 This is arguably the simplest saga pattern to implement successfully. Error management complexity is elegantly handled by the orchestrator. Synchronous communication provides immediate feedback, enabling a more stateless implementation.
 
 We accept that services may temporarily show inconsistent data by scoping transactions at the service level. However, the synchronous nature ensures we can correct inconsistencies as quickly as possible using either **state management** (tracking transaction progress) or **compensating transactions** (undoing completed steps).
 
-**Tradeoffs:**
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - **Simplest saga implementation:**
+>   - Error handling simplified through central orchestrator
+>   - No distributed atomic transactions to coordinate
+>   - Synchronous communication helps keep transaction state manageable
+> - **Easily scalable:** Eventual consistency and synchronous patterns scale well together
+> 
+> **Cons:**
+> - **Coupling:**
+>   - Synchronous communication creates service dependencies
+>   - Central mediator required
+> - **Eventual consistency:** Temporary inconsistencies are visible to users
 
-**Pros:**
-- **Simplest saga implementation:**
-  - Error handling simplified through central orchestrator
-  - No distributed atomic transactions to coordinate
-  - Synchronous communication helps keep transaction state manageable
-- **Easily scalable:** Eventual consistency and synchronous patterns scale well together
-
-**Cons:**
-- **Coupling:**
-  - Synchronous communication creates service dependencies
-  - Central mediator required
-- **Eventual consistency:** Temporary inconsistencies are visible to users
-
-**Practical note:** This is often the first saga pattern teams implement when migrating from monoliths. It provides a good balance of simplicity and capability.
+> [!todo] Practical note
+> This is often the first saga pattern teams implement when migrating from monoliths. It provides a good balance of simplicity and capability.
 
 ---
 
@@ -230,7 +233,7 @@ We accept that services may temporarily show inconsistent data by scoping transa
 - **Asynchronous** communication
 - **Orchestration** coordination
 
-![Parallel Saga](tobeincluded)
+![Parallel Saga](${baseUrl}blog-images/distributed-transactions/sagaParallel.png)
 
 <div align="center">
 <em>Reading multiple stories at the same time</em>
@@ -239,28 +242,34 @@ We accept that services may temporarily show inconsistent data by scoping transa
 The Fairy Tale Saga works well—why not decouple services further by switching to asynchronous communication?
 
 > [!success]- Parallel Saga Success
-> ![Parallel Saga Success](tobeincluded)
+> Response after all services confirmed the transaction:
+> 
+> ![Parallel Saga Success](${baseUrl}blog-images/distributed-transactions/sagaParallelSuccess1.png)
+> 
+> Response immediately and confirmation later:
+> ![Parallel Saga Success Immediate](${baseUrl}blog-images/distributed-transactions/sagaParallelSuccess2.png)
 
 > [!failure]- Parallel Saga Error Handling
-> ![Parallel Saga Error Handling](tobeincluded)
+> ![Parallel Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaParallelFailure.png)
 
 Error management flows become more complex, but this saga achieves impressive responsiveness. You can immediately confirm to users that their request is being orchestrated (returning a "pending" status) and notify them later when processing completes. The asynchronous nature allows the orchestrator to contact all participants without blocking, potentially making the overall process faster.
 
-**Tradeoffs:**
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - **Lower coupling:**
+>   - Message broker decouples services from direct dependencies
+>   - Transactions scoped at the service level
+> - **Highly responsive:**
+>   - Fire-and-forget nature enables fast user feedback
+>   - No global atomicity coordination required
+> 
+> **Cons:**
+> - **Error handling complexity:** Asynchronous nature makes failure scenarios harder to manage
+> - **Eventual consistency:** Temporary inconsistencies are visible
 
-**Pros:**
-- **Lower coupling:**
-  - Message broker decouples services from direct dependencies
-  - Transactions scoped at the service level
-- **Highly responsive:**
-  - Fire-and-forget nature enables fast user feedback
-  - No global atomicity coordination required
-
-**Cons:**
-- **Error handling complexity:** Asynchronous nature makes failure scenarios harder to manage
-- **Eventual consistency:** Temporary inconsistencies are visible
-
-**Practical note:** This pattern excels when user experience demands fast response times, and you can afford to handle compensation asynchronously.
+> [!todo] Practical note
+> This pattern excels when user experience demands fast response times, and you can afford to handle compensation asynchronously.
 
 ---
 
@@ -271,7 +280,7 @@ Error management flows become more complex, but this saga achieves impressive re
 - **Synchronous** communication
 - **Choreography** coordination
 
-![Phone Tag Saga](tobeincluded)
+![Phone Tag Saga](${baseUrl}blog-images/distributed-transactions/sagaPhoneTag.png)
 
 <div align="center">
 <em>A story like the game of phone tag</em>
@@ -280,26 +289,27 @@ Error management flows become more complex, but this saga achieves impressive re
 Can we achieve atomicity without an orchestrator? Let's try:
 
 > [!success]- Phone Tag Saga Success
-> ![Phone Tag Saga Success](tobeincluded)
+> ![Phone Tag Saga Success](${baseUrl}blog-images/distributed-transactions/sagaPhoneTagSuccess.png)
 
 > [!failure]- Phone Tag Saga Error Handling
-> ![Phone Tag Saga Error Handling](tobeincluded)
+> ![Phone Tag Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaPhoneTagFailure.png)
 
 This pattern resembles an Epic Saga with many back-and-forth calls. Someone still needs to coordinate the transaction to ensure everyone agrees. So why would anyone implement this strategy?
 
 The answer: **fault tolerance**. If the coordinating service fails, other services can elect a new coordinator to complete the transaction using **consensus algorithms** (like Raft or Paxos). You pay for additional complexity but gain resilience against coordinator failure.
 
-**Tradeoffs:**
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - Strong consistency guarantees
+> - Better fault tolerance than centralized orchestration
+> 
+> **Cons:**
+> - **Hidden complexity:** Usually requires a "hidden" coordinator role, creating coupling despite the choreography appearance
+> - **Distributed coordination burden:** All services share responsibility for ensuring global atomicity, significantly increasing implementation complexity
 
-**Pros:**
-- Strong consistency guarantees
-- Better fault tolerance than centralized orchestration
-
-**Cons:**
-- **Hidden complexity:** Usually requires a "hidden" coordinator role, creating coupling despite the choreography appearance
-- **Distributed coordination burden:** All services share responsibility for ensuring global atomicity, significantly increasing implementation complexity
-
-**Reality check:** This pattern is rarely implemented outside of specialized distributed databases and coordination systems. The complexity typically isn't justified for business applications.
+> [!danger] Reality check
+> This pattern is rarely implemented outside of specialized distributed databases and coordination systems. The complexity typically isn't justified for business applications.
 
 ---
 
@@ -310,7 +320,7 @@ The answer: **fault tolerance**. If the coordinating service fails, other servic
 - **Asynchronous** communication
 - **Choreography** coordination
 
-![Horror Story Saga](tobeincluded)
+![Horror Story Saga](${baseUrl}blog-images/distributed-transactions/sagaHorrorStory.png)
 
 <div align="center">
 <em>The scariest story you will ever encounter</em>
@@ -321,10 +331,10 @@ Achieving atomicity with asynchronous communication is difficult (Fantasy Fictio
 Meet the Horror Story Saga:
 
 > [!success]- Horror Story Saga Success
-> ![Horror Story Saga Success](tobeincluded)
+> ![Horror Story Saga Success](${baseUrl}blog-images/distributed-transactions/sagaHorrorStorySuccess.png)
 
 > [!failure]- Horror Story Saga Error Handling
-> ![Horror Story Saga Error Handling](tobeincluded)
+> ![Horror Story Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaHorrorStoryFailure.png)
 
 The CAP theorem tells us: in distributed systems facing network partitions, choose between Consistency and Availability. You can't have both. The Horror Story Saga tries to have both anyway.
 
@@ -332,20 +342,21 @@ The result? A system with countless failure scenarios and nearly impossible erro
 
 In practice, this often results in tightly coupled code disguised as choreography—you're just hiding the complexity, not eliminating it. You cannot avoid the necessary coordination entropy; fighting against it makes things worse. (See [my entropy article](https://dsalathe.github.io/blog/#/blog/2) if this topic interests you.)
 
-**Tradeoffs:**
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - Strong consistency guarantees (in theory)
+> 
+> **Cons:**
+> - **Extraordinarily difficult to implement:**
+>   - All services must track global transaction state
+>   - But asynchronous nature tries to decouple that tracking
+>   - Multiple transactions can be managed concurrently, potentially out of order
+>   - The multiplicity and complexity of error conditions are overwhelming
+> - **Terrible responsiveness:** Despite async communication, atomic requirements create bottlenecks
 
-**Pros:**
-- Strong consistency guarantees (in theory)
-
-**Cons:**
-- **Extraordinarily difficult to implement:**
-  - All services must track global transaction state
-  - But asynchronous nature tries to decouple that tracking
-  - Multiple transactions can be managed concurrently, potentially out of order
-  - The multiplicity and complexity of error conditions are overwhelming
-- **Terrible responsiveness:** Despite async communication, atomic requirements create bottlenecks
-
-**Reality check:** Don't implement this pattern. If you think you need it, reconsider your architecture.
+> [!danger] Reality check
+> Don't implement this pattern. If you think you need it, reconsider your architecture.
 
 ---
 
@@ -356,7 +367,7 @@ In practice, this often results in tightly coupled code disguised as choreograph
 - **Synchronous** communication
 - **Choreography** coordination
 
-![Time Travel Saga](tobeincluded)
+![Time Travel Saga](${baseUrl}blog-images/distributed-transactions/sagaTimeTravel.png)
 
 <div align="center">
 <em>A story that moves through time</em>
@@ -365,10 +376,10 @@ In practice, this often results in tightly coupled code disguised as choreograph
 What happens when we take the Phone Tag Saga but relax the atomicity constraint?
 
 > [!success]- Time Travel Saga Success
-> ![Time Travel Saga Success](tobeincluded)
+> ![Time Travel Saga Success](${baseUrl}blog-images/distributed-transactions/sagaTimeTravelSuccess.png)
 
 > [!failure]- Time Travel Saga Error Handling
-> ![Time Travel Saga Error Handling](tobeincluded)
+> ![Time Travel Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaTimeTravelFailure.png)
 
 This is the simplest choreography pattern to reason about. Error management becomes easier because the previous service in the chain can immediately handle failures. Each service doesn't need deep knowledge of other services thanks to eventual consistency.
 
@@ -385,7 +396,7 @@ Yes. Meet the Anthology Saga.
 - **Asynchronous** communication
 - **Choreography** coordination
 
-![Anthology Saga](tobeincluded)
+![Anthology Saga](${baseUrl}blog-images/distributed-transactions/sagaAnthology.png)
 
 <div align="center">
 <em>A loosely associated group of short stories</em>
@@ -394,10 +405,10 @@ Yes. Meet the Anthology Saga.
 The most decoupled architecture possible:
 
 > [!success]- Anthology Saga Success
-> ![Anthology Saga Success](tobeincluded)
+> ![Anthology Saga Success](${baseUrl}blog-images/distributed-transactions/sagaAnthologySuccess.png)
 
 > [!failure]- Anthology Saga Error Handling
-> ![Anthology Saga Error Handling](tobeincluded)
+> ![Anthology Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaAnthologyFailure.png)
 
 This pattern achieves true independence between services. Each service publishes events describing what happened. Other services subscribe to relevant events and react accordingly. No service needs to know who's listening or what they'll do with the information.
 
@@ -405,23 +416,24 @@ The cost? Error management flows become more complex. You need comprehensive mon
 
 This is the modern ideal for large-scale, high-agility systems. It scales best when you need multiple teams working independently, handling heavy user loads, and evolving rapidly.
 
-**Tradeoffs:**
+> [!tip]- Tradeoffs
+> 
+> **Pros:**
+> - **Highly decoupled:**
+>   - Asynchronous messaging decouples producers from consumers
+>   - Transactions scoped at the service level
+>   - No central mediators
+> - **Highly responsive:**
+>   - No bottlenecks from central coordinators
+>   - Eventual consistency and async nature enable fire-and-forget message patterns
+> - **Highly scalable:** Same properties that enable responsiveness also enable horizontal scaling
+> 
+> **Cons:**
+> - **Error handling complexity:** Without a central orchestrator, understanding and fixing failures requires sophisticated monitoring
+> - **Eventual consistency:** Users may see temporary inconsistencies
 
-**Pros:**
-- **Highly decoupled:**
-  - Asynchronous messaging decouples producers from consumers
-  - Transactions scoped at the service level
-  - No central mediators
-- **Highly responsive:**
-  - No bottlenecks from central coordinators
-  - Eventual consistency and async nature enable fire-and-forget message patterns
-- **Highly scalable:** Same properties that enable responsiveness also enable horizontal scaling
-
-**Cons:**
-- **Error handling complexity:** Without a central orchestrator, understanding and fixing failures requires sophisticated monitoring
-- **Eventual consistency:** Users may see temporary inconsistencies
-
-**Practical note:** This is the pattern that companies like Netflix, Amazon, and Uber use at scale. It requires mature engineering practices but delivers exceptional scalability and agility.
+> [!todo] Practical note
+> This is the pattern that companies like Netflix, Amazon, and Uber use at scale. It requires mature engineering practices but delivers exceptional scalability and agility.
 
 ---
 
