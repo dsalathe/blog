@@ -38,6 +38,9 @@ In the [previous article](https://dsalathe.github.io/blog/#/blog/22), we helped 
 
 We established clear **data ownership patterns** (single, common, and joint ownership) and explored five **data access strategies** for reading across service boundaries—from synchronous interservice communication to data replication, caching patterns, and shared data domains. Each pattern made different tradeoffs between consistency and autonomy.
 
+> [!todo]- Data Access Recap
+> ![Data Access recap](${baseUrl}blog-images/distributed-transactions/dataAccessRecap.png)
+
 But we left one critical question unanswered: *What happens when a single business operation needs to write to multiple services?* In their monolith, *Commit Esports* relied on database transactions to guarantee atomicity. Charge the entry fee, create the registration, update tournament capacity—all or nothing. Now those operations live in separate services with separate databases. No shared transaction coordinator. No ACID safety net.
 
 That's the problem we're solving today: **maintaining consistency across service boundaries when operations span multiple data owners**. Welcome to the world of distributed transactions and sagas.
@@ -80,12 +83,7 @@ Let's play a game. I'll present what I believe most people understand about each
 > 
 > Correct! This property is called **serializability**. However, in practice, truly guaranteeing this property might require actually running transactions sequentially, making the system prohibitively slow. So databases offer different isolation levels, each protecting against specific anomalies:
 >
-> - **Dirty reads**: Uncommitted rows can be read by another transaction before they're committed or aborted.
-> - **Dirty writes**: Uncommitted updated rows can be overwritten by another transaction.
-> - **Read skew** (non-repeatable reads): A row's value changes between two reads within the same transaction.
-> - **Lost updates**: Two transactions update the same row without considering each other's changes, causing one update to be lost.
-> - **Write skew**: A transaction reads data and makes a decision to write based on that reading. By the time the write occurs, the premise of that decision is no longer valid.
-> - **Phantoms**: A transaction reads rows matching certain criteria. Another transaction writes data that affects those search results.
+> ![Isolation Anomalies,- **Dirty reads**: Uncommitted rows can be read by another transaction before they're committed or aborted.- **Dirty writes**: Uncommitted updated rows can be overwritten by another transaction.- **Read skew** (non-repeatable reads): A row's value changes between two reads within the same transaction.- **Lost updates**: Two transactions update the same row without considering each other's changes, causing one update to be lost.- **Write skew**: A transaction reads data and makes a decision to write based on that reading. By the time the write occurs, the premise of that decision is no longer valid.- **Phantoms**: A transaction reads rows matching certain criteria. Another transaction writes data that affects those search results.](${baseUrl}blog-images/distributed-transactions/isolationAnomalies.png)
 >
 > Weaker isolation levels are generally faster but protect against fewer concurrent anomalies. PostgreSQL offers the following levels:
 >
@@ -93,7 +91,7 @@ Let's play a game. I'll present what I believe most people understand about each
 > 
 > 2. **Read committed** *(PostgreSQL's default)*: Prevents *dirty reads* and *dirty writes*. Still vulnerable to *lost updates*, *phantoms*, *read skews*, and *write skews*.
 > 
-> 3. **Repeatable read** (Snapshot Isolation): Also protects against *read skews* and *phantoms*. PostgreSQL's implementation additionally prevents *lost updates* through its MVCC (Multi-Version Concurrency Control) architecture—when a transaction attempts to update a row that was modified by a concurrent transaction, it receives a serialization error. Still vulnerable to *write skews*.
+> 3. **Repeatable read** (Snapshot Isolation): Also protects against *read skews*. PostgreSQL's implementation additionally prevents *lost updates* and *phantoms* through its MVCC (Multi-Version Concurrency Control) architecture—when a transaction attempts to update a row that was modified by a concurrent transaction, it receives a serialization error. Still vulnerable to *write skews*.
 > 
 > 4. **Serializable**: The strongest level, preventing all anomalies including *write skews* and *phantoms*. Achieved through *actual serial execution*, *two-phase locking (2PL)*, or *serializable snapshot isolation (SSI)*. PostgreSQL uses SSI, which can detect serialization anomalies and abort transactions when conflicts occur.
 
@@ -180,20 +178,7 @@ However, you can simulate asynchronous behavior with callbacks or polling:
 > ![Async REST](${baseUrl}blog-images/distributed-transactions/communicationRestAsync.png)
 
 > [!tip]- **Tradeoffs**
-> 
-> - **Pros**:
->   - Simple and universally understood
->   - Stateless design enables easy horizontal scaling
->   - Human-readable payloads
->   - Seamless browser integration
->   - Extensive tooling and ecosystem support
-> 
-> - **Cons**:
->   - Verbose payloads increase bandwidth
->   - Risk of stamp coupling or endpoint proliferation
->   - Over-fetching or under-fetching data
->   - Multiple round trips needed for related data
->   - Inefficient for real-time updates
+> ![REST tradeoffs,- **Pros**:  - Simple and universally understood  - Stateless design enables easy horizontal scaling  - Human-readable payloads  - Seamless browser integration  - Extensive tooling and ecosystem support - **Cons**:  - Verbose payloads increase bandwidth  - Risk of stamp coupling or endpoint proliferation  - Over-fetching or under-fetching data  - Multiple round trips needed for related data  - Inefficient for real-time updates](${baseUrl}blog-images/distributed-transactions/restTradeoffs.png)
 
 **Note**: Stamp coupling and over/under-fetching can be mitigated with GraphQL, though this introduces server complexity, harder security governance, and potentially expensive queries without proper safeguards.
 
@@ -207,29 +192,16 @@ Messaging relies on intermediary message brokers (RabbitMQ, Kafka, ActiveMQ, AWS
 Messaging is inherently asynchronous:
 
 > [!example]- Async Messaging
-> ![Async Messaging](${baseUrl}blog-images/distributed-transactions/communicationMessageSync.png)
+> ![Async Messaging](${baseUrl}blog-images/distributed-transactions/communicationMessageAsync.png)
 
 Though you can simulate synchronous patterns with request-reply queues:
 
 > [!example]- Sync Messaging
-> ![Sync Messaging](${baseUrl}blog-images/distributed-transactions/communicationMessageAsync.png)
+> ![Sync Messaging](${baseUrl}blog-images/distributed-transactions/communicationMessageSync.png)
 
 > [!tip]- **Tradeoffs**
-> 
-> - **Pros**:
->   - Strong decoupling between services
->   - Superior fault tolerance through message buffering
->   - Handles traffic spikes gracefully
->   - Enables non-blocking operations
->   - Supports event-driven architectures
->   - Multiple consumers can process the same events
-> 
-> - **Cons**:
->   - Additional infrastructure complexity
->   - Eventual consistency challenges
->   - Harder to debug distributed flows
->   - Message ordering complexities
->   - Broker can become a single point of failure (mitigated with clustering)
+> ![Message tradeoffs,- **Pros**:  - Strong decoupling between services  - Superior fault tolerance through message buffering  - Handles traffic spikes gracefully  - Enables non-blocking operations  - Supports event-driven architectures  - Multiple consumers can process the same events- **Cons**:  - Additional infrastructure complexity  - Eventual consistency challenges  - Harder to debug distributed flows  - Message ordering complexities  - Broker can become a single point of failure (mitigated with clustering)](${baseUrl}blog-images/distributed-transactions/messageTradeoffs.png)
+
 
 > [!todo] Best For
 > East-west communication (service-to-service) when decoupling and asynchronous processing are priorities.
@@ -245,20 +217,8 @@ Google Remote Procedure Call (gRPC) is a framework using Protocol Buffers for se
 > ![Async gRPC](${baseUrl}blog-images/distributed-transactions/communicationGrpcAsync.png)
 
 > [!tip]- **Tradeoffs**
-> 
-> - **Pros**:
->   - High performance with binary serialization
->   - Low latency over persistent HTTP/2 connections
->   - Strongly typed contracts reduce runtime errors
->   - Built-in streaming support (unidirectional and bidirectional)
->   - Efficient for microservices communication
-> 
-> - **Cons**:
->   - Tighter coupling through shared Protocol Buffer contracts
->   - Binary format is not human-readable
->   - Steeper learning curve
->   - Limited browser support
->   - Requires HTTP/2 infrastructure
+> ![gRPC tradeoffs,- **Pros**:  - High performance with binary serialization  - Low latency over persistent HTTP/2 connections  - Strongly typed contracts reduce runtime errors  - Built-in streaming support (unidirectional and bidirectional)  - Efficient for microservices communication- **Cons**:  - Tighter coupling through shared Protocol Buffer contracts  - Binary format is not human-readable  - Steeper learning curve  - Limited browser support  - Requires HTTP/2 infrastructure](${baseUrl}blog-images/distributed-transactions/gRPCTradeoffs.png)
+
 
 > [!todo] Best For
 > East-west communication (service-to-service) with low-latency requirements.
@@ -280,10 +240,7 @@ In orchestration, a central orchestrator service manages the entire transaction 
 > ![Error orchestration](${baseUrl}blog-images/distributed-transactions/coordinationOrchestrationFailure.png)
 
 > [!tip] When to use orchestration
-> - Complex business rules require centralized logic
-> - You need sophisticated error handling strategies
-> - Explicit transaction visibility and monitoring matter
-> - Recovery operations must be carefully sequenced
+> ![when to use orchestration,- Complex business rules require centralized logic- You need sophisticated error handling strategies- Explicit transaction visibility and monitoring matter- Recovery operations must be carefully sequenced](${baseUrl}blog-images/distributed-transactions/orchestrationBestFor.png)
 > 
 > **Tradeoffs:**
 > - **Pros**: Clear transaction flow, easier debugging, centralized error handling
@@ -302,10 +259,7 @@ In choreography, no central coordinator exists—each service knows its role and
 > ![Error choreography](${baseUrl}blog-images/distributed-transactions/coordinationChoreographyFailure.png)
 
 > [!tip] When to use choreography
-> - Prioritizing system responsiveness
-> - Maximizing scalability and throughput
-> - Fire-and-forget operations are acceptable
-> - Simple workflows with few participants
+> ![when to use choreography,- Prioritizing system responsiveness- Maximizing scalability and throughput- Fire-and-forget operations are acceptable- Simple workflows with few participants](${baseUrl}blog-images/distributed-transactions/choreographyBestFor.png)
 > 
 > **Tradeoffs:**
 > - **Pros**: No single point of failure, better scalability, lower latency
@@ -331,7 +285,7 @@ Introduced in 1991, X/Open XA (eXtended Architecture) is a standard for implemen
 
 Two-phase commit works in two phases:
 
-1. **Prepare phase** (voting): The coordinator asks each participant, "Can you commit?"
+1. **Prepare phase** (voting): The coordinator gives instructions and asks each participant, "Can you commit?"
 2. **Commit/Abort phase** (decision): Based on the votes, the coordinator tells everyone to either commit or abort
 
 The main purpose of this protocol is to ensure atomicity—in the ACID sense—over a distributed transaction.
@@ -352,7 +306,11 @@ In theory, restarting the coordinator reads the log and resolves all in-doubt tr
 
 A concrete example for *Commit Esports*:
 
-![XA transactions](${baseUrl}blog-images/distributed-transactions/xaSuccess.png)
+> [!success]- Successful XA transaction
+> ![XA transactions](${baseUrl}blog-images/distributed-transactions/xaSuccess.png)
+
+> [!failure]- Error management XA transaction
+> ![XA transactions](${baseUrl}blog-images/distributed-transactions/xaFailure.png)
 
 **The verdict:**
 
