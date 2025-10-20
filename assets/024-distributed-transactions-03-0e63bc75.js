@@ -75,11 +75,6 @@ What follows is Mark Richards and Neal Ford's saga taxonomy—a systematic explo
 
 #### Epic Saga
 
-**Characteristics:**
-- **Atomic** consistency
-- **Synchronous** communication  
-- **Orchestration** coordination
-
 ![Epic Saga](\${baseUrl}blog-images/distributed-transactions/sagaEpic.png)
 
 <div align="center">
@@ -143,11 +138,6 @@ That's right—this is essentially the same pattern as XA transactions, as seen 
 
 #### Fantasy Fiction Saga
 
-**Characteristics:**
-- **Atomic** consistency
-- **Asynchronous** communication
-- **Orchestration** coordination
-
 ![Fantasy Fiction Saga](\${baseUrl}blog-images/distributed-transactions/sagaFantasyFiction.png)
 
 <div align="center">
@@ -182,11 +172,6 @@ The asynchronous nature creates a dangerous feedback loop: while responsiveness 
 ---
 
 #### Fairy Tale Saga
-
-**Characteristics:**
-- **Eventual** consistency
-- **Synchronous** communication
-- **Orchestration** coordination
 
 ![Fairy Tale Saga](\${baseUrl}blog-images/distributed-transactions/sagaFairyTale.png)
 
@@ -227,11 +212,6 @@ We accept that services may temporarily show inconsistent data by scoping transa
 ---
 
 #### Parallel Saga
-
-**Characteristics:**
-- **Eventual** consistency
-- **Asynchronous** communication
-- **Orchestration** coordination
 
 ![Parallel Saga](\${baseUrl}blog-images/distributed-transactions/sagaParallel.png)
 
@@ -275,11 +255,6 @@ Error management flows become more complex, but this saga achieves impressive re
 
 #### Phone Tag Saga
 
-**Characteristics:**
-- **Atomic** consistency
-- **Synchronous** communication
-- **Choreography** coordination
-
 ![Phone Tag Saga](\${baseUrl}blog-images/distributed-transactions/sagaPhoneTag.png)
 
 <div align="center">
@@ -314,11 +289,6 @@ The answer: **fault tolerance**. If the coordinating service fails, other servic
 ---
 
 #### Horror Story Saga
-
-**Characteristics:**
-- **Atomic** consistency
-- **Asynchronous** communication
-- **Choreography** coordination
 
 ![Horror Story Saga](\${baseUrl}blog-images/distributed-transactions/sagaHorrorStory.png)
 
@@ -362,11 +332,6 @@ In practice, this often results in tightly coupled code disguised as choreograph
 
 #### Time Travel Saga
 
-**Characteristics:**
-- **Eventual** consistency
-- **Synchronous** communication
-- **Choreography** coordination
-
 ![Time Travel Saga](\${baseUrl}blog-images/distributed-transactions/sagaTimeTravel.png)
 
 <div align="center">
@@ -390,11 +355,6 @@ Yes. Meet the Anthology Saga.
 ---
 
 #### Anthology Saga
-
-**Characteristics:**
-- **Eventual** consistency
-- **Asynchronous** communication
-- **Choreography** coordination
 
 ![Anthology Saga](\${baseUrl}blog-images/distributed-transactions/sagaAnthology.png)
 

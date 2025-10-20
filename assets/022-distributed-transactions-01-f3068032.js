@@ -28,7 +28,9 @@ This article is heavily based on two fantastic books:
 - [Software Architecture, the hard parts](https://www.oreilly.com/library/view/software-architecture-the/9781492086888/), by Neal Ford, Mark Richards, Pramod Sadalage and Zhamak Dehghani
 - [Fundamentals of Software Architecture](https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/), by Mark Richards, Neal Ford
 
-Both books tackle breaking monoliths into microservices brilliantly. This article aims to summarize the specific issues arising from breaking the hardest layer: the data layer.
+*Fundamentals of Software Architecture* explains the key architecture characteristics as well as a detailed overview of monolith and microservices architectures.
+
+*Software Architecture, the hard parts* tackles breaking monoliths into microservices brilliantly. This article aims to summarize the specific issues arising from breaking the hardest layer: the data layer.
 
 ## What's in it for you
 
@@ -354,7 +356,7 @@ The room falls silent. This is the dark heart of distributed systems: **maintain
 
 This is where distributed transactions enter the picture—not necessarily the distributed ACID transactions you might be thinking of, but something more nuanced and practical: **sagas**.
 
-In our next article, we'll dive deep into the world of distributed transactions. We'll explore:
+In our next articles, we'll dive deep into the world of distributed transactions. We'll explore:
 
 - Why traditional ACID transactions don't work in microservices
 - The saga pattern and its guarantees
