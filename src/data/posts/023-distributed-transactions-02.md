@@ -68,7 +68,7 @@ Let's play a game. I'll present what I believe most people understand about each
 >
 > True—but in the first scenario, the `+$100` should never have happened. In the second, the transaction is valid and will eventually complete. Let's consider a more compelling example:
 >
-> A customer wants to buy a laptop. A stock service decreases inventory from `1` to `0`—the last one! However, a credit service finds the customer's balance too low and rejects the transaction. The problem? A notification service periodically checks inventory levels and, seeing zero laptops remaining, automatically emails the supplier to reorder. Too late—that email can't be recalled. Atomicity would have prevented this.
+> A customer wants to buy a laptop. A stock service decreases inventory from `1` to `0`—the last one! However, a credit service finds the customer's balance too low and rejects the transaction. The problem? A notification service periodically checks inventory levels and, seeing zero laptops remaining, automatically emails the supplier to reorder. Too late—that email can't be recalled. Atomicity would have prevented this if all these operations belonged in the same (atomic) transaction.
 
 ### Consistency
 
@@ -179,8 +179,8 @@ However, you can simulate asynchronous behavior with callbacks or polling:
 
 > [!tip]- **Tradeoffs**
 > ![REST tradeoffs,- **Pros**:  - Simple and universally understood  - Stateless design enables easy horizontal scaling  - Human-readable payloads  - Seamless browser integration  - Extensive tooling and ecosystem support - **Cons**:  - Verbose payloads increase bandwidth  - Risk of stamp coupling or endpoint proliferation  - Over-fetching or under-fetching data  - Multiple round trips needed for related data  - Inefficient for real-time updates](${baseUrl}blog-images/distributed-transactions/restTradeoffs.png)
-
-**Note**: Stamp coupling and over/under-fetching can be mitigated with GraphQL, though this introduces server complexity, harder security governance, and potentially expensive queries without proper safeguards.
+> 
+> **Note**: Stamp coupling is about depending on a composite data contract but only using a portion of it. Over-fetching is related but is about the bandwidth problem (one can use a weaker data contract that doesn't map the unused parts, avoiding stamp coupling). Under-fetching is the opposite problem: your service requires more attribute so it needs to make further calls. Stamp coupling and over/under-fetching can be mitigated with GraphQL, though this introduces server complexity, harder security governance, and potentially expensive queries without proper safeguards. GraphQL is a declarative data fetching language that express explicit queries rather than fetching predefine objects exposed by RESTfull services.
 
 > [!todo] Best For
 > North-south communication (external clients to services).
