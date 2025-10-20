@@ -228,9 +228,18 @@ The Fairy Tale Saga works well—why not decouple services further by switching 
 > 
 > Response immediately and confirmation later:
 > ![Parallel Saga Success Immediate](${baseUrl}blog-images/distributed-transactions/sagaParallelSuccess2.png)
+>
+> **Note**: Actually, the possibility to answer to the user request immediately or later on asynchronously can be implemented with ALL asynchronous sagas. For the sake of simplicity, we only show this distinction with this particular saga.
 
 > [!failure]- Parallel Saga Error Handling
+> Response after all services confirmed the transaction:
+> 
 > ![Parallel Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaParallelFailure.png)
+> 
+> Response immediately and failure notification later:
+> ![Parallel Saga Failure asap](${baseUrl}blog-images/distributed-transactions/sagaParallelFailure2.png)
+>
+> **Note**: Again, this distinction is actually possible with all asynchronous sagas.
 
 Error management flows become more complex, but this saga achieves impressive responsiveness. You can immediately confirm to users that their request is being orchestrated (returning a "pending" status) and notify them later when processing completes. The asynchronous nature allows the orchestrator to contact all participants without blocking, potentially making the overall process faster.
 
@@ -269,9 +278,29 @@ Can we achieve atomicity without an orchestrator? Let's try:
 > [!failure]- Phone Tag Saga Error Handling
 > ![Phone Tag Saga Error Handling](${baseUrl}blog-images/distributed-transactions/sagaPhoneTagFailure.png)
 
-This pattern resembles an Epic Saga with many back-and-forth calls. Someone still needs to coordinate the transaction to ensure everyone agrees. So why would anyone implement this strategy?
+This pattern forces many back-and-forth calls between each participants. Without a clear orchestrator, every participant should know about every other participants' decision to know if they can commit or should abort. This is counterproductive: we try to achieve a better autonomy using choreography but end up in a coupled system anyway with a more complex workflow management. Is this pattern just unusable?
 
-The answer: **fault tolerance**. If the coordinating service fails, other services can elect a new coordinator to complete the transaction using **consensus algorithms** (like Raft or Paxos). You pay for additional complexity but gain resilience against coordinator failure.
+> [!question]- The hidden mediator
+> Not mentioned in Mark Richard and Neal Ford's book, it can be interesting to push the thoughts a bit further. What if we have a disguised mediator: one of the service acts as a mediator but this mediator's role could be anyone?
+> 
+> A successful scenario could be:
+> ![Phone Tag Saga Consensus Success](${baseUrl}blog-images/distributed-transactions/sagaPhoneTagSuccess2.png)
+> 
+> And error management could be:
+> ![Phone Tag Saga Consensus Error Handling](${baseUrl}blog-images/distributed-transactions/sagaPhoneTagFailure2.png)
+>
+> We can already observe a small win: flows are simpler. Coupling is more explicit, which paradoxically reduces slightly actual coupling: payment service no longer needs to know team service's existence and vice-versa.
+> 
+> Still, we're just imitating an Epic saga transaction so far. Benefits become clearer when evaluating what could happen if the mediator goes down in the middle of the transaction:
+> 
+> ![Epic Saga Crash](${baseUrl}blog-images/distributed-transactions/sagaEpicCrash.png)
+> In the Epic saga, even if everyone agreed to the transaction, we are stuck until the mediator is back and finishes the transaction. Observe what a Phone Tag saga can unlock:
+>
+> ![Phone Tag Saga Crash](${baseUrl}blog-images/distributed-transactions/sagaPhoneTagCrash.png)
+>
+> So what is the clear win here?
+> 
+> The answer: **fault tolerance**. If the coordinating service fails, other services can elect a new coordinator to complete the transaction using **consensus algorithms** (like Raft or Paxos). You pay for additional complexity but gain resilience against coordinator failure.
 
 > [!tip]- Tradeoffs
 > 
@@ -280,7 +309,7 @@ The answer: **fault tolerance**. If the coordinating service fails, other servic
 > - Better fault tolerance than centralized orchestration
 > 
 > **Cons:**
-> - **Hidden complexity:** Usually requires a "hidden" coordinator role, creating coupling despite the choreography appearance
+> - **Hidden complexity:** Usually requires a "hidden" coordinator role, creating coupling despite the choreography appearance. Or worse, you just assume every participant has to know about each other's vote to complete the transaction.
 > - **Distributed coordination burden:** All services share responsibility for ensuring global atomicity, significantly increasing implementation complexity
 
 > [!danger] Reality check
@@ -323,7 +352,7 @@ In practice, this often results in tightly coupled code disguised as choreograph
 >   - But asynchronous nature tries to decouple that tracking
 >   - Multiple transactions can be managed concurrently, potentially out of order
 >   - The multiplicity and complexity of error conditions are overwhelming
-> - **Terrible responsiveness:** Despite async communication, atomic requirements create bottlenecks
+> - **Can yield terrible responsiveness:** Despite async communication, atomic requirements create bottlenecks.
 
 > [!danger] Reality check
 > Don't implement this pattern. If you think you need it, reconsider your architecture.
@@ -431,10 +460,7 @@ We've journeyed from monolithic databases to microservices data ownership. We've
 
 The *Commit Esports* team now has the tools they need. They understand that:
 
-1. **Data ownership matters**: Clear ownership prevents conflicts and enables independent scaling
-2. **Access patterns are contextual**: Different use cases demand different strategies
-3. **Sagas aren't one-size-fits-all**: The right saga pattern depends on your specific requirements
-4. **Tradeoffs are inevitable**: Every architectural decision trades one property for another
+![Enabling Sagas,1. **Data ownership matters**: Clear ownership prevents conflicts and enables independent scaling2. **Access patterns are contextual**: Different use cases demand different strategies3. **Sagas aren't one-size-fits-all**: The right saga pattern depends on your specific requirements4. **Tradeoffs are inevitable**: Every architectural decision trades one property for another](${baseUrl}blog-images/distributed-transactions/enablingSagas.png)
 
 Most importantly, they've learned that distributed systems aren't about finding the "perfect" solution. They're about making informed tradeoffs that align with your business needs, your team's capabilities, and your system's constraints.
 
