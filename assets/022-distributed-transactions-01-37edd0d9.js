@@ -90,7 +90,7 @@ This is exactly where *Commit Esports* landed. Time to introduce them to microse
 
 Microservices decouple your system into independently deployable services, each doing one specific thing well. Despite the name, "micro" doesn't mean tiny—it refers to their *number*. Each service becomes independent, with its own lifecycle, enabling steadier, more predictable delivery.
 
-The tradeoff? Higher operational complexity and greater team maturity requirements. Fortunately, automation can mitigate both.
+The tradeoff? Higher operational complexity and greater team maturity requirements. Fortunately, automation can mitigate both. What's harder to mitigate however is versioning complexity, network latency and keeping your distributed transactions ACID-compliant.
 
 For this article, let's assume *Commit Esports* has already split their logical services. One problem remains: the *data domain*.
 
@@ -106,9 +106,9 @@ The golden rule: **The owner of a table is the one who writes to it.**
 
 Three scenarios emerge:
 
-- **Single Ownership**: One service writes to the table
-- **Common Ownership**: Many (or all) services write to the table  
-- **Joint Ownership**: A few services write to the table
+- **Single Ownership**: One service writes to the table.
+- **Common Ownership**: Many (or all) services write to the table. No clear owner. 
+- **Joint Ownership**: A few services write to the table. There's definitively some kind of domain scope but doesn't fit our services' granularity.
 
 ### Single ownership
 
@@ -132,7 +132,7 @@ Now things get interesting. You have four strategies:
 
 #### Table split
 
-Split columns into separate tables. If one service handles the workload first, it transfers remaining data to the other service:
+Split columns into separate tables. If one service handles the workload first, it transfers remaining data to the other service. Say \`match_results\` table has the following column: \`player_id\`, \`accuracy\`, \`has_won\`, \`is_flagged\`, \`confidence_score\`. It could be split into a table \`performance_stats\` with \`player_id\`, \`accuracy\`, \`has_won\` and another table \`match_validity\` with \`player_id\`, \`is_flagged\` and \`confidence_score\`. If the Anti-cheat service still needs read access to \`accuracy\`, it can communicates with the live stats service (more on that in next chapter):
 
 ![Table Split](\${baseUrl}blog-images/distributed-transactions/DataOwnershipJointSplit.excalidraw.png)
 
@@ -266,13 +266,13 @@ It works beautifully—until it doesn't. The problem is data volume. Every insta
 > [!tip]- Tradeoffs Details
 > **Key Points**:
 > - **Pros**:
-> 	- *Ultra-low latency*
+> 	- *Ultra-low latency*: query phase is ran locally only: no internet hops at all.
 > 	- *Data consistency*: near-real-time updates
 > 	- *wide range of implementations*: Hazelcast, Apache Ignite, Oracle Coherence, Infinispan, Pivotal GemFire
 > - **Cons**:
 > 	- *Data volume issues*: data is replicated for each service. Bad horizontal scaling.
-> 	- *Eventually consistent*
-> 	- *Data update rate bottleneck*
+> 	- *Eventually consistent*: synchronization is ran by a background process, creating some lag. Still, this is usually more efficient than interservice communication as it doesn't need to go through an API gateway or load balancers
+> 	- *Data update rate bottleneck*: You don't necessarily know what data you want exactly, so you may sync a lot of data a lot of time.
 > 	- *Cold start dependency*: Initial load of cache can be slow
 
 **Best for**: Reference data, configuration, and frequently accessed small datasets. Think country codes, product categories, or feature flags—data that rarely changes but gets read constantly.
