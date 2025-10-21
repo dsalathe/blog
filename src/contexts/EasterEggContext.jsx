@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 
 const EasterEggContext = createContext();
 
@@ -15,15 +15,15 @@ export const EasterEggProvider = ({ children }) => {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [previewedPostIds, setPreviewedPostIds] = useState(new Set());
 
-  const unlock = () => {
+  const unlock = useCallback(() => {
     setIsUnlocked(true);
-  };
+  }, []);
 
-  const unlockPreview = (postId) => {
+  const unlockPreview = useCallback((postId) => {
     setPreviewedPostIds(prev => new Set([...prev, postId]));
-  };
+  }, []);
 
-  const canAccessPost = (postId, publishedDate) => {
+  const canAccessPost = useCallback((postId, publishedDate) => {
     const postDate = new Date(publishedDate);
     const now = new Date();
     
@@ -32,7 +32,7 @@ export const EasterEggProvider = ({ children }) => {
            import.meta.env.MODE === 'development' || 
            isUnlocked || 
            previewedPostIds.has(postId);
-  };
+  }, [isUnlocked, previewedPostIds]);
 
   return (
     <EasterEggContext.Provider value={{ 
