@@ -135,7 +135,8 @@ function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [isFuturePost, setIsFuturePost] = useState(false);
   const [nextBlogInfo, setNextBlogInfo] = useState(null);
-  const { canAccessPost, unlockPreview } = useEasterEgg();
+  const [loadedBlog, setLoadedBlog] = useState(null); // Store the loaded blog separately
+  const { canAccessPost, unlockPreview, previewedPostIds, isUnlocked } = useEasterEgg();
   
   // Image modal state
   const [modalImage, setModalImage] = useState({ isOpen: false, src: '', alt: '' });
@@ -171,57 +172,77 @@ function BlogPage() {
     const loadBlog = async () => {
       try {
         setLoading(true);
-        setIsFuturePost(false); // Reset the future post flag
         
         // Always load the blog post (ignoring publish date initially)
         const foundBlog = await getBlogById(parseInt(id), true);
         
         if (!foundBlog) {
+          setLoadedBlog(null);
           setBlog(null);
           setLoading(false);
           return;
         }
 
+        // Store the loaded blog
+        setLoadedBlog(foundBlog);
+        
         // Check if preview token matches and unlock this specific post
         if (previewToken && foundBlog.previewToken === previewToken) {
           unlockPreview(foundBlog.id);
         }
-
-        // Check if user has access to this post
-        if (canAccessPost(foundBlog.id, foundBlog.publishedDate)) {
-          setBlog(foundBlog);
-          setIsFuturePost(false);
-          
-          // If there's a next blog post ID, fetch its publication date
-          if (foundBlog.next) {
-            try {
-              const nextBlog = await getBlogById(parseInt(foundBlog.next), true);
-              // Only show next if user has access to it
-              if (nextBlog && canAccessPost(nextBlog.id, nextBlog.publishedDate)) {
-                setNextBlogInfo(nextBlog);
-              } else {
-                setNextBlogInfo(null);
-              }
-            } catch (nextError) {
-              console.error('Error loading next blog:', nextError);
-              setNextBlogInfo(null);
-            }
-          }
-        } else {
-          // User doesn't have access - show future post message
-          setBlog(null);
-          setIsFuturePost(true);
-        }
+        
+        setLoading(false);
       } catch (error) {
         console.error('Error loading blog:', error);
+        setLoadedBlog(null);
         setBlog(null);
-      } finally {
         setLoading(false);
       }
     };
     
     loadBlog();
-  }, [id, previewToken, canAccessPost, unlockPreview]);
+    // Only re-run when id or previewToken changes
+  }, [id, previewToken, unlockPreview]);
+
+  // Separate effect to check access and update visibility
+  useEffect(() => {
+    if (!loadedBlog) {
+      setBlog(null);
+      setIsFuturePost(false);
+      setNextBlogInfo(null);
+      return;
+    }
+
+    // Check if user has access to this post
+    if (canAccessPost(loadedBlog.id, loadedBlog.publishedDate)) {
+      setBlog(loadedBlog);
+      setIsFuturePost(false);
+      
+      // If there's a next blog post ID, fetch its publication date
+      if (loadedBlog.next) {
+        getBlogById(parseInt(loadedBlog.next), true)
+          .then(nextBlog => {
+            // Only show next if user has access to it
+            if (nextBlog && canAccessPost(nextBlog.id, nextBlog.publishedDate)) {
+              setNextBlogInfo(nextBlog);
+            } else {
+              setNextBlogInfo(null);
+            }
+          })
+          .catch(error => {
+            console.error('Error loading next blog:', error);
+            setNextBlogInfo(null);
+          });
+      } else {
+        setNextBlogInfo(null);
+      }
+    } else {
+      // User doesn't have access - show future post message
+      setBlog(null);
+      setIsFuturePost(true);
+      setNextBlogInfo(null);
+    }
+  }, [loadedBlog, previewedPostIds, isUnlocked, canAccessPost]);
 
   // Update document title when blog is loaded
   useEffect(() => {

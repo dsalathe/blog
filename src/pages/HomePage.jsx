@@ -6,13 +6,14 @@ import Toast from '../components/Toast';
 
 function HomePage() {
   const [blogs, setBlogs] = useState([]);
+  const [allBlogs, setAllBlogs] = useState([]); // Store all loaded blogs
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [clickCount, setClickCount] = useState(0);
   const [showToast, setShowToast] = useState(false);
   const location = useLocation();
-  const { isUnlocked, unlock, canAccessPost } = useEasterEgg();
+  const { isUnlocked, unlock, canAccessPost, previewedPostIds } = useEasterEgg();
 
   // handle scroll reset when navigating to the home page
   useEffect(() => {
@@ -28,14 +29,8 @@ function HomePage() {
     const loadBlogs = async () => {
       try {
         // Load all blogs including future ones
-        const allBlogs = await getBlogs(true);
-        
-        // Filter based on access permissions
-        const accessibleBlogs = allBlogs.filter(blog => 
-          canAccessPost(blog.id, blog.publishedDate)
-        );
-        
-        setBlogs(accessibleBlogs);
+        const loadedBlogs = await getBlogs(true);
+        setAllBlogs(loadedBlogs);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -43,7 +38,16 @@ function HomePage() {
       }
     };
     loadBlogs();
-  }, [isUnlocked, canAccessPost]);
+  }, []); // Only load once on mount
+
+  // Separate effect to filter blogs based on access
+  useEffect(() => {
+    // Filter based on access permissions
+    const accessibleBlogs = allBlogs.filter(blog => 
+      canAccessPost(blog.id, blog.publishedDate)
+    );
+    setBlogs(accessibleBlogs);
+  }, [allBlogs, isUnlocked, previewedPostIds, canAccessPost]);
 
   const handleTitleClick = () => {
     if (isUnlocked) return; // Already unlocked
