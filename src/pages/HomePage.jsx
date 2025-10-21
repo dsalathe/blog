@@ -12,7 +12,7 @@ function HomePage() {
   const [clickCount, setClickCount] = useState(0);
   const [showToast, setShowToast] = useState(false);
   const location = useLocation();
-  const { isUnlocked, unlock } = useEasterEgg();
+  const { isUnlocked, unlock, canAccessPost } = useEasterEgg();
 
   // handle scroll reset when navigating to the home page
   useEffect(() => {
@@ -27,8 +27,15 @@ function HomePage() {
   useEffect(() => {
     const loadBlogs = async () => {
       try {
-        const loadedBlogs = await getBlogs(isUnlocked);
-        setBlogs(loadedBlogs);
+        // Load all blogs including future ones
+        const allBlogs = await getBlogs(true);
+        
+        // Filter based on access permissions
+        const accessibleBlogs = allBlogs.filter(blog => 
+          canAccessPost(blog.id, blog.publishedDate)
+        );
+        
+        setBlogs(accessibleBlogs);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -36,7 +43,7 @@ function HomePage() {
       }
     };
     loadBlogs();
-  }, [isUnlocked]);
+  }, [isUnlocked, canAccessPost]);
 
   const handleTitleClick = () => {
     if (isUnlocked) return; // Already unlocked

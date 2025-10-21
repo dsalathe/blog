@@ -28,6 +28,7 @@ export const loadBlogPost = async (id, ignorePublishDate = false) => {
       ...data,
       content: markdownContent,
       readingTime: calculateReadingTime(markdownContent),
+      previewToken: data.previewToken || null,
       previous: data.previous || null,
       next: data.next || null
     };

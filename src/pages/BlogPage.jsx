@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Markdown from 'markdown-to-jsx';
 import { getBlogById } from '../data/blogs';
 import ShareButton from '../components/ShareButton';
@@ -129,11 +129,13 @@ function ClickableImage({ src, alt, title, openModal, ...props }) {
 
 function BlogPage() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const previewToken = searchParams.get('preview');
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFuturePost, setIsFuturePost] = useState(false);
   const [nextBlogInfo, setNextBlogInfo] = useState(null);
-  const { isUnlocked } = useEasterEgg();
+  const { canAccessPost, unlockPreview } = useEasterEgg();
   
   // Image modal state
   const [modalImage, setModalImage] = useState({ isOpen: false, src: '', alt: '' });
@@ -171,33 +173,44 @@ function BlogPage() {
         setLoading(true);
         setIsFuturePost(false); // Reset the future post flag
         
-        const foundBlog = await getBlogById(parseInt(id), isUnlocked);
+        // Always load the blog post (ignoring publish date initially)
+        const foundBlog = await getBlogById(parseInt(id), true);
         
-        if (foundBlog) {
-          // Check if post date is in the future
-          const postDate = new Date(foundBlog.publishedDate);
-          const now = new Date();
+        if (!foundBlog) {
+          setBlog(null);
+          setLoading(false);
+          return;
+        }
+
+        // Check if preview token matches and unlock this specific post
+        if (previewToken && foundBlog.previewToken === previewToken) {
+          unlockPreview(foundBlog.id);
+        }
+
+        // Check if user has access to this post
+        if (canAccessPost(foundBlog.id, foundBlog.publishedDate)) {
+          setBlog(foundBlog);
+          setIsFuturePost(false);
           
-          if (postDate > now && import.meta.env.MODE !== 'development' && !isUnlocked) {
-            setIsFuturePost(true);
-            setBlog(null);
-          } else {
-            setBlog(foundBlog);
-            setIsFuturePost(false); // Ensure it's false when we have a blog
-            
-            // If there's a next blog post ID, fetch its publication date
-            if (foundBlog.next) {
-              try {
-                const nextBlog = await getBlogById(parseInt(foundBlog.next), isUnlocked);
+          // If there's a next blog post ID, fetch its publication date
+          if (foundBlog.next) {
+            try {
+              const nextBlog = await getBlogById(parseInt(foundBlog.next), true);
+              // Only show next if user has access to it
+              if (nextBlog && canAccessPost(nextBlog.id, nextBlog.publishedDate)) {
                 setNextBlogInfo(nextBlog);
-              } catch (nextError) {
-                console.error('Error loading next blog:', nextError);
+              } else {
                 setNextBlogInfo(null);
               }
+            } catch (nextError) {
+              console.error('Error loading next blog:', nextError);
+              setNextBlogInfo(null);
             }
           }
         } else {
+          // User doesn't have access - show future post message
           setBlog(null);
+          setIsFuturePost(true);
         }
       } catch (error) {
         console.error('Error loading blog:', error);
@@ -208,7 +221,7 @@ function BlogPage() {
     };
     
     loadBlog();
-  }, [id, isUnlocked]);
+  }, [id, previewToken, canAccessPost, unlockPreview]);
 
   // Update document title when blog is loaded
   useEffect(() => {
@@ -534,8 +547,8 @@ useEffect(() => {
               <div className="blog-nav-placeholder"></div>
             )}
             
-            {blog.next && nextBlogInfo && new Date(nextBlogInfo.publishedDate) <= new Date() ? (
-              // Only show next if it exists, is loaded, and is not a future post
+            {blog.next && nextBlogInfo ? (
+              // Only show next if it exists, is loaded, and user has access
               <Link to={`/blog/${blog.next}`} className="blog-nav-button blog-nav-next">
                 Next Part
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
