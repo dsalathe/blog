@@ -1,8 +1,8 @@
 ---
 id: 20
-title: The Great Obsidian Mystery, Tutorial Part 6
+title: The Great Obsidian Mystery, Web Integration
 description: Master external research integration with the Obsidian Web Clipper. Learn to capture web content efficiently, implement AI-powered summarization, and establish privacy-conscious intelligence gathering workflows that extend your vault beyond internal knowledge.
-publishedDate: 2025-11-04
+publishedDate: 2025-11-25
 image: sherlockPart6.png
 audience:
   - AI-Augmented Builders
@@ -24,14 +24,14 @@ next: 21
 
 # The Ultimate Integration
 
-Having mastered intelligence networks and case resolution in Part 5, you are now ready to transcend the boundaries of your vault by integrating external research and artificial intelligence.
+Having mastered Obsidian's fundamentals in the five-part tutorial, you're ready to explore bonus topics. Let's transcend the boundaries of your vault by integrating external research and artificial intelligence.
 
-> [!tip]- Solution Part 5
-> You can find [Solution Part 5](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part5).
+> [!tip]- Prerequisites
+> This bonus article builds on template and linking concepts. If you need the foundational vault setup, see [Solution Part 5](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part5).
 
 ---
 
-## Chapter XII: The Web of All Knowledge
+## Chapter XIII: The Web of All Knowledge
 
 ### Beyond Internal Intelligence
 
@@ -287,10 +287,10 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 
 "Your knowledge network now extends beyond personal observations to include the vast corpus of external intelligence, creating exponentially richer investigative capabilities."
 
-> [!tip]- Solution Part 6
-> You can find [Solution Part 6](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part6).
+> [!tip]- Solution Web Integration Part
+> You can find [the Web Integration Solution here](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part6).
 
-## The Foundation Complete, Advanced Integration Awaits
+## External Intelligence Mastered, Advanced Integration Awaits
 
 "Watson," Holmes said, closing the Web Clipper with satisfaction, "we have now constructed a sophisticated external intelligence system—web research flows seamlessly into our vault, enhanced by AI while maintaining privacy control."
 
@@ -298,7 +298,7 @@ Having mastered intelligence networks and case resolution in Part 5, you are now
 
 Holmes's eyes gleamed. "Indeed there is, Watson. In our final chapter, we shall transform artificial intelligence from a mere summarization tool into an active investigative partner—one that can read our entire vault, identify patterns across months of observations, and generate sophisticated analytical synthesis."
 
-> [!tip] What Lies Ahead in Part 7
+> [!tip] What Lies Ahead in the next Bonus
 > Advanced AI integration through Claude Desktop's MCP protocol, specialized tools for unique investigative needs, and the complete synthesis of everything you've learned into a professional workflow that operates like natural thought itself.
 
 **Your Arsenal Thus Far:**

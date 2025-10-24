@@ -2,7 +2,7 @@
 id: 24
 title: The Eight Saga Patterns - A Complete Taxonomy
 description: Explore all eight saga patterns from Mark Richards and Neal Ford's taxonomy. Learn when to use Epic, Fairy Tale, Parallel, and Anthology sagas—and which patterns to avoid. Includes concrete tradeoffs, implementation guidance, and decision frameworks for choosing the right pattern for your use case.
-publishedDate: 9999-12-31
+publishedDate: 2025-11-18
 previewToken: w1f4j7e2d8
 image: eightSagas.png
 audience:
