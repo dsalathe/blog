@@ -69,7 +69,9 @@ Let's play a game. I'll present what I believe most people understand about each
 >
 > True—but in the first scenario, the \`+$100\` should never have happened. In the second, the transaction is valid and will eventually complete. Let's consider a more compelling example:
 >
-> A customer wants to buy a laptop. A stock service decreases inventory from \`1\` to \`0\`—the last one! However, a credit service finds the customer's balance too low and rejects the transaction. The problem? A notification service periodically checks inventory levels and, seeing zero laptops remaining, automatically emails the supplier to reorder. Too late—that email can't be recalled. Atomicity would have prevented this if all these operations belonged in the same (atomic) transaction.
+> A customer wants to buy a laptop. **The stock service and credit service should participate in the same atomic transaction.** Without atomicity: the stock service decreases inventory from \`1\` to \`0\`—the last one!—but the credit service finds the customer's balance too low and rejects the transaction. Meanwhile, a notification service periodically checks inventory levels and, seeing zero laptops remaining, automatically emails the supplier to reorder. Too late—that email can't be recalled. Atomicity would have prevented this if all these operations belonged in the same (atomic) transaction.
+>
+> *Note: Atomicity assumes your implementation only reads committed data. Otherwise this laptop problem can still occur because of isolation problems.*
 
 ### Consistency
 

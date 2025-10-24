@@ -427,6 +427,26 @@ This is the modern ideal for large-scale, high-agility systems. It scales best w
 
 ---
 
+### Saga Patterns Summary
+
+| Saga Pattern | Communication | Coordination | Consistency | Comment |
+|--------------|--------------|--------------|-------------|---------|
+| 🟢 **Fairy Tale Saga** | Synchronous | Orchestration | Eventual | *Simple, practical pattern for most use cases requiring coordination* |
+| 🟢 **Parallel Saga** | Asynchronous | Orchestration | Eventual | *Good responsiveness with central coordination; ideal for decoupling and good error management* |
+| 🟢 **Anthology Saga** | Asynchronous | Choreography | Eventual | *Maximum scalability and decoupling; the modern ideal for high-agility systems* |
+| 🟡 **Epic Saga** | Synchronous | Orchestration | Atomic | *Strong consistency but high coupling; essentially XA at application level* |
+| 🟡 **Time Travel Saga** | Synchronous | Choreography | Eventual | *Simplest choreography pattern; easier error management than other choreography patterns* |
+| 🔴 **Fantasy Fiction Saga** | Asynchronous | Orchestration | Atomic | *Too complex for the benefits; avoid in most cases* |
+| 🔴 **Phone Tag Saga** | Synchronous | Choreography | Atomic | *Complexity without clear wins; avoid in most cases* |
+| 🔴 **Horror Story Saga** | Asynchronous | Choreography | Atomic | *Nearly impossible to implement correctly; don't use* |
+
+### Legend
+- 🟢 **Green**: Recommended patterns for production use
+- 🟡 **Yellow**: Use with caution; understand the tradeoffs
+- 🔴 **Red**: Avoid these patterns in most cases
+
+---
+
 ### Choosing your saga pattern
 
 The *Commit Esports* team stares at the whiteboard, now covered with eight different patterns.
