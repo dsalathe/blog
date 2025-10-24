@@ -1,8 +1,8 @@
 const e=`---
 id: 21
-title: The Great Obsidian Mystery, Tutorial Part 7
+title: The Great Obsidian Mystery, AI Integration
 description: Transform Claude Desktop into your AI investigative partner through MCP integration. Master vault-wide pattern recognition, automated synthesis, and complete workflow excellence from case initiation to archive management.
-publishedDate: 2025-11-11
+publishedDate: 2025-12-02
 image: sherlockPart7.png
 audience:
   - AI-Augmented Builders
@@ -22,14 +22,14 @@ previous: 20
 
 # The AI Detective & Final Mastery
 
-Having integrated external research and privacy-conscious AI capabilities in Part 6, you are now ready to deploy artificial intelligence as an active investigative partner and master the complete arsenal of specialized tools. This is Part 7, the final chapter of our comprehensive detective methodology.
+Having integrated external research and privacy-conscious AI capabilities in the Web Integration Part, you are now ready to deploy artificial intelligence as an active investigative partner and master the complete arsenal of specialized tools. This is the AI integration part.
 
-> [!tip]- Solution Part 6
-> You can find [Solution Part 6](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part6).
+> [!tip]- Solution of the Web Integration Part
+> You can find [the Web Integration Solution](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part6).
 
 ---
 
-## Chapter XIII: The AI Detective
+## Chapter XIV: The AI Detective
 
 ### Amplifying Human Intelligence
 
@@ -234,49 +234,6 @@ Holmes settled into his chair with evident satisfaction as Claude began its syst
 
 ---
 
-# Chapter XIV: The Master's Arsenal
-
-## Advanced Tools for Specialized Needs
-
-*Holmes set down his pipe and gestured toward the cluttered mantelpiece of 221B Baker Street.*
-
-"Before we conclude our journey, Watson, several additional instruments merit consideration for specialized investigative requirements. But heed this carefully—"
-
-> [!tip] The Philosophy of Tool Selection
-> *"Superior detection lies not in accumulating every available tool, but in judicious selection of instruments that amplify natural abilities without creating dependency or complexity. Each addition must earn its place through demonstrated value."*
-> 
-> Holmes leaned forward, his eyes gleaming with intensity. "Going too deep into customizations also implies breaking standards and making your system less portable and harder to maintain. Remember this always."
-
----
-
-### Essential Specialized Plugins
-
-> [!tip] Holmes's Plugin Philosophy
-> "Superior detection lies not in accumulating every available tool, but in judicious selection. Each addition must earn its place through demonstrated value."
-
-**For Visual Thinkers:**
-- **Excalidraw** — Sketch systems, workflows, complex relationships. Perfect for visual learners, architects, managers designing roadmaps.
-
-**Most Popular (Use Cautiously):**
-- **Dataview** — Powerful but complex. Avoid until necessary; Obsidian's native \`Base\` is developing as replacement.
-- **Advanced Tables** — Was a must-have before. Managing tables in markdown format is a nightmare. But today Obsidian offers native help around tables. However, this plugin still provides additional features and can still be relevant.
-- **QuickAdd** — Automates repetitive writing. Holmes advises using templates instead for better long-term maintainability.
-
-**For Task Management:**
-- **Tasknotes** — Recommended over Tasks + Kanban. Superior Base integration, intuitive Kanban workflow.
-
-**For Timeline Work:**
-- **Journals** — Recommended over Calendar plugin. Handles daily/weekly/monthly views elegantly in one plugin.
-
-**For Collaboration:**
-- **Git** (free, requires technical knowledge) or **Relay** (free plan, real-time editing)
-- *Remember: Obsidian centers on building YOUR digital brain. Extensive collaboration needs may require different tools.*
-
-**Miscellaneous:**
-- **Omnisearch** (OCR search), **Recent Files** (navigation history), **Admonition** (callout styling, sacrifices portability)
-
----
-
 ## The Complete Investigation Workflow Integration
 
 > [!success] **Your Complete Methodology**
@@ -334,8 +291,8 @@ Holmes settled into his chair with evident satisfaction as Claude began its syst
 > ✅ **Professional Workflow** — From case initiation to archive management perfected  
 > ✅ **Systematic Excellence** — Repeatable processes ensuring consistent quality achieved
 
-> [!tip]- Solution Part 7
-> You can find [Solution Part 7](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part7).
+> [!tip]- Solution AI Integration Part
+> You can find [the AI Integration Solution](https://github.com/dsalathe/obsidian-tutorial/tree/main/obsidian-tutorial/sherlock-solution-part7).
 
 ---
 
@@ -360,7 +317,5 @@ Holmes settled into his chair with evident satisfaction as Claude began its syst
 <div align="center">
 
 *Elementary, my dear Watson—systematic excellence awaits.*
-
-**~ The End ~**
 
 </div>`;export{e as default};
