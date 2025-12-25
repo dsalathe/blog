@@ -137,7 +137,7 @@ No more manually editing CVs for every application. Let the tool do the heavy li
 
 ### <i class="fa-solid fa-train"></i> tchutchu.dsalathe.dev
 
-A 2-player web game built with **Vue 3** and **Spring Boot**, using **WebSockets** for real-time gameplay.
+A 2-player web game built with **Vue 3**, **Scala 3** and **Spring Boot**, using **WebSockets** for real-time gameplay.
 
 This one's hosted on **Google Cloud Platform (GCP)** using **Cloud Run**, demonstrating serverless deployment for real-time applications. It's a fun experiment in building low-latency multiplayer experiences without managing infrastructure.
 
