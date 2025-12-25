@@ -9,7 +9,7 @@ export default defineConfig({
       mode: ['html', 'toc'],
     })
   ],
-  base: '/blog/',
+  base: '/',
   assetsInclude: ['**/*.md'],
   build: {
     outDir: 'dist',

@@ -78,13 +78,24 @@ Images should be placed in the `public` directory.
 
 ## Deployment
 
-This project is configured to deploy to GitHub Pages using GitHub Actions. When you push changes to the `main` branch, the workflow will automatically build and deploy the application.
+This project is deployed to **Cloudflare Pages** at [https://blog.dsalathe.dev](https://blog.dsalathe.dev).
 
-To set up deployment:
+### Automatic Deployment
 
-1. Ensure your repository is configured to use GitHub Pages
-2. Update the `homepage` field in `package.json` with your GitHub Pages URL
-3. Push changes to the `main` branch
+When you push changes to the `main` branch, Cloudflare Pages automatically builds and deploys the application.
+
+### Manual Deployment
+
+To deploy manually or test locally:
+
+```bash
+npm run build    # Build for production
+npm run preview  # Preview the production build locally
+```
+
+### Migration from GitHub Pages
+
+This project was migrated from `dsalathe.github.io/blog` to `blog.dsalathe.dev`. See [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md) for detailed migration steps and configuration.
 
 ## Development with GitHub Codespaces
 

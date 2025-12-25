@@ -35,7 +35,7 @@ Both books tackle distributed transactions brilliantly—the former through an e
 
 ## Recap: The saga fundamentals
 
-In the [previous article](https://dsalathe.github.io/blog/#/blog/22), we explored the theoretical foundations of distributed transactions. We dissected ACID properties with newfound nuance, understanding that atomicity, consistency, isolation, and durability each play distinct roles. We introduced BASE as an alternative philosophy for distributed systems. We examined XA transactions and their 2PC protocol, understanding both their power and their significant limitations.
+In the [previous article](https://blog.dsalathe.dev/#/blog/22), we explored the theoretical foundations of distributed transactions. We dissected ACID properties with newfound nuance, understanding that atomicity, consistency, isolation, and durability each play distinct roles. We introduced BASE as an alternative philosophy for distributed systems. We examined XA transactions and their 2PC protocol, understanding both their power and their significant limitations.
 
 Most importantly, we established that sagas operate across three dimensions:
 
@@ -340,7 +340,7 @@ The CAP theorem tells us: in distributed systems facing network partitions, choo
 
 The result? A system with countless failure scenarios and nearly impossible error management. Even the success case is extraordinarily difficult to implement. You're asking all participants to communicate through messaging, knowing as little as possible about each other, while somehow achieving atomicity without a coordinator. 
 
-In practice, this often results in tightly coupled code disguised as choreography—you're just hiding the complexity, not eliminating it. You cannot avoid the necessary coordination entropy; fighting against it makes things worse. (See [my entropy article](https://dsalathe.github.io/blog/#/blog/2) if this topic interests you.)
+In practice, this often results in tightly coupled code disguised as choreography—you're just hiding the complexity, not eliminating it. You cannot avoid the necessary coordination entropy; fighting against it makes things worse. (See [my entropy article](https://blog.dsalathe.dev/#/blog/2) if this topic interests you.)
 
 > [!tip]- Tradeoffs
 > 

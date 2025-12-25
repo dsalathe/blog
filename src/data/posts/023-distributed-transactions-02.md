@@ -35,7 +35,7 @@ Both books tackle distributed transactions brilliantly—the former through an e
 
 ## Recap: The data ownership foundation
 
-In the [previous article](https://dsalathe.github.io/blog/#/blog/22), we helped *Commit Esports*—a fictive esports platform—survive their scaling crisis by migrating from a monolith to microservices. We tackled the hardest part of that migration: breaking apart their database.
+In the [previous article](https://blog.dsalathe.dev/#/blog/22), we helped *Commit Esports*—a fictive esports platform—survive their scaling crisis by migrating from a monolith to microservices. We tackled the hardest part of that migration: breaking apart their database.
 
 We established clear **data ownership patterns** (single, common, and joint ownership) and explored five **data access strategies** for reading across service boundaries—from synchronous interservice communication to data replication, caching patterns, and shared data domains. Each pattern made different tradeoffs between consistency and autonomy.
 

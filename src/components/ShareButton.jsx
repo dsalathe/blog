@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 function ShareButton({ title }) {
   const location = useLocation();
-  const baseUrl = import.meta.env.VITE_BASE_URL || 'https://dsalathe.github.io/blog';
+  const baseUrl = import.meta.env.VITE_BASE_URL || 'https://blog.dsalathe.dev';
   // Use pathname from useLocation instead of hash
   const fullUrl = `${baseUrl}/#${location.pathname}`;
 
