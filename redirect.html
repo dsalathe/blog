@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=https://blog.dsalathe.dev">
+    <script>
+        const newDomain = "https://blog.dsalathe.dev";
+        const currentPath = window.location.pathname.replace("/blog", "");
+        const hash = window.location.hash;
+        const search = window.location.search;
+        window.location.replace(newDomain + currentPath + search + hash);
+    </script>
+    <title>Redirecting to blog.dsalathe.dev</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container { text-align: center; padding: 2rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; }
+        p { font-size: 1.1rem; opacity: 0.9; }
+        a { color: white; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 We've moved!</h1>
+        <p>This blog is now available at <a href="https://blog.dsalathe.dev">blog.dsalathe.dev</a></p>
+        <p>Redirecting automatically...</p>
+    </div>
+</body>
+</html>
