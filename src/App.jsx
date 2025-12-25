@@ -12,19 +12,6 @@ function ScrollToTop() {
  
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    // Track pageview in Google Analytics
-    // Use setTimeout to ensure document.title has been updated by the page component
-    setTimeout(() => {
-      if (window.gtag) {
-        const page_path = `${pathname}${window.location.search}`;
-        window.gtag('event', 'page_view', {
-          page_path: page_path,
-          page_title: document.title,
-          page_location: window.location.href,
-        });
-      }
-    }, 100);
   }, [pathname]);
  
   return null;
