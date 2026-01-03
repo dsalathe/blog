@@ -121,13 +121,13 @@ This project showcases:
 
 Tower defense meets distributed systems. Because why not?
 
-### <i class="fa-solid fa-file-lines"></i> tailor.dsalathe.dev (coming soon)
+### <i class="fa-solid fa-file-lines"></i> cvtailor.dsalathe.dev (coming soon)
 
 A web tool to manage and tailor your Curriculum Vitae.
 
 The problem: you have one verbose CV with everything you've ever done. But each job application needs a tailored version highlighting relevant experience.
 
-**Tailor** solves this by:
+**CV Tailor** solves this by:
 - Storing your master CV with all experience, skills, and projects
 - Letting you paste a job description
 - Using LLMs to suggest which sections to emphasize
@@ -237,7 +237,7 @@ Now that the blog is settled, I'm focusing on:
 1. **Building out dsalathe.dev** - The landing page hub
 2. **Setting up auth.dsalathe.dev** - Keycloak-based SSO for all projects
 3. **Polishing citybreakers.dsalathe.dev** - 8-player tower defense needs more towers!
-4. **Shipping tailor.dsalathe.dev** - Beta launch for friends testing CV tailoring
+4. **Shipping cvtailor.dsalathe.dev** - Beta launch for friends testing CV tailoring
 
 Each project will get its own article once it's live. Stay tuned.
 
